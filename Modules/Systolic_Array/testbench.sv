@@ -65,27 +65,37 @@ module tb_systolic_array;
 
         // Cycle 1
         en = 1;
-        in_left_0 = 1; in_left_1 = 2; in_left_2 = 3;
-        in_top_0  = 1; in_top_1  = 2; in_top_2  = 3;
+        in_left_0 = 1; in_left_1 = 0; in_left_2 = 0;
+        in_top_0  = 1; in_top_1  = 0; in_top_2  = 0;
 
         // Cycle 2
         #10;
-        in_left_0 = 4; in_left_1 = 5; in_left_2 = 6;
-        in_top_0  = 4; in_top_1  = 5; in_top_2  = 6;
+        in_left_0 = 2; in_left_1 = 4; in_left_2 = 0;
+        in_top_0  = 2; in_top_1  = 4; in_top_2  = 0;
 
         // Cycle 3
         #10;
-        in_left_0 = 7; in_left_1 = 8; in_left_2 = 9;
-        in_top_0  = 7; in_top_1  = 8; in_top_2  = 9;
+        in_left_0 = 3; in_left_1 = 5; in_left_2 = 7;
+        in_top_0  = 3; in_top_1  = 5; in_top_2  = 7;
+      
+      	// Cycle 4
+        #10;
+        in_left_0 = 0; in_left_1 = 6; in_left_2 = 8;
+        in_top_0  = 0; in_top_1  = 6; in_top_2  = 8;
+      
+      	// Cycle 5
+        #10;
+        in_left_0 = 0; in_left_1 = 0; in_left_2 = 9;
+        in_top_0  = 0; in_top_1  = 0; in_top_2  = 9;
 
         // Stop feeding inputs
         #10;
-        en = 0;
         in_left_0 = 0; in_left_1 = 0; in_left_2 = 0;
         in_top_0  = 0; in_top_1  = 0; in_top_2  = 0;
 
         // Let the array propagate data
         #100;
+      	en = 0;
 
         // Display accumulated outputs
         $display("ACC OUTPUTS:");
