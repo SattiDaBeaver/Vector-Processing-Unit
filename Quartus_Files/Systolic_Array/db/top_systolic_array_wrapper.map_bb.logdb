@@ -1,0 +1,10 @@
+v1
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,systolic_array:dut|mac_cell:mac_22|lpm_mult:Mult0|mult_tds:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,systolic_array:dut|mac_cell:mac_21|lpm_mult:Mult0|mult_tds:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,systolic_array:dut|mac_cell:mac_20|lpm_mult:Mult0|mult_tds:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,systolic_array:dut|mac_cell:mac_12|lpm_mult:Mult0|mult_tds:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,systolic_array:dut|mac_cell:mac_11|lpm_mult:Mult0|mult_tds:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,systolic_array:dut|mac_cell:mac_10|lpm_mult:Mult0|mult_tds:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,systolic_array:dut|mac_cell:mac_02|lpm_mult:Mult0|mult_tds:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,systolic_array:dut|mac_cell:mac_01|lpm_mult:Mult0|mult_tds:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,systolic_array:dut|mac_cell:mac_00|lpm_mult:Mult0|mult_tds:auto_generated|mac_out2,

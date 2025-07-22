@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Tue Jul 22 19:16:11 2025
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+Revision Name : top_systolic_array_wrapper
+Top-level Entity Name : top_systolic_array_wrapper
+Family : MAX 10
+Total logic elements : 385
+    Total combinational functions : 385
+    Dedicated logic registers : 384
+Total registers : 384
+Total pins : 339
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 9
+Total PLLs : 0
+UFM blocks : 0
+ADC blocks : 0
