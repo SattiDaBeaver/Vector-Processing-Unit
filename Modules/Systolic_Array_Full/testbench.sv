@@ -1,19 +1,23 @@
 module tb_systolic_array;
 
-    parameter MATRIX_SIZE = 3;
-    parameter DATA_WIDTH = 8;
-    parameter ACC_WIDTH = 32;
+    // Parameters
+    localparam MATRIX_SIZE = 3;
+    localparam DATA_WIDTH  = 8;
+    localparam ACC_WIDTH   = 32;
 
-    logic clk, rst, en;
-    logic [DATA_WIDTH-1:0] in_left_0, in_left_1, in_left_2;
-    logic [DATA_WIDTH-1:0] in_top_0, in_top_1, in_top_2;
+    // Clock and control
+    logic clk;
+    logic rst;
+    logic en;
 
-    logic [DATA_WIDTH-1:0] out_right_0, out_right_1, out_right_2;
-    logic [DATA_WIDTH-1:0] out_bottom_0, out_bottom_1, out_bottom_2;
+    // Inputs
+    logic [DATA_WIDTH-1:0] in_left  [MATRIX_SIZE];
+    logic [DATA_WIDTH-1:0] in_top   [MATRIX_SIZE];
 
-    logic [ACC_WIDTH-1:0] acc_out_00, acc_out_01, acc_out_02;
-    logic [ACC_WIDTH-1:0] acc_out_10, acc_out_11, acc_out_12;
-    logic [ACC_WIDTH-1:0] acc_out_20, acc_out_21, acc_out_22;
+    // Outputs
+    logic [DATA_WIDTH-1:0] out_right  [MATRIX_SIZE];
+    logic [DATA_WIDTH-1:0] out_bottom [MATRIX_SIZE];
+    logic [ACC_WIDTH-1:0]  acc_out    [MATRIX_SIZE][MATRIX_SIZE];
 
     // Instantiate DUT
     systolic_array #(
@@ -24,85 +28,66 @@ module tb_systolic_array;
         .clk(clk),
         .rst(rst),
         .en(en),
-        .in_left_0(in_left_0),
-        .in_left_1(in_left_1),
-        .in_left_2(in_left_2),
-        .in_top_0(in_top_0),
-        .in_top_1(in_top_1),
-        .in_top_2(in_top_2),
-        .out_right_0(out_right_0),
-        .out_right_1(out_right_1),
-        .out_right_2(out_right_2),
-        .out_bottom_0(out_bottom_0),
-        .out_bottom_1(out_bottom_1),
-        .out_bottom_2(out_bottom_2),
-        .acc_out_00(acc_out_00),
-        .acc_out_01(acc_out_01),
-        .acc_out_02(acc_out_02),
-        .acc_out_10(acc_out_10),
-        .acc_out_11(acc_out_11),
-        .acc_out_12(acc_out_12),
-        .acc_out_20(acc_out_20),
-        .acc_out_21(acc_out_21),
-        .acc_out_22(acc_out_22)
+        .in_left(in_left),
+        .in_top(in_top),
+        .out_right(out_right),
+        .out_bottom(out_bottom),
+        .acc_out(acc_out)
     );
 
     // Clock generation
-    always #5 clk = ~clk;
+    initial clk = 0;
+    always #5 clk = ~clk;  // 100MHz
+  
 
+    // Display task
+    task print_matrix;
+        $display("----- acc_out Matrix at time %0t -----", $time);
+        for (int i = 0; i < MATRIX_SIZE; i++) begin
+            for (int j = 0; j < MATRIX_SIZE; j++) begin
+                $write("%4d ", acc_out[i][j]);
+            end
+            $write("\n");
+        end
+        $display("--------------------------------------\n");
+    endtask
+
+    // Stimulus
     initial begin
+        // Wave Files
         $dumpfile("systolic_array.vcd");
         $dumpvars(0, tb_systolic_array);
-
-        clk = 0;
+        
+        // Init
         rst = 1;
-        en = 0;
-        {in_left_0, in_left_1, in_left_2} = 0;
-        {in_top_0, in_top_1, in_top_2} = 0;
+        en  = 0;
+        for (int i = 0; i < MATRIX_SIZE; i++) begin
+            in_left[i] = 0;
+            in_top[i]  = 0;
+        end
 
-        #10;
+        // Release reset
+        #20;
         rst = 0;
+        en  = 1;
 
-        // Cycle 1
-        en = 1;
-        in_left_0 = 1; in_left_1 = 0; in_left_2 = 0;
-        in_top_0  = 1; in_top_1  = 0; in_top_2  = 0;
+        // Apply inputs
+        in_left[0] = 1;  in_top[0] = 4;
+        in_left[1] = 2;  in_top[1] = 5;
+        in_left[2] = 3;  in_top[2] = 6;
 
-        // Cycle 2
         #10;
-        in_left_0 = 2; in_left_1 = 4; in_left_2 = 0;
-        in_top_0  = 2; in_top_1  = 4; in_top_2  = 0;
+        in_left[0] = 0; in_left[1] = 0; in_left[2] = 0;
+        in_top[0] = 0;  in_top[1] = 0;  in_top[2] = 0;
 
-        // Cycle 3
-        #10;
-        in_left_0 = 3; in_left_1 = 5; in_left_2 = 7;
-        in_top_0  = 3; in_top_1  = 5; in_top_2  = 7;
-      
-      	// Cycle 4
-        #10;
-        in_left_0 = 0; in_left_1 = 6; in_left_2 = 8;
-        in_top_0  = 0; in_top_1  = 6; in_top_2  = 8;
-      
-      	// Cycle 5
-        #10;
-        in_left_0 = 0; in_left_1 = 0; in_left_2 = 9;
-        in_top_0  = 0; in_top_1  = 0; in_top_2  = 9;
+        // Print every 20ns for a while
+        repeat (10) begin
+            #20;
+            print_matrix();
+        end
 
-        // Stop feeding inputs
-        #10;
-        in_left_0 = 0; in_left_1 = 0; in_left_2 = 0;
-        in_top_0  = 0; in_top_1  = 0; in_top_2  = 0;
-
-        // Let the array propagate data
+        // End simulation
         #100;
-      	en = 0;
-
-        // Display accumulated outputs
-        $display("ACC OUTPUTS:");
-        $display("%0d %0d %0d", acc_out_00, acc_out_01, acc_out_02);
-        $display("%0d %0d %0d", acc_out_10, acc_out_11, acc_out_12);
-        $display("%0d %0d %0d", acc_out_20, acc_out_21, acc_out_22);
-
         $finish;
     end
 
