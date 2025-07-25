@@ -1,9 +1,9 @@
 `timescale 1ns / 1ps
 
-module tb_systolic_array;
+module testbench;
 
     // Parameters
-    localparam MATRIX_SIZE = 3;
+    localparam MATRIX_SIZE = 4;
     localparam DATA_WIDTH  = 8;
     localparam ACC_WIDTH   = 32;
 
@@ -58,7 +58,7 @@ module tb_systolic_array;
     initial begin
         // Wave Files
         $dumpfile("systolic_array.vcd");
-        $dumpvars(0, tb_systolic_array);
+        $dumpvars(0, testbench);
         
         // Init
         rst = 1;
@@ -77,16 +77,19 @@ module tb_systolic_array;
         in_left[0] = 1;  in_top[0] = 4;
         in_left[1] = 2;  in_top[1] = 5;
         in_left[2] = 3;  in_top[2] = 6;
+        in_left[3] = 4;  in_top[3] = 7;
 
         #10;
-        in_left[0] = 0; in_left[1] = 0; in_left[2] = 0;
-        in_top[0] = 0;  in_top[1] = 0;  in_top[2] = 0;
+        in_left[0] = 0; in_left[1] = 0; in_left[2] = 0; in_left[3] = 0;
+        in_top[0] = 0;  in_top[1] = 0;  in_top[2] = 0; in_top[3] = 0;
 
         // Print every 20ns for a while
-        repeat (10) begin
-            #20;
+        repeat (5) begin
             print_matrix();
+            #10;
         end
+
+        en = 0;
 
         // End simulation
         // #100;
