@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module tb_systolic_array;
 
     // Parameters
@@ -87,8 +89,8 @@ module tb_systolic_array;
         end
 
         // End simulation
-        #100;
-        $finish;
+        // #100;
+        // $finish;
     end
 
 endmodule

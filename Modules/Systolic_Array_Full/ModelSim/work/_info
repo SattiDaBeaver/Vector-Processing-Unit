@@ -1,0 +1,158 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/ECE241/ModelSim/lab4/part3/ModelSim
+vclockDown
+Z1 !s110 1729625227
+!i10b 1
+!s100 mI>8PHgoh5EBZVo<PX<2M0
+IgMKedHE8^O0hi`Pz[9o[h1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1729449413
+Z4 8../part3.v
+Z5 F../part3.v
+L0 54
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1729625227.000000
+Z8 !s107 ../part3.v|
+Z9 !s90 -reportprogress|300|../part3.v|
+!i113 1
+Z10 tCvgOpt 0
+nclock@down
+vdigit_flipper
+R1
+!i10b 1
+!s100 zg8e180PeS^TZ@CmEL<eB0
+I3JA3hOlA>oDOQV91H<zLd3
+R2
+R0
+R3
+R4
+R5
+L0 36
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vpart3
+R1
+!i10b 1
+!s100 jGM47Hz8BNIhndgIGUT4S2
+Ic?QBeLPL5mU2AGSebM?DD0
+R2
+R0
+R3
+R4
+R5
+L0 23
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vseg7
+R1
+!i10b 1
+!s100 5AhNd3d@ol=7clo9QeUEH1
+I1A=C3O9l:bR_B7SCO>QZA1
+R2
+R0
+R3
+R4
+R5
+L0 70
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vtestbench
+Z11 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z12 !s110 1751572473
+!i10b 1
+!s100 Uk5;`^5HQlDT6EF8Qh]FM0
+IVk?n7>GFkeYXho;dcEQZi2
+R2
+!s105 testbench_sv_unit
+S1
+Z13 dC:/Projects/UART_Controller/UART_TX/ModelSim
+w1751572470
+8testbench.sv
+Ftestbench.sv
+L0 3
+R6
+r1
+!s85 0
+31
+Z14 !s108 1751572473.000000
+!s107 testbench.sv|
+!s90 -reportprogress|300|testbench.sv|
+!i113 1
+R10
+vtop
+R1
+!i10b 1
+!s100 6nP=[lVBQB3GZ0nU`HW8Y2
+IZkR>7zLCWN7_`m:MidA<U3
+R2
+R0
+R3
+R4
+R5
+L0 4
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vUART_TX
+R11
+R12
+!i10b 1
+!s100 [cAcbH50<24OE;4LOcVzU1
+I7h]<9T_l01HbF]69HaFB;3
+R2
+!s105 UART_TX_sv_unit
+S1
+R13
+w1751572186
+8../UART_TX.sv
+F../UART_TX.sv
+L0 1
+R6
+r1
+!s85 0
+31
+R14
+!s107 ../UART_TX.sv|
+!s90 -reportprogress|300|../UART_TX.sv|
+!i113 1
+R10
+n@u@a@r@t_@t@x
