@@ -1,5 +1,5 @@
 Assembler report for top_mac_cell_wrapper
-Tue Jul 22 19:00:00 2025
+Sat Jul 26 17:10:11 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -38,7 +38,7 @@ on the Quartus Prime software download page.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Tue Jul 22 19:00:00 2025 ;
+; Assembler Status      ; Successful - Sat Jul 26 17:10:11 2025 ;
 ; Revision Name         ; top_mac_cell_wrapper                  ;
 ; Top-level Entity Name ; top_mac_cell_wrapper                  ;
 ; Family                ; MAX 10                                ;
@@ -67,8 +67,8 @@ on the Quartus Prime software download page.
 +----------------+----------------------------------------------------------------------------------------------------------+
 ; Option         ; Setting                                                                                                  ;
 +----------------+----------------------------------------------------------------------------------------------------------+
-; JTAG usercode  ; 0x0027B450                                                                                               ;
-; Checksum       ; 0x0027B450                                                                                               ;
+; JTAG usercode  ; 0x0027B4F9                                                                                               ;
+; Checksum       ; 0x0027B4F9                                                                                               ;
 +----------------+----------------------------------------------------------------------------------------------------------+
 
 
@@ -78,14 +78,14 @@ on the Quartus Prime software download page.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Tue Jul 22 18:59:58 2025
+    Info: Processing started: Sat Jul 26 17:10:09 2025
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off top_mac_cell_wrapper -c top_mac_cell_wrapper
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4830 megabytes
-    Info: Processing ended: Tue Jul 22 19:00:00 2025
+    Info: Processing ended: Sat Jul 26 17:10:11 2025
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 

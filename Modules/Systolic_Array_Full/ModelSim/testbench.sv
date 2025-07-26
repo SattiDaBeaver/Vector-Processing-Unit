@@ -1,29 +1,29 @@
 `timescale 1ns / 1ps
 
 module testbench;
-
     // Parameters
     localparam MATRIX_SIZE = 4;
     localparam DATA_WIDTH  = 8;
     localparam ACC_WIDTH   = 32;
 
-    // Clock and control
-    logic clk;
+    // DUT I/O
+    logic clk = 0;
     logic rst;
     logic acc_rst;
     logic acc_en;
     logic shift_en;
 
-    // Inputs
-    logic [DATA_WIDTH-1:0] in_left  [MATRIX_SIZE];
-    logic [DATA_WIDTH-1:0] in_top   [MATRIX_SIZE];
+    logic [DATA_WIDTH*MATRIX_SIZE-1:0] in_left_flat;
+    logic [DATA_WIDTH*MATRIX_SIZE-1:0] in_top_flat;
 
-    // Outputs
-    logic [DATA_WIDTH-1:0] out_right  [MATRIX_SIZE];
-    logic [DATA_WIDTH-1:0] out_bottom [MATRIX_SIZE];
-    logic [ACC_WIDTH-1:0]  acc_out    [MATRIX_SIZE][MATRIX_SIZE];
+    logic [DATA_WIDTH*MATRIX_SIZE-1:0] out_right_flat;
+    logic [DATA_WIDTH*MATRIX_SIZE-1:0] out_bottom_flat;
+    logic [ACC_WIDTH*MATRIX_SIZE*MATRIX_SIZE-1:0] acc_out_flat;
 
-    // Instantiate DUT
+    // Clock generation
+    always #5 clk = ~clk;
+
+    // DUT instance
     systolic_array #(
         .MATRIX_SIZE(MATRIX_SIZE),
         .DATA_WIDTH(DATA_WIDTH),
@@ -32,79 +32,80 @@ module testbench;
         .clk(clk),
         .rst(rst),
         .acc_rst(acc_rst),
-        
         .acc_en(acc_en),
         .shift_en(shift_en),
-
-        .in_left(in_left),
-        .in_top(in_top),
-        .out_right(out_right),
-        .out_bottom(out_bottom),
-        .acc_out(acc_out)
+        .in_left_flat(in_left_flat),
+        .in_top_flat(in_top_flat),
+        .out_right_flat(out_right_flat),
+        .out_bottom_flat(out_bottom_flat),
+        .acc_out_flat(acc_out_flat)
     );
 
-    // Clock generation
-    initial clk = 0;
-    always #5 clk = ~clk;  // 100MHz
-  
-
-    // Display task
-    task print_matrix;
-        $display("----- acc_out Matrix at time %0t -----", $time);
+    // Task to pack an array into a flat bus
+    task automatic pack_inputs(
+        input  logic [DATA_WIDTH-1:0] left [MATRIX_SIZE],
+        input  logic [DATA_WIDTH-1:0] top  [MATRIX_SIZE]
+    );
         for (int i = 0; i < MATRIX_SIZE; i++) begin
-            for (int j = 0; j < MATRIX_SIZE; j++) begin
-                $write("%4d ", acc_out[i][j]);
-            end
-            $write("\n");
+            in_left_flat[i*DATA_WIDTH +: DATA_WIDTH] = left[i];
+            in_top_flat[i*DATA_WIDTH +: DATA_WIDTH]  = top[i];
         end
-        $display("--------------------------------------\n");
     endtask
 
     // Stimulus
     initial begin
-        // Wave Files
-        $dumpfile("systolic_array.vcd");
-        $dumpvars(0, testbench);
-        
+        logic [DATA_WIDTH-1:0] left_data [MATRIX_SIZE];
+        logic [DATA_WIDTH-1:0] top_data  [MATRIX_SIZE];
+
         // Init
         rst = 1;
+        acc_rst = 1;
+        acc_en = 0;
+        shift_en = 0;
+        pack_inputs('{default:0}, '{default:0});
+        #20;
+
+        rst = 0;
         acc_rst = 0;
-        acc_en  = 0;
-        shift_en  = 0;
+        acc_en = 1;
+        shift_en = 1;
+
+        // Feed a few diagonal inputs
+        // for (int t = 0; t < 6; t++) begin
+        //     for (int i = 0; i < MATRIX_SIZE; i++) begin
+        //         left_data[i] = t + i + 1;
+        //         top_data[i]  = (t + 1) * (i + 1);
+        //     end
+        //     pack_inputs(left_data, top_data);
+        //     #10;
+        // end
 
         for (int i = 0; i < MATRIX_SIZE; i++) begin
-            in_left[i] = 0;
-            in_top[i]  = 0;
+            left_data[i] = i + 1;
+            top_data[i]  = i + 4;
         end
-
-        // Release reset
-        #20;
-        rst = 0;
-        acc_en  = 1;
-        shift_en  = 1;
-
-        // Apply inputs
-        in_left[0] = 1;  in_top[0] = 4;
-        in_left[1] = 2;  in_top[1] = 5;
-        in_left[2] = 3;  in_top[2] = 6;
-        in_left[3] = 4;  in_top[3] = 7;
-
+        pack_inputs(left_data, top_data);
         #10;
-        in_left[0] = 0; in_left[1] = 0; in_left[2] = 0; in_left[3] = 0;
-        in_top[0] = 0;  in_top[1] = 0;  in_top[2] = 0; in_top[3] = 0;
-
-        // Print every 20ns for a while
-        repeat (5) begin
-            print_matrix();
+        pack_inputs('{default:0}, '{default:0});
+        #10;
+        for (int v = 0; v < 5; v++) begin
+        $display("===== ACCUMULATOR OUTPUT =====");
+            for (int i = 0; i < MATRIX_SIZE; i++) begin
+                $write("[ ");
+                for (int j = 0; j < MATRIX_SIZE; j++) begin
+                    int unsigned acc_val;
+                    acc_val = acc_out_flat[(i*MATRIX_SIZE + j)*ACC_WIDTH +: ACC_WIDTH];
+                    $write("%0d ", acc_val);
+                end
+                $write("]\n");
+            end
             #10;
         end
 
-        acc_en  = 1;
-        shift_en  = 1;
+        // Stop shifting and accumulating
+        acc_en = 0;
+        shift_en = 0;
 
-        // End simulation
-        // #100;
-        // $finish;
     end
 
 endmodule

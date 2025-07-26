@@ -208,6 +208,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "shift_en",
+					"strict" : false
+				},
+				{
 					"name" : "in_left[1]",
 					"strict" : false
 				},
@@ -268,7 +272,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "en",
+					"name" : "acc_rst",
+					"strict" : false
+				},
+				{
+					"name" : "acc_en",
 					"strict" : false
 				}
 			]

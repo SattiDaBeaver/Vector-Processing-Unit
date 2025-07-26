@@ -1,7 +1,7 @@
 MAC Cell (Processing Element):
-    Fmax (slow 1200mV 85C)  = 317.56 MHz
-    Fmax (slow 1200mV 0C)   = 355.37 MHz
+    Fmax (slow 1200mV 85C)  = 317.86 MHz    (restricted 250MHz)
+    Fmax (slow 1200mV 0C)   = 355.75 MHz    (restricted 250MHz)
 
 Systolic Array (3x3):
-    Fmax (slow 1200mV 85C)  = 147.38 MHz
-    Fmax (slow 1200mV 0C)   = 162.21 MHz
+    Fmax (slow 1200mV 85C)  = 147.71 MHz
+    Fmax (slow 1200mV 0C)   = 162.84 MHz

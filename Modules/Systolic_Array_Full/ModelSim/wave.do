@@ -6,9 +6,9 @@ add wave -noupdate -label Reset -radix binary /testbench/rst
 add wave -noupdate -divider "Systolic Array"
 
 add wave -noupdate -label enable -radix hexadecimal /testbench/en
-add wave -noupdate -label in_left -radix hexadecimal /testbench/in_left
-add wave -noupdate -label in_top -radix hexadecimal /testbench/in_top
-add wave -noupdate -label acc_out -radix hexadecimal /testbench/acc_out
+add wave -noupdate -label in_left -radix hexadecimal /testbench/in_left_flat
+add wave -noupdate -label in_top -radix hexadecimal /testbench/in_top_flat
+add wave -noupdate -label acc_out -radix hexadecimal /testbench/acc_out_flat
 
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {10000 ps} 0}

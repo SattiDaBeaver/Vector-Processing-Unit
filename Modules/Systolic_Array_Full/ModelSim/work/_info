@@ -7,221 +7,96 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dC:/ECE241/ModelSim/lab4/part3/ModelSim
-vclockDown
-Z1 !s110 1729625227
-!i10b 1
-!s100 mI>8PHgoh5EBZVo<PX<2M0
-IgMKedHE8^O0hi`Pz[9o[h1
-Z2 VDg1SIo80bB@j0V0VzS_@n1
-R0
-Z3 w1729449413
-Z4 8../part3.v
-Z5 F../part3.v
-L0 54
-Z6 OV;L;10.5b;63
-r1
-!s85 0
-31
-Z7 !s108 1729625227.000000
-Z8 !s107 ../part3.v|
-Z9 !s90 -reportprogress|300|../part3.v|
-!i113 1
-Z10 tCvgOpt 0
-nclock@down
-vdigit_flipper
-R1
-!i10b 1
-!s100 zg8e180PeS^TZ@CmEL<eB0
-I3JA3hOlA>oDOQV91H<zLd3
-R2
-R0
-R3
-R4
-R5
-L0 36
-R6
-r1
-!s85 0
-31
-R7
-R8
-R9
-!i113 1
-R10
+Z0 dC:/Projects/Neural-Processing-Unit/Modules/Systolic_Array_Full/ModelSim
 vmac_cell
-Z11 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z12 !s110 1753563996
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1753565702
 !i10b 1
 !s100 o0o3dNPblik`0V35a>2]]2
 IT2>?SH`B^V3Y[bgbMm>T<0
-R2
+Z3 VDg1SIo80bB@j0V0VzS_@n1
 !s105 mac_cell_sv_unit
 S1
-Z13 dC:/Projects/Neural-Processing-Unit/Modules/Systolic_Array_Full/ModelSim
+R0
 w1753549201
 8../mac_cell.sv
 F../mac_cell.sv
 L0 1
-R6
+Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z14 !s108 1753563996.000000
+Z5 !s108 1753565702.000000
 !s107 ../mac_cell.sv|
 !s90 -reportprogress|300|../mac_cell.sv|
 !i113 1
-R10
-vpart3
-R1
-!i10b 1
-!s100 jGM47Hz8BNIhndgIGUT4S2
-Ic?QBeLPL5mU2AGSebM?DD0
-R2
-R0
-R3
-R4
-R5
-L0 23
-R6
-r1
-!s85 0
-31
-R7
-R8
-R9
-!i113 1
-R10
-vseg7
-R1
-!i10b 1
-!s100 5AhNd3d@ol=7clo9QeUEH1
-I1A=C3O9l:bR_B7SCO>QZA1
-R2
-R0
-R3
-R4
-R5
-L0 70
-R6
-r1
-!s85 0
-31
-R7
-R8
-R9
-!i113 1
-R10
+Z6 tCvgOpt 0
 vsystolic_array
-R11
-R12
-!i10b 1
-!s100 ?1T<bdC`LC`[G6^gIN;F[3
-IkzKSWQ1`6@Wgf?CA9SK9D3
+R1
 R2
+!i10b 1
+!s100 G?Jaj7H6VCgTR^6jWhnZf1
+IZBCUVXkzA3NhJ[8Ih3jY91
+R3
 !s105 systolic_array_sv_unit
 S1
-R13
-w1753563674
+R0
+w1753564937
 8../systolic_array.sv
 F../systolic_array.sv
 L0 1
-R6
+R4
 r1
 !s85 0
 31
-R14
+R5
 !s107 ../systolic_array.sv|
 !s90 -reportprogress|300|../systolic_array.sv|
 !i113 1
-R10
+R6
 vtb_systolic_array
-R11
-!s110 1753455658
-!i10b 1
-!s100 P:b^F;:Y;2P_Qgl?=I1QS0
-IYjmUZ3hSXQ?0RSU<43F]A2
-R2
-Z15 !s105 testbench_sv_unit
-S1
-R13
-w1753455555
-Z16 8testbench.sv
-Z17 Ftestbench.sv
-L0 3
-R6
-r1
-!s85 0
-31
-!s108 1753455658.000000
-!s107 testbench.sv|
-Z18 !s90 -reportprogress|300|testbench.sv|
-!i113 1
-R10
-vtestbench
-R11
-R12
-!i10b 1
-!s100 PFd3TZM?Y]9AXOzWWPY<G1
-Id<NOIz6`EX2<0EQz;Wi`32
-R2
-R15
-S1
-R13
-w1753563955
-R16
-R17
-L0 3
-R6
-r1
-!s85 0
-31
-R14
-!s107 testbench.sv|
-R18
-!i113 1
-R10
-vtop
 R1
+!s110 1753565126
 !i10b 1
-!s100 6nP=[lVBQB3GZ0nU`HW8Y2
-IZkR>7zLCWN7_`m:MidA<U3
-R2
-R0
+!s100 `lg4NG5[o<;R_@OXCV?;Y2
+I`>]P`AQfCGTb4BN1R<D<T0
 R3
+Z7 !s105 testbench_sv_unit
+S1
+R0
+w1753565003
+Z8 8testbench.sv
+Z9 Ftestbench.sv
+L0 3
 R4
-R5
-L0 4
-R6
 r1
 !s85 0
 31
+!s108 1753565126.000000
+!s107 testbench.sv|
+Z10 !s90 -reportprogress|300|testbench.sv|
+!i113 1
+R6
+vtestbench
+R1
+R2
+!i10b 1
+!s100 jAZ<C]j4XZ6N470<j;<o21
+ISQaL_NTC<CTFTc?Za[:2B3
+R3
 R7
+S1
+R0
+w1753565701
 R8
 R9
-!i113 1
-R10
-vUART_TX
-R11
-!s110 1751572473
-!i10b 1
-!s100 [cAcbH50<24OE;4LOcVzU1
-I7h]<9T_l01HbF]69HaFB;3
-R2
-!s105 UART_TX_sv_unit
-S1
-dC:/Projects/UART_Controller/UART_TX/ModelSim
-w1751572186
-8../UART_TX.sv
-F../UART_TX.sv
-L0 1
-R6
+L0 3
+R4
 r1
 !s85 0
 31
-!s108 1751572473.000000
-!s107 ../UART_TX.sv|
-!s90 -reportprogress|300|../UART_TX.sv|
-!i113 1
+R5
+!s107 testbench.sv|
 R10
-n@u@a@r@t_@t@x
+!i113 1
+R6

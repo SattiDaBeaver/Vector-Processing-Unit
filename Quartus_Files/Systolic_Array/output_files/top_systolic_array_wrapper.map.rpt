@@ -1,5 +1,5 @@
 Analysis & Synthesis report for top_systolic_array_wrapper
-Tue Jul 22 19:16:11 2025
+Sat Jul 26 17:36:34 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -16,30 +16,31 @@ Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
   8. Analysis & Synthesis DSP Block Usage Summary
   9. General Register Statistics
  10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Parameter Settings for User Entity Instance: systolic_array:dut
- 12. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_00
- 13. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_01
- 14. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_02
- 15. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_10
- 16. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_11
- 17. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_12
- 18. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_20
- 19. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_21
- 20. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_22
- 21. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_00|lpm_mult:Mult0
- 22. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_01|lpm_mult:Mult0
- 23. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_02|lpm_mult:Mult0
- 24. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_10|lpm_mult:Mult0
- 25. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_11|lpm_mult:Mult0
- 26. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_12|lpm_mult:Mult0
- 27. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_20|lpm_mult:Mult0
- 28. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_21|lpm_mult:Mult0
- 29. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_22|lpm_mult:Mult0
- 30. lpm_mult Parameter Settings by Entity Instance
- 31. Port Connectivity Checks: "systolic_array:dut"
- 32. Post-Synthesis Netlist Statistics for Top Partition
- 33. Elapsed Time Per Partition
- 34. Analysis & Synthesis Messages
+ 11. Parameter Settings for User Entity Instance: Top-level Entity: |top_systolic_array_wrapper
+ 12. Parameter Settings for User Entity Instance: systolic_array:dut
+ 13. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[0].col[0].mac_inst
+ 14. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[0].col[1].mac_inst
+ 15. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[0].col[2].mac_inst
+ 16. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[1].col[0].mac_inst
+ 17. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[1].col[1].mac_inst
+ 18. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[1].col[2].mac_inst
+ 19. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[2].col[0].mac_inst
+ 20. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[2].col[1].mac_inst
+ 21. Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[2].col[2].mac_inst
+ 22. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[0].col[0].mac_inst|lpm_mult:Mult0
+ 23. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[0].col[1].mac_inst|lpm_mult:Mult0
+ 24. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[0].col[2].mac_inst|lpm_mult:Mult0
+ 25. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[1].col[0].mac_inst|lpm_mult:Mult0
+ 26. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[1].col[1].mac_inst|lpm_mult:Mult0
+ 27. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[1].col[2].mac_inst|lpm_mult:Mult0
+ 28. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[2].col[0].mac_inst|lpm_mult:Mult0
+ 29. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[2].col[1].mac_inst|lpm_mult:Mult0
+ 30. Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[2].col[2].mac_inst|lpm_mult:Mult0
+ 31. lpm_mult Parameter Settings by Entity Instance
+ 32. Port Connectivity Checks: "systolic_array:dut"
+ 33. Post-Synthesis Netlist Statistics for Top Partition
+ 34. Elapsed Time Per Partition
+ 35. Analysis & Synthesis Messages
 
 
 
@@ -66,16 +67,16 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Jul 22 19:16:11 2025           ;
+; Analysis & Synthesis Status        ; Successful - Sat Jul 26 17:36:34 2025           ;
 ; Quartus Prime Version              ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
 ; Revision Name                      ; top_systolic_array_wrapper                      ;
 ; Top-level Entity Name              ; top_systolic_array_wrapper                      ;
 ; Family                             ; MAX 10                                          ;
-; Total logic elements               ; 385                                             ;
-;     Total combinational functions  ; 385                                             ;
+; Total logic elements               ; 387                                             ;
+;     Total combinational functions  ; 387                                             ;
 ;     Dedicated logic registers      ; 384                                             ;
 ; Total registers                    ; 384                                             ;
-; Total pins                         ; 339                                             ;
+; Total pins                         ; 341                                             ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 9                                               ;
@@ -188,9 +189,7 @@ on the Quartus Prime software download page.
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
-;     Processor 6            ;   0.0%      ;
-;     Processor 7            ;   0.0%      ;
-;     Processors 8-14        ;   0.0%      ;
+;     Processors 6-14        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -217,68 +216,68 @@ on the Quartus Prime software download page.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 385       ;
+; Estimated Total logic elements              ; 387       ;
 ;                                             ;           ;
-; Total combinational functions               ; 385       ;
+; Total combinational functions               ; 387       ;
 ; Logic element usage by number of LUT inputs ;           ;
 ;     -- 4 input functions                    ; 0         ;
-;     -- 3 input functions                    ; 279       ;
-;     -- <=2 input functions                  ; 106       ;
+;     -- 3 input functions                    ; 280       ;
+;     -- <=2 input functions                  ; 107       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 106       ;
+;     -- normal mode                          ; 108       ;
 ;     -- arithmetic mode                      ; 279       ;
 ;                                             ;           ;
 ; Total registers                             ; 384       ;
 ;     -- Dedicated logic registers            ; 384       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
-; I/O pins                                    ; 339       ;
+; I/O pins                                    ; 341       ;
 ;                                             ;           ;
 ; Embedded Multiplier 9-bit elements          ; 9         ;
 ;                                             ;           ;
-; Maximum fan-out node                        ; rst~input ;
-; Maximum fan-out                             ; 385       ;
-; Total fan-out                               ; 3173      ;
-; Average fan-out                             ; 2.17      ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 384       ;
+; Total fan-out                               ; 3276      ;
+; Average fan-out                             ; 2.23      ;
 +---------------------------------------------+-----------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                            ;
-+---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------+----------------------------+--------------+
-; Compilation Hierarchy Node            ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                   ; Entity Name                ; Library Name ;
-+---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------+----------------------------+--------------+
-; |top_systolic_array_wrapper           ; 385 (0)             ; 384 (0)                   ; 0           ; 0          ; 9            ; 9       ; 0         ; 339  ; 0            ; 0          ; |top_systolic_array_wrapper                                                                           ; top_systolic_array_wrapper ; work         ;
-;    |systolic_array:dut|               ; 385 (0)             ; 384 (0)                   ; 0           ; 0          ; 9            ; 9       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut                                                        ; systolic_array             ; work         ;
-;       |mac_cell:mac_00|               ; 49 (49)             ; 48 (48)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_00                                        ; mac_cell                   ; work         ;
-;          |lpm_mult:Mult0|             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_00|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
-;             |mult_tds:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_00|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
-;       |mac_cell:mac_01|               ; 48 (48)             ; 48 (48)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_01                                        ; mac_cell                   ; work         ;
-;          |lpm_mult:Mult0|             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_01|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
-;             |mult_tds:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_01|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
-;       |mac_cell:mac_02|               ; 40 (40)             ; 40 (40)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_02                                        ; mac_cell                   ; work         ;
-;          |lpm_mult:Mult0|             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_02|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
-;             |mult_tds:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_02|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
-;       |mac_cell:mac_10|               ; 48 (48)             ; 48 (48)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_10                                        ; mac_cell                   ; work         ;
-;          |lpm_mult:Mult0|             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_10|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
-;             |mult_tds:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_10|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
-;       |mac_cell:mac_11|               ; 48 (48)             ; 48 (48)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_11                                        ; mac_cell                   ; work         ;
-;          |lpm_mult:Mult0|             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_11|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
-;             |mult_tds:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_11|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
-;       |mac_cell:mac_12|               ; 40 (40)             ; 40 (40)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_12                                        ; mac_cell                   ; work         ;
-;          |lpm_mult:Mult0|             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_12|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
-;             |mult_tds:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_12|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
-;       |mac_cell:mac_20|               ; 40 (40)             ; 40 (40)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_20                                        ; mac_cell                   ; work         ;
-;          |lpm_mult:Mult0|             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_20|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
-;             |mult_tds:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_20|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
-;       |mac_cell:mac_21|               ; 40 (40)             ; 40 (40)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_21                                        ; mac_cell                   ; work         ;
-;          |lpm_mult:Mult0|             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_21|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
-;             |mult_tds:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_21|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
-;       |mac_cell:mac_22|               ; 32 (32)             ; 32 (32)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_22                                        ; mac_cell                   ; work         ;
-;          |lpm_mult:Mult0|             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_22|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
-;             |mult_tds:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_22|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
-+---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------+----------------------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                              ;
++-----------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------------------------------------+----------------------------+--------------+
+; Compilation Hierarchy Node              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                   ; Entity Name                ; Library Name ;
++-----------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------------------------------------+----------------------------+--------------+
+; |top_systolic_array_wrapper             ; 387 (0)             ; 384 (0)                   ; 0           ; 0          ; 9            ; 9       ; 0         ; 341  ; 0            ; 0          ; |top_systolic_array_wrapper                                                                                           ; top_systolic_array_wrapper ; work         ;
+;    |systolic_array:dut|                 ; 387 (0)             ; 384 (0)                   ; 0           ; 0          ; 9            ; 9       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut                                                                        ; systolic_array             ; work         ;
+;       |mac_cell:row[0].col[0].mac_inst| ; 51 (51)             ; 48 (48)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[0].col[0].mac_inst                                        ; mac_cell                   ; work         ;
+;          |lpm_mult:Mult0|               ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[0].col[0].mac_inst|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
+;             |mult_tds:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[0].col[0].mac_inst|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
+;       |mac_cell:row[0].col[1].mac_inst| ; 48 (48)             ; 48 (48)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[0].col[1].mac_inst                                        ; mac_cell                   ; work         ;
+;          |lpm_mult:Mult0|               ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[0].col[1].mac_inst|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
+;             |mult_tds:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[0].col[1].mac_inst|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
+;       |mac_cell:row[0].col[2].mac_inst| ; 40 (40)             ; 40 (40)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[0].col[2].mac_inst                                        ; mac_cell                   ; work         ;
+;          |lpm_mult:Mult0|               ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[0].col[2].mac_inst|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
+;             |mult_tds:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[0].col[2].mac_inst|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
+;       |mac_cell:row[1].col[0].mac_inst| ; 48 (48)             ; 48 (48)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[1].col[0].mac_inst                                        ; mac_cell                   ; work         ;
+;          |lpm_mult:Mult0|               ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[1].col[0].mac_inst|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
+;             |mult_tds:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[1].col[0].mac_inst|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
+;       |mac_cell:row[1].col[1].mac_inst| ; 48 (48)             ; 48 (48)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[1].col[1].mac_inst                                        ; mac_cell                   ; work         ;
+;          |lpm_mult:Mult0|               ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[1].col[1].mac_inst|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
+;             |mult_tds:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[1].col[1].mac_inst|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
+;       |mac_cell:row[1].col[2].mac_inst| ; 40 (40)             ; 40 (40)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[1].col[2].mac_inst                                        ; mac_cell                   ; work         ;
+;          |lpm_mult:Mult0|               ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[1].col[2].mac_inst|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
+;             |mult_tds:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[1].col[2].mac_inst|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
+;       |mac_cell:row[2].col[0].mac_inst| ; 40 (40)             ; 40 (40)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[2].col[0].mac_inst                                        ; mac_cell                   ; work         ;
+;          |lpm_mult:Mult0|               ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[2].col[0].mac_inst|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
+;             |mult_tds:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[2].col[0].mac_inst|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
+;       |mac_cell:row[2].col[1].mac_inst| ; 40 (40)             ; 40 (40)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[2].col[1].mac_inst                                        ; mac_cell                   ; work         ;
+;          |lpm_mult:Mult0|               ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[2].col[1].mac_inst|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
+;             |mult_tds:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[2].col[1].mac_inst|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
+;       |mac_cell:row[2].col[2].mac_inst| ; 32 (32)             ; 32 (32)                   ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[2].col[2].mac_inst                                        ; mac_cell                   ; work         ;
+;          |lpm_mult:Mult0|               ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[2].col[2].mac_inst|lpm_mult:Mult0                         ; lpm_mult                   ; work         ;
+;             |mult_tds:auto_generated|   ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[2].col[2].mac_inst|lpm_mult:Mult0|mult_tds:auto_generated ; mult_tds                   ; work         ;
++-----------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------------------------------------+----------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -310,18 +309,31 @@ Note: number of Embedded Multiplier Blocks used is only available after a succes
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 288   ;
+; Number of registers using Clock Enable       ; 384   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                      ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                            ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
-; 3:1                ; 288 bits  ; 576 LEs       ; 288 LEs              ; 288 LEs                ; Yes        ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:mac_00|acc[0] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------+
+; 4:1                ; 288 bits  ; 576 LEs       ; 288 LEs              ; 288 LEs                ; Yes        ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[0].col[0].mac_inst|acc[0]       ;
+; 3:1                ; 96 bits   ; 192 LEs       ; 96 LEs               ; 96 LEs                 ; Yes        ; |top_systolic_array_wrapper|systolic_array:dut|mac_cell:row[0].col[0].mac_inst|out_right[7] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |top_systolic_array_wrapper ;
++----------------+-------+-------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                              ;
++----------------+-------+-------------------------------------------------------------------+
+; MATRIX_SIZE    ; 3     ; Signed Integer                                                    ;
+; DATA_WIDTH     ; 8     ; Signed Integer                                                    ;
+; ACC_WIDTH      ; 32    ; Signed Integer                                                    ;
++----------------+-------+-------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-----------------------------------------------------------------+
@@ -336,540 +348,536 @@ Note: number of Embedded Multiplier Blocks used is only available after a succes
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_00 ;
-+----------------+-------+--------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                   ;
-+----------------+-------+--------------------------------------------------------+
-; DATA_WIDTH     ; 8     ; Signed Integer                                         ;
-; ACC_WIDTH      ; 32    ; Signed Integer                                         ;
-+----------------+-------+--------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[0].col[0].mac_inst ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; DATA_WIDTH     ; 8     ; Signed Integer                                                         ;
+; ACC_WIDTH      ; 32    ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_01 ;
-+----------------+-------+--------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                   ;
-+----------------+-------+--------------------------------------------------------+
-; DATA_WIDTH     ; 8     ; Signed Integer                                         ;
-; ACC_WIDTH      ; 32    ; Signed Integer                                         ;
-+----------------+-------+--------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[0].col[1].mac_inst ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; DATA_WIDTH     ; 8     ; Signed Integer                                                         ;
+; ACC_WIDTH      ; 32    ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_02 ;
-+----------------+-------+--------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                   ;
-+----------------+-------+--------------------------------------------------------+
-; DATA_WIDTH     ; 8     ; Signed Integer                                         ;
-; ACC_WIDTH      ; 32    ; Signed Integer                                         ;
-+----------------+-------+--------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[0].col[2].mac_inst ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; DATA_WIDTH     ; 8     ; Signed Integer                                                         ;
+; ACC_WIDTH      ; 32    ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_10 ;
-+----------------+-------+--------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                   ;
-+----------------+-------+--------------------------------------------------------+
-; DATA_WIDTH     ; 8     ; Signed Integer                                         ;
-; ACC_WIDTH      ; 32    ; Signed Integer                                         ;
-+----------------+-------+--------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[1].col[0].mac_inst ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; DATA_WIDTH     ; 8     ; Signed Integer                                                         ;
+; ACC_WIDTH      ; 32    ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_11 ;
-+----------------+-------+--------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                   ;
-+----------------+-------+--------------------------------------------------------+
-; DATA_WIDTH     ; 8     ; Signed Integer                                         ;
-; ACC_WIDTH      ; 32    ; Signed Integer                                         ;
-+----------------+-------+--------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[1].col[1].mac_inst ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; DATA_WIDTH     ; 8     ; Signed Integer                                                         ;
+; ACC_WIDTH      ; 32    ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_12 ;
-+----------------+-------+--------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                   ;
-+----------------+-------+--------------------------------------------------------+
-; DATA_WIDTH     ; 8     ; Signed Integer                                         ;
-; ACC_WIDTH      ; 32    ; Signed Integer                                         ;
-+----------------+-------+--------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[1].col[2].mac_inst ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; DATA_WIDTH     ; 8     ; Signed Integer                                                         ;
+; ACC_WIDTH      ; 32    ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_20 ;
-+----------------+-------+--------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                   ;
-+----------------+-------+--------------------------------------------------------+
-; DATA_WIDTH     ; 8     ; Signed Integer                                         ;
-; ACC_WIDTH      ; 32    ; Signed Integer                                         ;
-+----------------+-------+--------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[2].col[0].mac_inst ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; DATA_WIDTH     ; 8     ; Signed Integer                                                         ;
+; ACC_WIDTH      ; 32    ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_21 ;
-+----------------+-------+--------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                   ;
-+----------------+-------+--------------------------------------------------------+
-; DATA_WIDTH     ; 8     ; Signed Integer                                         ;
-; ACC_WIDTH      ; 32    ; Signed Integer                                         ;
-+----------------+-------+--------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[2].col[1].mac_inst ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; DATA_WIDTH     ; 8     ; Signed Integer                                                         ;
+; ACC_WIDTH      ; 32    ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:mac_22 ;
-+----------------+-------+--------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                   ;
-+----------------+-------+--------------------------------------------------------+
-; DATA_WIDTH     ; 8     ; Signed Integer                                         ;
-; ACC_WIDTH      ; 32    ; Signed Integer                                         ;
-+----------------+-------+--------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: systolic_array:dut|mac_cell:row[2].col[2].mac_inst ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; DATA_WIDTH     ; 8     ; Signed Integer                                                         ;
+; ACC_WIDTH      ; 32    ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_00|lpm_mult:Mult0 ;
-+------------------------------------------------+----------+----------------------------------------+
-; Parameter Name                                 ; Value    ; Type                                   ;
-+------------------------------------------------+----------+----------------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                             ;
-; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                           ;
-; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                           ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                         ;
-; LPM_WIDTHA                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHB                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHP                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHR                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHS                                     ; 1        ; Untyped                                ;
-; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                ;
-; LPM_PIPELINE                                   ; 0        ; Untyped                                ;
-; LATENCY                                        ; 0        ; Untyped                                ;
-; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; USE_EAB                                        ; OFF      ; Untyped                                ;
-; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                ;
-; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                ;
-; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                    ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                ;
-; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                ;
-; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                ;
-+------------------------------------------------+----------+----------------------------------------+
++--------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[0].col[0].mac_inst|lpm_mult:Mult0 ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; Parameter Name                                 ; Value    ; Type                                                   ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                                         ;
+; LPM_WIDTHA                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHB                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHP                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHR                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHS                                     ; 1        ; Untyped                                                ;
+; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                                ;
+; LPM_PIPELINE                                   ; 0        ; Untyped                                                ;
+; LATENCY                                        ; 0        ; Untyped                                                ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; USE_EAB                                        ; OFF      ; Untyped                                                ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                                ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                                ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                                    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                                ;
+; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                                ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                                ;
++------------------------------------------------+----------+--------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_01|lpm_mult:Mult0 ;
-+------------------------------------------------+----------+----------------------------------------+
-; Parameter Name                                 ; Value    ; Type                                   ;
-+------------------------------------------------+----------+----------------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                             ;
-; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                           ;
-; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                           ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                         ;
-; LPM_WIDTHA                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHB                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHP                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHR                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHS                                     ; 1        ; Untyped                                ;
-; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                ;
-; LPM_PIPELINE                                   ; 0        ; Untyped                                ;
-; LATENCY                                        ; 0        ; Untyped                                ;
-; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; USE_EAB                                        ; OFF      ; Untyped                                ;
-; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                ;
-; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                ;
-; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                    ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                ;
-; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                ;
-; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                ;
-+------------------------------------------------+----------+----------------------------------------+
++--------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[0].col[1].mac_inst|lpm_mult:Mult0 ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; Parameter Name                                 ; Value    ; Type                                                   ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                                         ;
+; LPM_WIDTHA                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHB                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHP                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHR                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHS                                     ; 1        ; Untyped                                                ;
+; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                                ;
+; LPM_PIPELINE                                   ; 0        ; Untyped                                                ;
+; LATENCY                                        ; 0        ; Untyped                                                ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; USE_EAB                                        ; OFF      ; Untyped                                                ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                                ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                                ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                                    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                                ;
+; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                                ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                                ;
++------------------------------------------------+----------+--------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_02|lpm_mult:Mult0 ;
-+------------------------------------------------+----------+----------------------------------------+
-; Parameter Name                                 ; Value    ; Type                                   ;
-+------------------------------------------------+----------+----------------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                             ;
-; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                           ;
-; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                           ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                         ;
-; LPM_WIDTHA                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHB                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHP                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHR                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHS                                     ; 1        ; Untyped                                ;
-; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                ;
-; LPM_PIPELINE                                   ; 0        ; Untyped                                ;
-; LATENCY                                        ; 0        ; Untyped                                ;
-; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; USE_EAB                                        ; OFF      ; Untyped                                ;
-; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                ;
-; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                ;
-; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                    ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                ;
-; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                ;
-; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                ;
-+------------------------------------------------+----------+----------------------------------------+
++--------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[0].col[2].mac_inst|lpm_mult:Mult0 ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; Parameter Name                                 ; Value    ; Type                                                   ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                                         ;
+; LPM_WIDTHA                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHB                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHP                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHR                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHS                                     ; 1        ; Untyped                                                ;
+; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                                ;
+; LPM_PIPELINE                                   ; 0        ; Untyped                                                ;
+; LATENCY                                        ; 0        ; Untyped                                                ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; USE_EAB                                        ; OFF      ; Untyped                                                ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                                ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                                ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                                    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                                ;
+; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                                ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                                ;
++------------------------------------------------+----------+--------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_10|lpm_mult:Mult0 ;
-+------------------------------------------------+----------+----------------------------------------+
-; Parameter Name                                 ; Value    ; Type                                   ;
-+------------------------------------------------+----------+----------------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                             ;
-; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                           ;
-; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                           ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                         ;
-; LPM_WIDTHA                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHB                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHP                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHR                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHS                                     ; 1        ; Untyped                                ;
-; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                ;
-; LPM_PIPELINE                                   ; 0        ; Untyped                                ;
-; LATENCY                                        ; 0        ; Untyped                                ;
-; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; USE_EAB                                        ; OFF      ; Untyped                                ;
-; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                ;
-; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                ;
-; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                    ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                ;
-; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                ;
-; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                ;
-+------------------------------------------------+----------+----------------------------------------+
++--------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[1].col[0].mac_inst|lpm_mult:Mult0 ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; Parameter Name                                 ; Value    ; Type                                                   ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                                         ;
+; LPM_WIDTHA                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHB                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHP                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHR                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHS                                     ; 1        ; Untyped                                                ;
+; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                                ;
+; LPM_PIPELINE                                   ; 0        ; Untyped                                                ;
+; LATENCY                                        ; 0        ; Untyped                                                ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; USE_EAB                                        ; OFF      ; Untyped                                                ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                                ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                                ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                                    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                                ;
+; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                                ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                                ;
++------------------------------------------------+----------+--------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_11|lpm_mult:Mult0 ;
-+------------------------------------------------+----------+----------------------------------------+
-; Parameter Name                                 ; Value    ; Type                                   ;
-+------------------------------------------------+----------+----------------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                             ;
-; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                           ;
-; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                           ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                         ;
-; LPM_WIDTHA                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHB                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHP                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHR                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHS                                     ; 1        ; Untyped                                ;
-; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                ;
-; LPM_PIPELINE                                   ; 0        ; Untyped                                ;
-; LATENCY                                        ; 0        ; Untyped                                ;
-; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; USE_EAB                                        ; OFF      ; Untyped                                ;
-; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                ;
-; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                ;
-; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                    ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                ;
-; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                ;
-; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                ;
-+------------------------------------------------+----------+----------------------------------------+
++--------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[1].col[1].mac_inst|lpm_mult:Mult0 ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; Parameter Name                                 ; Value    ; Type                                                   ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                                         ;
+; LPM_WIDTHA                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHB                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHP                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHR                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHS                                     ; 1        ; Untyped                                                ;
+; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                                ;
+; LPM_PIPELINE                                   ; 0        ; Untyped                                                ;
+; LATENCY                                        ; 0        ; Untyped                                                ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; USE_EAB                                        ; OFF      ; Untyped                                                ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                                ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                                ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                                    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                                ;
+; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                                ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                                ;
++------------------------------------------------+----------+--------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_12|lpm_mult:Mult0 ;
-+------------------------------------------------+----------+----------------------------------------+
-; Parameter Name                                 ; Value    ; Type                                   ;
-+------------------------------------------------+----------+----------------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                             ;
-; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                           ;
-; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                           ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                         ;
-; LPM_WIDTHA                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHB                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHP                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHR                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHS                                     ; 1        ; Untyped                                ;
-; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                ;
-; LPM_PIPELINE                                   ; 0        ; Untyped                                ;
-; LATENCY                                        ; 0        ; Untyped                                ;
-; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; USE_EAB                                        ; OFF      ; Untyped                                ;
-; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                ;
-; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                ;
-; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                    ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                ;
-; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                ;
-; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                ;
-+------------------------------------------------+----------+----------------------------------------+
++--------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[1].col[2].mac_inst|lpm_mult:Mult0 ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; Parameter Name                                 ; Value    ; Type                                                   ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                                         ;
+; LPM_WIDTHA                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHB                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHP                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHR                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHS                                     ; 1        ; Untyped                                                ;
+; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                                ;
+; LPM_PIPELINE                                   ; 0        ; Untyped                                                ;
+; LATENCY                                        ; 0        ; Untyped                                                ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; USE_EAB                                        ; OFF      ; Untyped                                                ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                                ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                                ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                                    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                                ;
+; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                                ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                                ;
++------------------------------------------------+----------+--------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_20|lpm_mult:Mult0 ;
-+------------------------------------------------+----------+----------------------------------------+
-; Parameter Name                                 ; Value    ; Type                                   ;
-+------------------------------------------------+----------+----------------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                             ;
-; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                           ;
-; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                           ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                         ;
-; LPM_WIDTHA                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHB                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHP                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHR                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHS                                     ; 1        ; Untyped                                ;
-; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                ;
-; LPM_PIPELINE                                   ; 0        ; Untyped                                ;
-; LATENCY                                        ; 0        ; Untyped                                ;
-; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; USE_EAB                                        ; OFF      ; Untyped                                ;
-; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                ;
-; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                ;
-; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                    ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                ;
-; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                ;
-; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                ;
-+------------------------------------------------+----------+----------------------------------------+
++--------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[2].col[0].mac_inst|lpm_mult:Mult0 ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; Parameter Name                                 ; Value    ; Type                                                   ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                                         ;
+; LPM_WIDTHA                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHB                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHP                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHR                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHS                                     ; 1        ; Untyped                                                ;
+; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                                ;
+; LPM_PIPELINE                                   ; 0        ; Untyped                                                ;
+; LATENCY                                        ; 0        ; Untyped                                                ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; USE_EAB                                        ; OFF      ; Untyped                                                ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                                ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                                ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                                    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                                ;
+; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                                ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                                ;
++------------------------------------------------+----------+--------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_21|lpm_mult:Mult0 ;
-+------------------------------------------------+----------+----------------------------------------+
-; Parameter Name                                 ; Value    ; Type                                   ;
-+------------------------------------------------+----------+----------------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                             ;
-; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                           ;
-; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                           ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                         ;
-; LPM_WIDTHA                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHB                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHP                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHR                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHS                                     ; 1        ; Untyped                                ;
-; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                ;
-; LPM_PIPELINE                                   ; 0        ; Untyped                                ;
-; LATENCY                                        ; 0        ; Untyped                                ;
-; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; USE_EAB                                        ; OFF      ; Untyped                                ;
-; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                ;
-; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                ;
-; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                    ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                ;
-; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                ;
-; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                ;
-+------------------------------------------------+----------+----------------------------------------+
++--------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[2].col[1].mac_inst|lpm_mult:Mult0 ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; Parameter Name                                 ; Value    ; Type                                                   ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                                         ;
+; LPM_WIDTHA                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHB                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHP                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHR                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHS                                     ; 1        ; Untyped                                                ;
+; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                                ;
+; LPM_PIPELINE                                   ; 0        ; Untyped                                                ;
+; LATENCY                                        ; 0        ; Untyped                                                ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; USE_EAB                                        ; OFF      ; Untyped                                                ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                                ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                                ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                                    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                                ;
+; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                                ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                                ;
++------------------------------------------------+----------+--------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:mac_22|lpm_mult:Mult0 ;
-+------------------------------------------------+----------+----------------------------------------+
-; Parameter Name                                 ; Value    ; Type                                   ;
-+------------------------------------------------+----------+----------------------------------------+
-; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                             ;
-; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                           ;
-; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                           ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                         ;
-; LPM_WIDTHA                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHB                                     ; 8        ; Untyped                                ;
-; LPM_WIDTHP                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHR                                     ; 16       ; Untyped                                ;
-; LPM_WIDTHS                                     ; 1        ; Untyped                                ;
-; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                ;
-; LPM_PIPELINE                                   ; 0        ; Untyped                                ;
-; LATENCY                                        ; 0        ; Untyped                                ;
-; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                ;
-; USE_EAB                                        ; OFF      ; Untyped                                ;
-; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                ;
-; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                ;
-; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                    ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                ;
-; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                ;
-; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                ;
-+------------------------------------------------+----------+----------------------------------------+
++--------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: systolic_array:dut|mac_cell:row[2].col[2].mac_inst|lpm_mult:Mult0 ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; Parameter Name                                 ; Value    ; Type                                                   ;
++------------------------------------------------+----------+--------------------------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE                                         ;
+; LPM_WIDTHA                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHB                                     ; 8        ; Untyped                                                ;
+; LPM_WIDTHP                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHR                                     ; 16       ; Untyped                                                ;
+; LPM_WIDTHS                                     ; 1        ; Untyped                                                ;
+; LPM_REPRESENTATION                             ; SIGNED   ; Untyped                                                ;
+; LPM_PIPELINE                                   ; 0        ; Untyped                                                ;
+; LATENCY                                        ; 0        ; Untyped                                                ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                                                ;
+; USE_EAB                                        ; OFF      ; Untyped                                                ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped                                                ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped                                                ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped                                                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K                                    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                                                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                                                ;
+; CBXI_PARAMETER                                 ; mult_tds ; Untyped                                                ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                                                ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                                                ;
++------------------------------------------------+----------+--------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-------------------------------------------------------------------------------------------+
-; lpm_mult Parameter Settings by Entity Instance                                            ;
-+---------------------------------------+---------------------------------------------------+
-; Name                                  ; Value                                             ;
-+---------------------------------------+---------------------------------------------------+
-; Number of entity instances            ; 9                                                 ;
-; Entity Instance                       ; systolic_array:dut|mac_cell:mac_00|lpm_mult:Mult0 ;
-;     -- LPM_WIDTHA                     ; 8                                                 ;
-;     -- LPM_WIDTHB                     ; 8                                                 ;
-;     -- LPM_WIDTHP                     ; 16                                                ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                            ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                                ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                                ;
-;     -- USE_EAB                        ; OFF                                               ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                              ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                                ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                                ;
-; Entity Instance                       ; systolic_array:dut|mac_cell:mac_01|lpm_mult:Mult0 ;
-;     -- LPM_WIDTHA                     ; 8                                                 ;
-;     -- LPM_WIDTHB                     ; 8                                                 ;
-;     -- LPM_WIDTHP                     ; 16                                                ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                            ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                                ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                                ;
-;     -- USE_EAB                        ; OFF                                               ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                              ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                                ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                                ;
-; Entity Instance                       ; systolic_array:dut|mac_cell:mac_02|lpm_mult:Mult0 ;
-;     -- LPM_WIDTHA                     ; 8                                                 ;
-;     -- LPM_WIDTHB                     ; 8                                                 ;
-;     -- LPM_WIDTHP                     ; 16                                                ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                            ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                                ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                                ;
-;     -- USE_EAB                        ; OFF                                               ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                              ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                                ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                                ;
-; Entity Instance                       ; systolic_array:dut|mac_cell:mac_10|lpm_mult:Mult0 ;
-;     -- LPM_WIDTHA                     ; 8                                                 ;
-;     -- LPM_WIDTHB                     ; 8                                                 ;
-;     -- LPM_WIDTHP                     ; 16                                                ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                            ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                                ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                                ;
-;     -- USE_EAB                        ; OFF                                               ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                              ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                                ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                                ;
-; Entity Instance                       ; systolic_array:dut|mac_cell:mac_11|lpm_mult:Mult0 ;
-;     -- LPM_WIDTHA                     ; 8                                                 ;
-;     -- LPM_WIDTHB                     ; 8                                                 ;
-;     -- LPM_WIDTHP                     ; 16                                                ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                            ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                                ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                                ;
-;     -- USE_EAB                        ; OFF                                               ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                              ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                                ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                                ;
-; Entity Instance                       ; systolic_array:dut|mac_cell:mac_12|lpm_mult:Mult0 ;
-;     -- LPM_WIDTHA                     ; 8                                                 ;
-;     -- LPM_WIDTHB                     ; 8                                                 ;
-;     -- LPM_WIDTHP                     ; 16                                                ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                            ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                                ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                                ;
-;     -- USE_EAB                        ; OFF                                               ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                              ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                                ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                                ;
-; Entity Instance                       ; systolic_array:dut|mac_cell:mac_20|lpm_mult:Mult0 ;
-;     -- LPM_WIDTHA                     ; 8                                                 ;
-;     -- LPM_WIDTHB                     ; 8                                                 ;
-;     -- LPM_WIDTHP                     ; 16                                                ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                            ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                                ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                                ;
-;     -- USE_EAB                        ; OFF                                               ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                              ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                                ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                                ;
-; Entity Instance                       ; systolic_array:dut|mac_cell:mac_21|lpm_mult:Mult0 ;
-;     -- LPM_WIDTHA                     ; 8                                                 ;
-;     -- LPM_WIDTHB                     ; 8                                                 ;
-;     -- LPM_WIDTHP                     ; 16                                                ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                            ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                                ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                                ;
-;     -- USE_EAB                        ; OFF                                               ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                              ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                                ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                                ;
-; Entity Instance                       ; systolic_array:dut|mac_cell:mac_22|lpm_mult:Mult0 ;
-;     -- LPM_WIDTHA                     ; 8                                                 ;
-;     -- LPM_WIDTHB                     ; 8                                                 ;
-;     -- LPM_WIDTHP                     ; 16                                                ;
-;     -- LPM_REPRESENTATION             ; SIGNED                                            ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                                ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                                ;
-;     -- USE_EAB                        ; OFF                                               ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                              ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                                ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                                ;
-+---------------------------------------+---------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                                                            ;
++---------------------------------------+-------------------------------------------------------------------+
+; Name                                  ; Value                                                             ;
++---------------------------------------+-------------------------------------------------------------------+
+; Number of entity instances            ; 9                                                                 ;
+; Entity Instance                       ; systolic_array:dut|mac_cell:row[0].col[0].mac_inst|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 8                                                                 ;
+;     -- LPM_WIDTHB                     ; 8                                                                 ;
+;     -- LPM_WIDTHP                     ; 16                                                                ;
+;     -- LPM_REPRESENTATION             ; SIGNED                                                            ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                                                ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                                                ;
+;     -- USE_EAB                        ; OFF                                                               ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                              ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                                                ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                                                ;
+; Entity Instance                       ; systolic_array:dut|mac_cell:row[0].col[1].mac_inst|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 8                                                                 ;
+;     -- LPM_WIDTHB                     ; 8                                                                 ;
+;     -- LPM_WIDTHP                     ; 16                                                                ;
+;     -- LPM_REPRESENTATION             ; SIGNED                                                            ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                                                ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                                                ;
+;     -- USE_EAB                        ; OFF                                                               ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                              ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                                                ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                                                ;
+; Entity Instance                       ; systolic_array:dut|mac_cell:row[0].col[2].mac_inst|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 8                                                                 ;
+;     -- LPM_WIDTHB                     ; 8                                                                 ;
+;     -- LPM_WIDTHP                     ; 16                                                                ;
+;     -- LPM_REPRESENTATION             ; SIGNED                                                            ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                                                ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                                                ;
+;     -- USE_EAB                        ; OFF                                                               ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                              ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                                                ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                                                ;
+; Entity Instance                       ; systolic_array:dut|mac_cell:row[1].col[0].mac_inst|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 8                                                                 ;
+;     -- LPM_WIDTHB                     ; 8                                                                 ;
+;     -- LPM_WIDTHP                     ; 16                                                                ;
+;     -- LPM_REPRESENTATION             ; SIGNED                                                            ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                                                ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                                                ;
+;     -- USE_EAB                        ; OFF                                                               ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                              ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                                                ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                                                ;
+; Entity Instance                       ; systolic_array:dut|mac_cell:row[1].col[1].mac_inst|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 8                                                                 ;
+;     -- LPM_WIDTHB                     ; 8                                                                 ;
+;     -- LPM_WIDTHP                     ; 16                                                                ;
+;     -- LPM_REPRESENTATION             ; SIGNED                                                            ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                                                ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                                                ;
+;     -- USE_EAB                        ; OFF                                                               ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                              ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                                                ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                                                ;
+; Entity Instance                       ; systolic_array:dut|mac_cell:row[1].col[2].mac_inst|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 8                                                                 ;
+;     -- LPM_WIDTHB                     ; 8                                                                 ;
+;     -- LPM_WIDTHP                     ; 16                                                                ;
+;     -- LPM_REPRESENTATION             ; SIGNED                                                            ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                                                ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                                                ;
+;     -- USE_EAB                        ; OFF                                                               ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                              ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                                                ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                                                ;
+; Entity Instance                       ; systolic_array:dut|mac_cell:row[2].col[0].mac_inst|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 8                                                                 ;
+;     -- LPM_WIDTHB                     ; 8                                                                 ;
+;     -- LPM_WIDTHP                     ; 16                                                                ;
+;     -- LPM_REPRESENTATION             ; SIGNED                                                            ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                                                ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                                                ;
+;     -- USE_EAB                        ; OFF                                                               ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                              ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                                                ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                                                ;
+; Entity Instance                       ; systolic_array:dut|mac_cell:row[2].col[1].mac_inst|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 8                                                                 ;
+;     -- LPM_WIDTHB                     ; 8                                                                 ;
+;     -- LPM_WIDTHP                     ; 16                                                                ;
+;     -- LPM_REPRESENTATION             ; SIGNED                                                            ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                                                ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                                                ;
+;     -- USE_EAB                        ; OFF                                                               ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                              ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                                                ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                                                ;
+; Entity Instance                       ; systolic_array:dut|mac_cell:row[2].col[2].mac_inst|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 8                                                                 ;
+;     -- LPM_WIDTHB                     ; 8                                                                 ;
+;     -- LPM_WIDTHP                     ; 16                                                                ;
+;     -- LPM_REPRESENTATION             ; SIGNED                                                            ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                                                ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                                                ;
+;     -- USE_EAB                        ; OFF                                                               ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                              ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                                                ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                                                ;
++---------------------------------------+-------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "systolic_array:dut"                                                                         ;
-+--------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port         ; Type   ; Severity ; Details                                                                             ;
-+--------------+--------+----------+-------------------------------------------------------------------------------------+
-; out_right_0  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; out_right_1  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; out_right_2  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; out_bottom_0 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; out_bottom_1 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; out_bottom_2 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------------+--------+----------+-------------------------------------------------------------------------------------+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "systolic_array:dut"               ;
++-----------------+--------+----------+------------------------+
+; Port            ; Type   ; Severity ; Details                ;
++-----------------+--------+----------+------------------------+
+; out_right_flat  ; Output ; Info     ; Explicitly unconnected ;
+; out_bottom_flat ; Output ; Info     ; Explicitly unconnected ;
++-----------------+--------+----------+------------------------+
 
 
 +-----------------------------------------------------+
@@ -877,15 +885,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 339                         ;
+; boundary_port         ; 341                         ;
 ; cycloneiii_ff         ; 384                         ;
+;     ENA               ; 96                          ;
 ;     ENA SCLR          ; 288                         ;
-;     plain             ; 96                          ;
-; cycloneiii_lcell_comb ; 385                         ;
+; cycloneiii_lcell_comb ; 387                         ;
 ;     arith             ; 279                         ;
 ;         3 data inputs ; 279                         ;
-;     normal            ; 106                         ;
-;         2 data inputs ; 106                         ;
+;     normal            ; 108                         ;
+;         2 data inputs ; 107                         ;
+;         3 data inputs ; 1                           ;
 ; cycloneiii_mac_mult   ; 9                           ;
 ; cycloneiii_mac_out    ; 9                           ;
 ;                       ;                             ;
@@ -909,7 +918,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Tue Jul 22 19:16:05 2025
+    Info: Processing started: Sat Jul 26 17:36:28 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off top_systolic_array_wrapper -c top_systolic_array_wrapper
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 14 of the 14 processors detected
@@ -918,22 +927,25 @@ Info (12021): Found 1 design units, including 1 entities, in source file top_sys
 Info (12127): Elaborating entity "top_systolic_array_wrapper" for the top level hierarchy
 Warning (12125): Using design file systolic_array.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: systolic_array File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/systolic_array.sv Line: 1
-Info (12128): Elaborating entity "systolic_array" for hierarchy "systolic_array:dut" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/top_systolic_array_wrapper.sv Line: 61
+Info (12128): Elaborating entity "systolic_array" for hierarchy "systolic_array:dut" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/top_systolic_array_wrapper.sv Line: 35
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "acc_out" into its bus
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "right_wires" into its bus
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "bottom_wires" into its bus
 Warning (12125): Using design file mac_cell.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: mac_cell File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 1
-Info (12128): Elaborating entity "mac_cell" for hierarchy "systolic_array:dut|mac_cell:mac_00" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/systolic_array.sv Line: 65
+Info (12128): Elaborating entity "mac_cell" for hierarchy "systolic_array:dut|mac_cell:row[0].col[0].mac_inst" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/systolic_array.sv Line: 60
 Info (278001): Inferred 9 megafunctions from design logic
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:mac_00|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 20
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:mac_01|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 20
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:mac_02|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 20
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:mac_10|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 20
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:mac_11|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 20
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:mac_12|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 20
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:mac_20|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 20
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:mac_21|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 20
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:mac_22|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 20
-Info (12130): Elaborated megafunction instantiation "systolic_array:dut|mac_cell:mac_00|lpm_mult:Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 20
-Info (12133): Instantiated megafunction "systolic_array:dut|mac_cell:mac_00|lpm_mult:Mult0" with the following parameter: File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 20
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:row[0].col[0].mac_inst|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 22
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:row[0].col[1].mac_inst|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 22
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:row[0].col[2].mac_inst|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 22
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:row[1].col[0].mac_inst|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 22
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:row[1].col[1].mac_inst|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 22
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:row[1].col[2].mac_inst|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 22
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:row[2].col[0].mac_inst|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 22
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:row[2].col[1].mac_inst|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 22
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "systolic_array:dut|mac_cell:row[2].col[2].mac_inst|Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 22
+Info (12130): Elaborated megafunction instantiation "systolic_array:dut|mac_cell:row[0].col[0].mac_inst|lpm_mult:Mult0" File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 22
+Info (12133): Instantiated megafunction "systolic_array:dut|mac_cell:row[0].col[0].mac_inst|lpm_mult:Mult0" with the following parameter: File: C:/Projects/Neural-Processing-Unit/Quartus_Files/Systolic_Array/mac_cell.sv Line: 22
     Info (12134): Parameter "LPM_WIDTHA" = "8"
     Info (12134): Parameter "LPM_WIDTHB" = "8"
     Info (12134): Parameter "LPM_WIDTHP" = "16"
@@ -948,14 +960,14 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/mult
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 733 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 51 input pins
+Info (21057): Implemented 737 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 53 input pins
     Info (21059): Implemented 288 output pins
-    Info (21061): Implemented 385 logic cells
+    Info (21061): Implemented 387 logic cells
     Info (21062): Implemented 9 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
     Info: Peak virtual memory: 4872 megabytes
-    Info: Processing ended: Tue Jul 22 19:16:11 2025
+    Info: Processing ended: Sat Jul 26 17:36:34 2025
     Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:14
 
