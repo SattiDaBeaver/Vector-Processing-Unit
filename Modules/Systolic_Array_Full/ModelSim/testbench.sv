@@ -10,7 +10,9 @@ module testbench;
     // Clock and control
     logic clk;
     logic rst;
-    logic en;
+    logic acc_rst;
+    logic acc_en;
+    logic shift_en;
 
     // Inputs
     logic [DATA_WIDTH-1:0] in_left  [MATRIX_SIZE];
@@ -29,7 +31,11 @@ module testbench;
     ) dut (
         .clk(clk),
         .rst(rst),
-        .en(en),
+        .acc_rst(acc_rst),
+        
+        .acc_en(acc_en),
+        .shift_en(shift_en),
+
         .in_left(in_left),
         .in_top(in_top),
         .out_right(out_right),
@@ -62,7 +68,10 @@ module testbench;
         
         // Init
         rst = 1;
-        en  = 0;
+        acc_rst = 0;
+        acc_en  = 0;
+        shift_en  = 0;
+
         for (int i = 0; i < MATRIX_SIZE; i++) begin
             in_left[i] = 0;
             in_top[i]  = 0;
@@ -71,7 +80,8 @@ module testbench;
         // Release reset
         #20;
         rst = 0;
-        en  = 1;
+        acc_en  = 1;
+        shift_en  = 1;
 
         // Apply inputs
         in_left[0] = 1;  in_top[0] = 4;
@@ -89,7 +99,8 @@ module testbench;
             #10;
         end
 
-        en = 0;
+        acc_en  = 1;
+        shift_en  = 1;
 
         // End simulation
         // #100;

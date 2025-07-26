@@ -5,9 +5,13 @@ module systolic_array #(
 )(
     input  logic                    clk,
     input  logic                    rst,
-    input  logic                    en,
+    input  logic                    acc_rst,
+    input  logic                    acc_en,
+    input  logic                    shift_en,
+
     input  logic [DATA_WIDTH-1:0]   in_left     [MATRIX_SIZE],
     input  logic [DATA_WIDTH-1:0]   in_top      [MATRIX_SIZE],
+
     output logic [DATA_WIDTH-1:0]   out_right   [MATRIX_SIZE],
     output logic [DATA_WIDTH-1:0]   out_bottom  [MATRIX_SIZE],
     output logic [ACC_WIDTH-1:0]    acc_out     [MATRIX_SIZE][MATRIX_SIZE]
@@ -26,9 +30,13 @@ module systolic_array #(
                 ) mac_inst (
                     .clk(clk),
                     .rst(rst),
-                    .en(en),
+                    .acc_rst(acc_rst),
+                    .acc_en(acc_en),
+                    .shift_en(shift_en),
+
                     .in_left( (j == 0) ? in_left[i] : right_wires[i][j-1] ),
                     .in_top(  (i == 0) ? in_top[j]  : bottom_wires[i-1][j] ),
+
                     .out_right(right_wires[i][j]),
                     .out_bottom(bottom_wires[i][j]),
                     .acc_out(acc_out[i][j])
