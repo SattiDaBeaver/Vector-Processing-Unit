@@ -4,7 +4,7 @@ module tb_mac_cell;
     parameter ACC_WIDTH  = 32;
 
     // Signals
-    logic clk, rst, en;
+    logic clk, rst, acc_rst, shift_en, acc_en;
     logic signed [DATA_WIDTH-1:0] in_left, in_top;
     logic signed [DATA_WIDTH-1:0] out_right, out_bottom;
     logic signed [ACC_WIDTH-1:0]  acc_out;
@@ -16,7 +16,11 @@ module tb_mac_cell;
     ) uut (
         .clk(clk),
         .rst(rst),
-        .en(en),
+        .acc_rst(acc_rst),
+
+        .shift_en(shift_en),
+        .acc_en(acc_en),
+
         .in_left(in_left),
         .in_top(in_top),
         .out_right(out_right),
@@ -39,8 +43,10 @@ module tb_mac_cell;
         $display("Starting MAC Cell Testbench...");
 
         // Initialize
+        acc_rst = 0;
         rst = 1;
-        en = 0;
+        shift_en = 0;
+        acc_en = 0;
         in_left = 0;
         in_top  = 0;
 
@@ -51,7 +57,8 @@ module tb_mac_cell;
 
         // Cycle 1
         @(posedge clk);
-        en = 1;
+        shift_en = 1;
+        acc_en = 1;
         in_left = 8'sd2;
         in_top  = 8'sd3;
 
@@ -67,7 +74,8 @@ module tb_mac_cell;
 
         // Stop input
         @(posedge clk);
-        en = 0;
+        shift_en = 1;
+        acc_en = 1;
         in_left = 0;
         in_top = 0;
 
