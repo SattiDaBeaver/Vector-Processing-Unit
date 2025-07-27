@@ -34,7 +34,7 @@ module tb_mac_cell;
 
     // Dump waveform
     initial begin
-      $dumpfile("tb_mac_cell.vcd");
+        $dumpfile("tb_mac_cell.vcd");
         $dumpvars(0, tb_mac_cell);
     end
 
