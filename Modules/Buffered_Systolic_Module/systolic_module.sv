@@ -1,6 +1,7 @@
 module systolic_module # (
     parameter DATA_WIDTH = 8,
     parameter MATRIX_SIZE = 8,
+    parameter ADDR_WIDTH = $clog2(MATRIX_SIZE),
     parameter ACC_WIDTH  = 32
 ) (
     input  logic                                clk,
@@ -9,17 +10,22 @@ module systolic_module # (
     input  logic                                acc_en,
     input  logic                                shift_en,
 
-    input  logic                                load_en_top,            // Top - Write to load buffer
-    input  logic                                swap_buffers_top,       // Top - Toggle active buffer
+    // Top Buffer Control
+    input  logic                                buffer_rst_top,
+    input  logic                                load_en_top,
+    input  logic                                swap_buffers_top,
+    input  logic [ADDR_WIDTH-1:0]               addr_top,
+    input  logic [DATA_WIDTH-1:0]               data_in_top,
 
-    input  logic                                load_en_left,           // Left - Write to load buffer
-    input  logic                                swap_buffers_left,      // Left - Toggle active buffer
-
-    input  logic [DATA_WIDTH*MATRIX_SIZE-1:0]   data_in_flat_top,       // Top - Flattened input
-    input  logic [DATA_WIDTH*MATRIX_SIZE-1:0]   data_in_flat_left,      // Left - Flattened input
+    // Left Buffer Control
+    input  logic                                buffer_rst_left,
+    input  logic                                load_en_left,
+    input  logic                                swap_buffers_left,
+    input  logic [ADDR_WIDTH-1:0]               addr_left,
+    input  logic [DATA_WIDTH-1:0]               data_in_left,
     
-    output logic [DATA_WIDTH*MATRIX_SIZE-1:0]   data_out_flat_bottom,   // Bottom - Flattened output
-    output logic [DATA_WIDTH*MATRIX_SIZE-1:0]   data_out_flat_right,    // Right - Flattened output
+    output logic [DATA_WIDTH*MATRIX_SIZE-1:0]   data_out_flat_bottom,
+    output logic [DATA_WIDTH*MATRIX_SIZE-1:0]   data_out_flat_right,
     
     output logic [ACC_WIDTH*MATRIX_SIZE*MATRIX_SIZE-1:0] acc_out_flat
 );
@@ -27,29 +33,33 @@ module systolic_module # (
     logic   [DATA_WIDTH*MATRIX_SIZE-1:0]        reg_out_top;
     logic   [DATA_WIDTH*MATRIX_SIZE-1:0]        reg_out_left;
 
-    // Top Double Buffer
-    double_buffer_array #(
+    // Top Double Buffer (addressable)
+    addressable_double_buffer #(
         .DATA_WIDTH(DATA_WIDTH),
         .MATRIX_SIZE(MATRIX_SIZE)
     ) top_buf (
         .clk(clk),
         .rst(rst),
-        .load_en(load_en_top),
+        .buffer_rst(buffer_rst_top),
+        .write_en(load_en_top),
         .swap_buffers(swap_buffers_top),
-        .data_in_flat(data_in_flat_top),
+        .addr(addr_top),
+        .write_data(data_in_top),
         .data_out_flat(reg_out_top)
     );
 
-    // Left Double Buffer
-    double_buffer_array #(
+    // Left Double Buffer (addressable)
+    addressable_double_buffer #(
         .DATA_WIDTH(DATA_WIDTH),
         .MATRIX_SIZE(MATRIX_SIZE)
     ) left_buf (
         .clk(clk),
         .rst(rst),
-        .load_en(load_en_left),
+        .buffer_rst(buffer_rst_left),
+        .write_en(load_en_left),
         .swap_buffers(swap_buffers_left),
-        .data_in_flat(data_in_flat_left),
+        .addr(addr_left),
+        .write_data(data_in_left),
         .data_out_flat(reg_out_left)
     );
 
