@@ -4,12 +4,15 @@ module tb_systolic_module;
     localparam MATRIX_SIZE = 3;
     localparam ACC_WIDTH   = 32;
     localparam ADDR_WIDTH  = $clog2(MATRIX_SIZE);
+    localparam ACC_ADDR_WIDTH = $clog2(MATRIX_SIZE * MATRIX_SIZE);
 
     logic clk = 0;
     logic rst;
     logic acc_rst;
     logic acc_en;
     logic shift_en;
+    logic [ACC_ADDR_WIDTH-1:0]  addr_acc;
+    logic [ACC_WIDTH-1:0]       acc_out;
 
     logic load_en_top;
     logic swap_buffers_top;
@@ -23,7 +26,6 @@ module tb_systolic_module;
 
     logic [DATA_WIDTH*MATRIX_SIZE-1:0] data_out_flat_bottom;
     logic [DATA_WIDTH*MATRIX_SIZE-1:0] data_out_flat_right;
-    logic [ACC_WIDTH*MATRIX_SIZE*MATRIX_SIZE-1:0] acc_out_flat;
 
     systolic_module #(
         .DATA_WIDTH(DATA_WIDTH),
@@ -35,20 +37,23 @@ module tb_systolic_module;
         .acc_rst(acc_rst),
         .acc_en(acc_en),
         .shift_en(shift_en),
+        .addr_acc(addr_acc),
 
         .load_en_top(load_en_top),
+        .buffer_rst_top(0),
         .swap_buffers_top(swap_buffers_top),
         .addr_top(addr_top),
         .data_in_top(data_in_top),
 
         .load_en_left(load_en_left),
+        .buffer_rst_left(0),
         .swap_buffers_left(swap_buffers_left),
         .addr_left(addr_left),
         .data_in_left(data_in_left),
 
         .data_out_flat_bottom(data_out_flat_bottom),
         .data_out_flat_right(data_out_flat_right),
-        .acc_out_flat(acc_out_flat)
+        .acc_out(acc_out)
     );
 
     // Clock
@@ -87,14 +92,15 @@ module tb_systolic_module;
         data_in_top = 0;
         addr_left = 0;
         data_in_left = 0;
+        addr_acc = 0;
 
         #20;
         rst = 0;
 
         // Load top row (3 elements)
-        write_top_row(0, 10);
-        write_top_row(1, 20);
-        write_top_row(2, 30);
+        write_top_row(0, 1);
+        write_top_row(1, 2);
+        write_top_row(2, 3);
 
         // Load left column (3 elements)
         write_left_col(0, 1);
@@ -113,12 +119,35 @@ module tb_systolic_module;
         acc_en = 1;
         shift_en = 1;
 
-        repeat (6) #10;  // Enough cycles for 3x3 to finish
+        repeat (3) #10;
 
         acc_en = 0;
         shift_en = 0;
 
-        $display("acc_out_flat = %p", acc_out_flat);
+      	repeat (9) begin
+          	$display("acc_addr = %d", addr_acc);
+        	$display("acc_out = %d", acc_out);
+            addr_acc = (addr_acc + 1) % (MATRIX_SIZE * MATRIX_SIZE);
+        	#10;  // Enough cycles for 3x3 to finish
+      	end
+
+        acc_en = 1;
+        shift_en = 1;
+
+        repeat (3) #10;
+
+        acc_en = 0;
+        shift_en = 0;
+
+      	repeat (9) begin
+          	$display("acc_addr = %d", addr_acc);
+        	$display("acc_out = %d", acc_out);
+            addr_acc = (addr_acc + 1) % (MATRIX_SIZE * MATRIX_SIZE);
+        	#10;  // Enough cycles for 3x3 to finish
+      	end
+
+        acc_en = 0;
+        shift_en = 0; 
 
         $finish;
     end

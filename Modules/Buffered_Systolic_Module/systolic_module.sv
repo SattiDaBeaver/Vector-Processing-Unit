@@ -2,13 +2,17 @@ module systolic_module # (
     parameter DATA_WIDTH = 8,
     parameter MATRIX_SIZE = 8,
     parameter ADDR_WIDTH = $clog2(MATRIX_SIZE),
-    parameter ACC_WIDTH  = 32
+    parameter ACC_WIDTH  = 32,
+    parameter ACC_ADDR_WIDTH = $clog2(MATRIX_SIZE*MATRIX_SIZE)
 ) (
     input  logic                                clk,
     input  logic                                rst,
     input  logic                                acc_rst,
     input  logic                                acc_en,
     input  logic                                shift_en,
+
+    // Accumulator Address
+    input  logic [ACC_ADDR_WIDTH-1:0]           addr_acc,
 
     // Top Buffer Control
     input  logic                                buffer_rst_top,
@@ -27,11 +31,19 @@ module systolic_module # (
     output logic [DATA_WIDTH*MATRIX_SIZE-1:0]   data_out_flat_bottom,
     output logic [DATA_WIDTH*MATRIX_SIZE-1:0]   data_out_flat_right,
     
-    output logic [ACC_WIDTH*MATRIX_SIZE*MATRIX_SIZE-1:0] acc_out_flat
+    output logic [ACC_WIDTH-1:0]                acc_out
 );
 
     logic   [DATA_WIDTH*MATRIX_SIZE-1:0]        reg_out_top;
     logic   [DATA_WIDTH*MATRIX_SIZE-1:0]        reg_out_left;
+
+    // Accumulator Output Full
+    logic [ACC_WIDTH*MATRIX_SIZE*MATRIX_SIZE-1:0] acc_out_flat;
+
+    // Accumulator Output Logic
+    always_comb begin
+        acc_out = acc_out_flat[addr_acc * ACC_WIDTH +: ACC_WIDTH];
+    end
 
     // Top Double Buffer (addressable)
     addressable_double_buffer #(
@@ -41,10 +53,10 @@ module systolic_module # (
         .clk(clk),
         .rst(rst),
         .buffer_rst(buffer_rst_top),
-        .write_en(load_en_top),
+        .load_we(load_en_top),
         .swap_buffers(swap_buffers_top),
-        .addr(addr_top),
-        .write_data(data_in_top),
+        .load_addr(addr_top),
+        .load_data(data_in_top),
         .data_out_flat(reg_out_top)
     );
 
@@ -56,10 +68,10 @@ module systolic_module # (
         .clk(clk),
         .rst(rst),
         .buffer_rst(buffer_rst_left),
-        .write_en(load_en_left),
+        .load_we(load_en_left),
         .swap_buffers(swap_buffers_left),
-        .addr(addr_left),
-        .write_data(data_in_left),
+        .load_addr(addr_left),
+        .load_data(data_in_left),
         .data_out_flat(reg_out_left)
     );
 

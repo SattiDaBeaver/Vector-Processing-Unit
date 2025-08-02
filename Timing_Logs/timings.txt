@@ -5,3 +5,10 @@ MAC Cell (Processing Element):
 Systolic Array (3x3):
     Fmax (slow 1200mV 85C)  = 147.71 MHz
     Fmax (slow 1200mV 0C)   = 162.84 MHz
+
+Systolic Module (8x8 with double buffer and accumulator addressing):
+    LUTs                    = 4726 / 49760 (9%)
+    Registers               = 3330
+    Multipliers             = 64 / 288 (22%)
+    Fmax (slow 1200mV 85C)  = 104.24 MHz
+    Fmax (slow 1200mV 0C)   = 113.97 MHz
