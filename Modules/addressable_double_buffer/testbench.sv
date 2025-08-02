@@ -1,33 +1,38 @@
-module tb_double_buffer_array;
+module tb_addressable_double_buffer;
 
     localparam DATA_WIDTH  = 8;
     localparam MATRIX_SIZE = 3;
 
     logic clk = 0;
     logic rst;
-    logic load_en;
+    logic [$clog2(MATRIX_SIZE)-1:0] load_addr;
+    logic [DATA_WIDTH-1:0]          load_data;
+    logic load_we;
     logic swap_buffers;
-    logic [DATA_WIDTH*MATRIX_SIZE-1:0] data_in_flat;
     logic [DATA_WIDTH*MATRIX_SIZE-1:0] data_out_flat;
 
     // DUT
-    double_buffer_array #(
+    addressable_double_buffer #(
         .DATA_WIDTH(DATA_WIDTH),
         .MATRIX_SIZE(MATRIX_SIZE)
     ) dut (
         .clk(clk),
         .rst(rst),
-        .load_en(load_en),
+        .load_addr(load_addr),
+        .load_data(load_data),
+        .load_we(load_we),
         .swap_buffers(swap_buffers),
-        .data_in_flat(data_in_flat),
         .data_out_flat(data_out_flat)
     );
 
     // Clock
     always #5 clk = ~clk;
 
-    task set_data(input int a, b, c);
-        data_in_flat = {c[DATA_WIDTH-1:0], b[DATA_WIDTH-1:0], a[DATA_WIDTH-1:0]};
+    task write_data(input int index, input int value);
+        load_addr = index;
+        load_data = value;
+        load_we = 1; #10;
+        load_we = 0;
     endtask
 
     task print_output(string label);
@@ -40,23 +45,22 @@ module tb_double_buffer_array;
 
     // Dump waveform
     initial begin
-        $dumpfile("tb_double_buffer_array.vcd");
-        $dumpvars(0, tb_double_buffer_array);
+        $dumpfile("tb_addressable_double_buffer.vcd");
+        $dumpvars(0, tb_addressable_double_buffer);
     end
 
     initial begin
         rst = 1;
-        load_en = 0;
+        load_we = 0;
         swap_buffers = 0;
-        set_data(0, 0, 0);
         #20;
 
         rst = 0;
 
-        // Load 10, 20, 30 into buffer1 (inactive)
-        set_data(10, 20, 30);
-        load_en = 1; #10;
-        load_en = 0;
+        // Load into buffer1 (inactive)
+        write_data(0, 10);
+        write_data(1, 20);
+        write_data(2, 30);
 
         // Swap to buffer1
         swap_buffers = 1; #10;
@@ -64,10 +68,10 @@ module tb_double_buffer_array;
 
         print_output("After Swap 1");
 
-        // Load 40, 50, 60 into buffer0 (now inactive)
-        set_data(40, 50, 60);
-        load_en = 1; #10;
-        load_en = 0;
+        // Load into buffer0 (now inactive)
+        write_data(0, 40);
+        write_data(1, 50);
+        write_data(2, 60);
 
         // Swap to buffer0
         swap_buffers = 1; #10;
