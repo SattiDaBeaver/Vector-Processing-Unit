@@ -51,8 +51,11 @@ module tb_dp_ram;
 
         // Write to Port A
         we_a = 1;
+      	we_b = 1;
         addr_a = 10'h01;
+      	addr_b = 10'h02;
         din_a = 8'hAA;
+      	din_b = 8'hBB;
         @(posedge clk);
         we_a = 0;
 
@@ -68,11 +71,13 @@ module tb_dp_ram;
         addr_b = 10'h02;
         @(posedge clk);
         $display("Read A: %h (Expected AA), Read B: %h (Expected BB)", dout_a, dout_b);
-
+		
+      	#10;
         // Simultaneous write
         addr_a = 10'h03; din_a = 8'h11; we_a = 1;
         addr_b = 10'h04; din_b = 8'h22; we_b = 1;
         @(posedge clk);
+      	@(posedge clk);
         we_a = 0; we_b = 0;
 
         // Simultaneous read
