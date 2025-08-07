@@ -5,7 +5,8 @@ module mac_cell #(
     input  logic clk,
     input  logic rst,
     input  logic acc_rst,
-    input  logic shift_en,
+    input  logic shift_en_right,
+    input  logic shift_en_down,
     input  logic acc_en,
 
     input  logic [DATA_WIDTH-1:0]   in_left,
@@ -35,8 +36,10 @@ module mac_cell #(
             else if (acc_en) begin
                 acc <= $signed(acc) + $signed(mult);
             end 
-            if (shift_en) begin
+            if (shift_en_right) begin
                 out_right   <= in_left;
+            end 
+            if (shift_en_down) begin
                 out_bottom  <= in_top;
             end 
         end

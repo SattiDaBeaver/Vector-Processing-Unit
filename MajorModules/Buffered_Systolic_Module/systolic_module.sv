@@ -7,11 +7,13 @@ module systolic_module # (
 ) (
     input  logic                                clk,
     input  logic                                rst,
-
-    // Accumulator Control
-    input  logic [ACC_ADDR_WIDTH-1:0]           addr_acc,
     input  logic                                acc_rst,
     input  logic                                acc_en,
+    input  logic                                shift_en_right,
+    input  logic                                shift_en_down,
+
+    // Accumulator Address
+    input  logic [ACC_ADDR_WIDTH-1:0]           addr_acc,
 
     // Top Buffer Control
     input  logic                                buffer_rst_top,
@@ -26,9 +28,6 @@ module systolic_module # (
     input  logic                                swap_buffers_left,
     input  logic [ADDR_WIDTH-1:0]               addr_left,
     input  logic [DATA_WIDTH-1:0]               data_in_left,
-
-    // Systolic Array Control
-    input  logic                                shift_en,
     
     output logic [DATA_WIDTH*MATRIX_SIZE-1:0]   data_out_flat_bottom,
     output logic [DATA_WIDTH*MATRIX_SIZE-1:0]   data_out_flat_right,
@@ -87,7 +86,8 @@ module systolic_module # (
         .rst(rst),
         .acc_rst(acc_rst),
         .acc_en(acc_en),
-        .shift_en(shift_en),
+        .shift_en_right(shift_en_right),
+        .shift_en_down(shift_en_down),
 
         .in_left_flat(reg_out_left),
         .in_top_flat(reg_out_top),

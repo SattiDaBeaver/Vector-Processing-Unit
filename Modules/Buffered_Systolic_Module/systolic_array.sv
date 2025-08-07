@@ -7,7 +7,8 @@ module systolic_array #(
     input  logic                         rst,
     input  logic                         acc_rst,
     input  logic                         acc_en,
-    input  logic                         shift_en,
+    input  logic                         shift_en_right,
+    input  logic                         shift_en_down,
 
     input  logic [DATA_WIDTH*MATRIX_SIZE-1:0] in_left_flat,
     input  logic [DATA_WIDTH*MATRIX_SIZE-1:0] in_top_flat,
@@ -49,7 +50,8 @@ module systolic_array #(
                     .rst(rst),
                     .acc_rst(acc_rst),
                     .acc_en(acc_en),
-                    .shift_en(shift_en),
+                    .shift_en_right(shift_en_right),
+                    .shift_en_down(shift_en_down),
 
                     .in_left( (j == 0) ? in_left[i] : right_wires[i][j-1] ),
                     .in_top(  (i == 0) ? in_top[j]  : bottom_wires[i-1][j] ),
