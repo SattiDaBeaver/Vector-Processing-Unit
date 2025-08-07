@@ -46,6 +46,7 @@ int main(int argc, char** argv) {
     // Test 2: Try to read any incoming data
     cout << "\n--- Test 2: Reading incoming data ---" << endl;
     string response = serial.readData(100);
+    cout << response << endl;
     if (response.empty()) {
         cout << "No data received (this is normal if nothing is connected)" << endl;
     }
