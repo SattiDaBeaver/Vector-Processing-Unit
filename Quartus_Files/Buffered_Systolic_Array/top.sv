@@ -9,7 +9,8 @@ module top #(
     input  logic                                rst,
     input  logic                                acc_rst,
     input  logic                                acc_en,
-    input  logic                                shift_en,
+    input  logic                                shift_en_right,
+    input  logic                                shift_en_down,
 
     // Accumulator Address
     input  logic [ACC_ADDR_WIDTH-1:0]           addr_acc,
@@ -45,7 +46,8 @@ module top #(
         .rst(rst),
         .acc_rst(acc_rst),
         .acc_en(acc_en),
-        .shift_en(shift_en),
+        .shift_en_right(shift_en_right),
+        .shift_en_down(shift_en_down),
         .addr_acc(addr_acc),
 
         .buffer_rst_top(buffer_rst_top),

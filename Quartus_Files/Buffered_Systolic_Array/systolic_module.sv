@@ -9,7 +9,8 @@ module systolic_module # (
     input  logic                                rst,
     input  logic                                acc_rst,
     input  logic                                acc_en,
-    input  logic                                shift_en,
+    input  logic                                shift_en_right,
+    input  logic                                shift_en_down,
 
     // Accumulator Address
     input  logic [ACC_ADDR_WIDTH-1:0]           addr_acc,
@@ -85,7 +86,8 @@ module systolic_module # (
         .rst(rst),
         .acc_rst(acc_rst),
         .acc_en(acc_en),
-        .shift_en(shift_en),
+        .shift_en_right(shift_en_right),
+        .shift_en_down(shift_en_down),
 
         .in_left_flat(reg_out_left),
         .in_top_flat(reg_out_top),

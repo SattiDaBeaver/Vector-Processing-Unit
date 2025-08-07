@@ -676,7 +676,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "shift_en",
+					"name" : "shift_en_down",
+					"strict" : false
+				},
+				{
+					"name" : "shift_en_right",
 					"strict" : false
 				},
 				{

@@ -1,5 +1,5 @@
 Flow report for top
-Sat Aug  2 16:27:56 2025
+Thu Aug  7 15:18:42 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -41,18 +41,18 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Sat Aug  2 16:27:56 2025           ;
+; Flow Status                        ; Successful - Thu Aug  7 15:18:42 2025           ;
 ; Quartus Prime Version              ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
 ; Revision Name                      ; top                                             ;
 ; Top-level Entity Name              ; top                                             ;
 ; Family                             ; MAX 10                                          ;
 ; Device                             ; 10M50DAF484C7G                                  ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 4,726 / 49,760 ( 9 % )                          ;
-;     Total combinational functions  ; 4,614 / 49,760 ( 9 % )                          ;
+; Total logic elements               ; 4,757 / 49,760 ( 10 % )                         ;
+;     Total combinational functions  ; 4,615 / 49,760 ( 9 % )                          ;
 ;     Dedicated logic registers      ; 3,330 / 49,760 ( 7 % )                          ;
 ; Total registers                    ; 3330                                            ;
-; Total pins                         ; 199 / 360 ( 55 % )                              ;
+; Total pins                         ; 200 / 360 ( 56 % )                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0 / 1,677,312 ( 0 % )                           ;
 ; Embedded Multiplier 9-bit elements ; 64 / 288 ( 22 % )                               ;
@@ -67,7 +67,7 @@ on the Quartus Prime software download page.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 08/02/2025 16:26:33 ;
+; Start date & time ; 08/07/2025 15:17:38 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; top                 ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ on the Quartus Prime software download page.
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 113031196590419.175416639307320        ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 196679979647315.175459425826040        ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -100,12 +100,12 @@ on the Quartus Prime software download page.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 4959 MB             ; 00:00:18                           ;
-; Fitter               ; 00:00:57     ; 1.7                     ; 6602 MB             ; 00:01:56                           ;
+; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 4975 MB             ; 00:00:17                           ;
+; Fitter               ; 00:00:41     ; 1.4                     ; 6602 MB             ; 00:01:10                           ;
 ; Assembler            ; 00:00:02     ; 1.0                     ; 4845 MB             ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:06     ; 2.4                     ; 5046 MB             ; 00:00:11                           ;
-; EDA Netlist Writer   ; 00:00:02     ; 1.0                     ; 4723 MB             ; 00:00:01                           ;
-; Total                ; 00:01:17     ; --                      ; --                  ; 00:02:28                           ;
+; Timing Analyzer      ; 00:00:05     ; 2.5                     ; 5045 MB             ; 00:00:09                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4707 MB             ; 00:00:01                           ;
+; Total                ; 00:00:59     ; --                      ; --                  ; 00:01:39                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
