@@ -5,19 +5,45 @@ SerialPort::SerialPort()  {
 }
 
 bool SerialPort::openPort(const string& portName, int baudRate = 9600) {
+    // For COM ports > 9, Windows requires special format: \\.\COM10
+    string actualPortName = portName;
+    if (portName.find("COM") == 0) {
+        // Extract COM number
+        string comNumber = portName.substr(3);
+        int portNum = stoi(comNumber);
+        if (portNum > 9) {
+            actualPortName = "\\\\.\\" + portName;
+        }
+    }
+
+    cout << "Attempting to open: " << actualPortName << endl;
+
     // Open the serial port
     // Use CreateFileA for ANSI string, CreateFileW for wide strings
-    hSerial = CreateFileA(portName.c_str(),
-                            GENERIC_READ | GENERIC_WRITE,  // Read and write access
-                            0,                             // No sharing
-                            NULL,                          // Default security attributes
-                            OPEN_EXISTING,                 // Port must exist
-                            FILE_ATTRIBUTE_NORMAL,         // Normal file attributes
-                            NULL);                         // No template file
+    hSerial = CreateFileA(actualPortName.c_str(),
+                         GENERIC_READ | GENERIC_WRITE,  // Read and write access
+                         0,                             // No sharing
+                         NULL,                          // Default security attributes
+                         OPEN_EXISTING,                 // Port must exist
+                         FILE_ATTRIBUTE_NORMAL,         // Normal file attributes
+                         NULL);                         // No template file
 
     if (hSerial == INVALID_HANDLE_VALUE) {
         DWORD error = GetLastError();
-        cerr << "Error opening port " << portName << " (Error code: " << error << ")" << endl;
+        cerr << "Error opening port " << actualPortName << " (Error code: " << error << ")" << endl;
+        
+        // Common error explanations
+        switch(error) {
+            case ERROR_FILE_NOT_FOUND:
+                cerr << "  -> Port does not exist. Check Device Manager for correct COM port." << endl;
+                break;
+            case ERROR_ACCESS_DENIED:
+                cerr << "  -> Port is already in use by another application." << endl;
+                break;
+            case ERROR_INVALID_NAME:
+                cerr << "  -> Invalid port name format." << endl;
+                break;
+        }
         return false;
     }
 
