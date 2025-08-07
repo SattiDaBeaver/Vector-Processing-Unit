@@ -1,1 +1,1 @@
-# Neural-Processing-Unit
+# Vector-Processing-Unit
