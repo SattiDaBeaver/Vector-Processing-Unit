@@ -50,9 +50,7 @@ int main(int argc, char** argv) {
     if (response.empty()) {
         cout << "No data received (this is normal if nothing is connected)" << endl;
     }
-
-    // Test 3: Interactive mode (uncomment to use)
-    /*
+     
     cout << "\n--- Test 3: Interactive mode ---" << endl;
     cout << "Type commands to send (or 'quit' to exit):" << endl;
     
@@ -74,11 +72,10 @@ int main(int argc, char** argv) {
             
             // Wait a bit and try to read response
             Sleep(200);
-            serial.readData();
+            serial.readData(256);
         }
     }
-    */
-
+     
     cout << "\nTest completed. Port will be closed automatically." << endl;
     
     // Port is automatically closed by destructor

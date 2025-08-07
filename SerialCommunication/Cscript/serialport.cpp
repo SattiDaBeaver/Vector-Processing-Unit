@@ -144,7 +144,7 @@ bool SerialPort::sendData(const string& data) {
 }
 
 // Read data from serial port
-string SerialPort::readData(int maxBytes) {
+string SerialPort::readData(int maxBytes = 256) {
     if (!isOpen()) {
 #ifdef DEBUG
         cerr << "Port is not open" << endl;
