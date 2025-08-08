@@ -1,6 +1,6 @@
 module uart_instr_mem_loader #(
     parameter INSTR_WIDTH = 32,
-    parameter DEPTH = 256,
+    parameter DEPTH       = 256,
     parameter CLK_PER_BIT = 50 // match your baud
 )(
     input  logic clk,
@@ -76,30 +76,41 @@ module uart_instr_mem_loader #(
     );
 
     // ==========================================
-    // Loader FSM: collect 4 bytes into 32-bit word
+    // Loader FSM with start/stop mode
     // ==========================================
     logic [1:0] byte_count;
     logic [INSTR_WIDTH-1:0] shift_reg;
+    logic                   write_mode;
 
     always_ff @(posedge clk or posedge rst) begin
         if (rst) begin
             byte_count <= 0;
             wr_addr    <= 0;
             wr_en      <= 0;
+            write_mode <= 0;
         end else begin
             wr_en <= 0; // default no write
 
             if (rx_done) begin
-                // Shift left and append byte
-                shift_reg <= {shift_reg[INSTR_WIDTH-9:0], rx_byte};
-                byte_count <= byte_count + 1;
-
-                if (byte_count == 2'd3) begin
-                    // 4th byte received → write to memory
-                    wr_data <= {shift_reg[INSTR_WIDTH-9:0], rx_byte};
-                    wr_en   <= 1;
-                    wr_addr <= wr_addr + 1;
+                // Command bytes for control
+                if (rx_byte == 8'hFF) begin
+                    write_mode <= 1;  // enter write mode
+                    wr_addr    <= 0;
                     byte_count <= 0;
+                end else if (rx_byte == 8'hFE) begin
+                    write_mode <= 0;  // exit write mode
+                end else if (write_mode) begin
+                    // Shift and collect bytes into 32-bit word
+                    shift_reg <= {shift_reg[INSTR_WIDTH-9:0], rx_byte};
+                    byte_count <= byte_count + 1;
+
+                    if (byte_count == (INSTR_WIDTH/8 - 1)) begin
+                        // Got full word
+                        wr_data <= {shift_reg[INSTR_WIDTH-9:0], rx_byte};
+                        wr_en   <= 1;
+                        wr_addr <= wr_addr + 1;
+                        byte_count <= 0;
+                    end
                 end
             end
         end
