@@ -86,7 +86,7 @@ module uart_instr_mem_loader #(
     // ====================================================
     // Command mode: enter/exit write mode with special bytes
     // ====================================================
-    always_ff @(posedge clk or posedge rst) begin
+    always_ff @(posedge clk) begin
         if (rst) begin
             byte_count <= 0;
             wr_addr    <= 0;
@@ -121,13 +121,18 @@ module uart_instr_mem_loader #(
     // ====================================================
     // Simple continuous write mode
     // ====================================================
-    always_ff @(posedge clk or posedge rst) begin
+    always_ff @(posedge clk) begin
         if (rst) begin
             byte_count <= 0;
             wr_addr    <= 0;
             wr_en      <= 0;
         end else begin
             wr_en <= 0;
+
+            // Increment address when write was enabled in previous cycle
+            if (wr_en) begin
+                wr_addr <= wr_addr + 1;
+            end
 
             if (rx_done) begin
                 shift_reg  <= {shift_reg[INSTR_WIDTH-9:0], rx_byte};
@@ -136,7 +141,6 @@ module uart_instr_mem_loader #(
                 if (byte_count == (INSTR_WIDTH/8 - 1)) begin
                     wr_data    <= {shift_reg[INSTR_WIDTH-9:0], rx_byte};
                     wr_en      <= 1;
-                    wr_addr    <= wr_addr + 1;
                     byte_count <= 0;
                 end
             end

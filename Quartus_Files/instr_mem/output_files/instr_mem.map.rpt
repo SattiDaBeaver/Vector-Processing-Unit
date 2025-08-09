@@ -1,5 +1,5 @@
 Analysis & Synthesis report for instr_mem
-Sat Aug  9 13:08:20 2025
+Sat Aug  9 16:49:01 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -21,7 +21,7 @@ Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
  13. General Register Statistics
  14. Registers Packed Into Inferred Megafunctions
  15. Multiplexer Restructuring Statistics (Restructuring Performed)
- 16. Source assignments for uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|altsyncram:mem_rtl_0|altsyncram_08g1:auto_generated
+ 16. Source assignments for uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|altsyncram:mem_rtl_0|altsyncram_sag1:auto_generated
  17. Parameter Settings for User Entity Instance: Top-level Entity: |top
  18. Parameter Settings for User Entity Instance: uart_instr_mem_loader:MEM_UART_1
  19. Parameter Settings for User Entity Instance: uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst
@@ -61,18 +61,18 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Aug  9 13:08:20 2025           ;
+; Analysis & Synthesis Status        ; Successful - Sat Aug  9 16:49:01 2025           ;
 ; Quartus Prime Version              ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
 ; Revision Name                      ; instr_mem                                       ;
 ; Top-level Entity Name              ; top                                             ;
 ; Family                             ; MAX 10                                          ;
-; Total logic elements               ; 124                                             ;
-;     Total combinational functions  ; 105                                             ;
-;     Dedicated logic registers      ; 53                                              ;
-; Total registers                    ; 53                                              ;
+; Total logic elements               ; 172                                             ;
+;     Total combinational functions  ; 121                                             ;
+;     Dedicated logic registers      ; 85                                              ;
+; Total registers                    ; 85                                              ;
 ; Total pins                         ; 117                                             ;
 ; Total virtual pins                 ; 0                                               ;
-; Total memory bits                  ; 2,048                                           ;
+; Total memory bits                  ; 6,144                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
 ; Total PLLs                         ; 0                                               ;
 ; UFM blocks                         ; 0                                               ;
@@ -204,7 +204,7 @@ on the Quartus Prime software download page.
 ; altrom.inc                       ; yes             ; Megafunction                       ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/altrom.inc                ;         ;
 ; altram.inc                       ; yes             ; Megafunction                       ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/altram.inc                ;         ;
 ; altdpram.inc                     ; yes             ; Megafunction                       ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/altdpram.inc              ;         ;
-; db/altsyncram_08g1.tdf           ; yes             ; Auto-Generated Megafunction        ; C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/db/altsyncram_08g1.tdf   ;         ;
+; db/altsyncram_sag1.tdf           ; yes             ; Auto-Generated Megafunction        ; C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/db/altsyncram_sag1.tdf   ;         ;
 +----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------+---------+
 
 
@@ -213,31 +213,31 @@ on the Quartus Prime software download page.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 124            ;
+; Estimated Total logic elements              ; 172            ;
 ;                                             ;                ;
-; Total combinational functions               ; 105            ;
+; Total combinational functions               ; 121            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 65             ;
-;     -- 3 input functions                    ; 19             ;
-;     -- <=2 input functions                  ; 21             ;
+;     -- 4 input functions                    ; 78             ;
+;     -- 3 input functions                    ; 18             ;
+;     -- <=2 input functions                  ; 25             ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 94             ;
-;     -- arithmetic mode                      ; 11             ;
+;     -- normal mode                          ; 109            ;
+;     -- arithmetic mode                      ; 12             ;
 ;                                             ;                ;
-; Total registers                             ; 53             ;
-;     -- Dedicated logic registers            ; 53             ;
+; Total registers                             ; 85             ;
+;     -- Dedicated logic registers            ; 85             ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 117            ;
-; Total memory bits                           ; 2048           ;
+; Total memory bits                           ; 6144           ;
 ;                                             ;                ;
 ; Embedded Multiplier 9-bit elements          ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 61             ;
-; Total fan-out                               ; 877            ;
-; Average fan-out                             ; 1.94           ;
+; Maximum fan-out                             ; 109            ;
+; Total fan-out                               ; 1342           ;
+; Average fan-out                             ; 2.60           ;
 +---------------------------------------------+----------------+
 
 
@@ -246,18 +246,20 @@ on the Quartus Prime software download page.
 +----------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------------------------------------------------------------+-----------------------+--------------+
 ; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                ; Entity Name           ; Library Name ;
 +----------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------------------------------------------------------------+-----------------------+--------------+
-; |top                                         ; 105 (0)             ; 53 (0)                    ; 2048        ; 0          ; 0            ; 0       ; 0         ; 117  ; 0            ; 0          ; |top                                                                                                               ; top                   ; work         ;
+; |top                                         ; 121 (0)             ; 85 (0)                    ; 6144        ; 0          ; 0            ; 0       ; 0         ; 117  ; 0            ; 0          ; |top                                                                                                               ; top                   ; work         ;
 ;    |hex7seg:H0|                              ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|hex7seg:H0                                                                                                    ; hex7seg               ; work         ;
 ;    |hex7seg:H1|                              ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|hex7seg:H1                                                                                                    ; hex7seg               ; work         ;
+;    |hex7seg:H2|                              ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|hex7seg:H2                                                                                                    ; hex7seg               ; work         ;
+;    |hex7seg:H3|                              ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|hex7seg:H3                                                                                                    ; hex7seg               ; work         ;
 ;    |hex7seg:H4|                              ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|hex7seg:H4                                                                                                    ; hex7seg               ; work         ;
 ;    |hex7seg:H5|                              ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|hex7seg:H5                                                                                                    ; hex7seg               ; work         ;
-;    |uart_instr_mem_loader:MEM_UART_1|        ; 77 (12)             ; 53 (19)                   ; 2048        ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|uart_instr_mem_loader:MEM_UART_1                                                                              ; uart_instr_mem_loader ; work         ;
+;    |uart_instr_mem_loader:MEM_UART_1|        ; 79 (14)             ; 85 (51)                   ; 6144        ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|uart_instr_mem_loader:MEM_UART_1                                                                              ; uart_instr_mem_loader ; work         ;
 ;       |UART_wrapper:uart_inst|               ; 65 (0)              ; 34 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst                                                       ; UART_wrapper          ; work         ;
 ;          |UART_RX:UART_RX1|                  ; 65 (65)             ; 33 (33)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst|UART_RX:UART_RX1                                      ; UART_RX               ; work         ;
 ;          |UART_TX:UART_TX1|                  ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst|UART_TX:UART_TX1                                      ; UART_TX               ; work         ;
-;       |instr_mem:instr_mem_inst|             ; 0 (0)               ; 0 (0)                     ; 2048        ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst                                                     ; instr_mem             ; work         ;
-;          |altsyncram:mem_rtl_0|              ; 0 (0)               ; 0 (0)                     ; 2048        ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|altsyncram:mem_rtl_0                                ; altsyncram            ; work         ;
-;             |altsyncram_08g1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 2048        ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|altsyncram:mem_rtl_0|altsyncram_08g1:auto_generated ; altsyncram_08g1       ; work         ;
+;       |instr_mem:instr_mem_inst|             ; 0 (0)               ; 0 (0)                     ; 6144        ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst                                                     ; instr_mem             ; work         ;
+;          |altsyncram:mem_rtl_0|              ; 0 (0)               ; 0 (0)                     ; 6144        ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|altsyncram:mem_rtl_0                                ; altsyncram            ; work         ;
+;             |altsyncram_sag1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 6144        ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top|uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|altsyncram:mem_rtl_0|altsyncram_sag1:auto_generated ; altsyncram_sag1       ; work         ;
 +----------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------------------------------------------------------------+-----------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -267,7 +269,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
 ; Name                                                                                                                     ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
 +--------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
-; uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|altsyncram:mem_rtl_0|altsyncram_08g1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 256          ; 8            ; 256          ; 8            ; 2048 ; None ;
+; uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|altsyncram:mem_rtl_0|altsyncram_sag1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 256          ; 24           ; 256          ; 24           ; 6144 ; None ;
 +--------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
 
 
@@ -301,8 +303,8 @@ Encoding Type:  One-Hot
 +-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
 ; Register name                                                                           ; Reason for Removal                                                                             ;
 +-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
-; uart_instr_mem_loader:MEM_UART_1|shift_reg[0..23]                                       ; Lost fanout                                                                                    ;
-; uart_instr_mem_loader:MEM_UART_1|wr_data[8..31]                                         ; Lost fanout                                                                                    ;
+; uart_instr_mem_loader:MEM_UART_1|wr_data[24..31]                                        ; Lost fanout                                                                                    ;
+; uart_instr_mem_loader:MEM_UART_1|shift_reg[16..23]                                      ; Lost fanout                                                                                    ;
 ; uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst|UART_TX:UART_TX1|packet[1..9]   ; Merged with uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst|UART_TX:UART_TX1|packet[0] ;
 ; uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst|UART_TX:UART_TX1|packet[0]      ; Stuck at GND due to stuck port data_in                                                         ;
 ; uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst|UART_RX:UART_RX1|state~2        ; Lost fanout                                                                                    ;
@@ -312,7 +314,7 @@ Encoding Type:  One-Hot
 ; uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst|UART_TX:UART_TX1|state.DONE     ; Stuck at GND due to stuck port data_in                                                         ;
 ; uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst|UART_TX:UART_TX1|index[0..3]    ; Stuck at GND due to stuck port data_in                                                         ;
 ; uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst|UART_TX:UART_TX1|clkCount[0..5] ; Stuck at GND due to stuck port data_in                                                         ;
-; Total Number of Removed Registers = 73                                                  ;                                                                                                ;
+; Total Number of Removed Registers = 41                                                  ;                                                                                                ;
 +-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
 
 
@@ -339,23 +341,23 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 53    ;
-; Number of registers using Synchronous Clear  ; 18    ;
+; Total registers                              ; 85    ;
+; Number of registers using Synchronous Clear  ; 28    ;
 ; Number of registers using Synchronous Load   ; 1     ;
-; Number of registers using Asynchronous Clear ; 11    ;
+; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 26    ;
+; Number of registers using Clock Enable       ; 53    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Registers Packed Into Inferred Megafunctions                                                                                                         ;
-+-------------------------------------------------------------------------+---------------------------------------------------------------------+------+
-; Register Name                                                           ; Megafunction                                                        ; Type ;
-+-------------------------------------------------------------------------+---------------------------------------------------------------------+------+
-; uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|rd_data[0..7] ; uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|mem_rtl_0 ; RAM  ;
-+-------------------------------------------------------------------------+---------------------------------------------------------------------+------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                                                                                                          ;
++--------------------------------------------------------------------------+---------------------------------------------------------------------+------+
+; Register Name                                                            ; Megafunction                                                        ; Type ;
++--------------------------------------------------------------------------+---------------------------------------------------------------------+------+
+; uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|rd_data[0..23] ; uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|mem_rtl_0 ; RAM  ;
++--------------------------------------------------------------------------+---------------------------------------------------------------------+------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -363,13 +365,14 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------+
-; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |top|uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst|UART_RX:UART_RX1|clkCount[1] ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |top|uart_instr_mem_loader:MEM_UART_1|byte_count[0]                                       ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |top|uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst|UART_RX:UART_RX1|clkCount[4] ;
 ; 7:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |top|uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst|UART_RX:UART_RX1|index[2]    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------+
-; Source assignments for uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|altsyncram:mem_rtl_0|altsyncram_08g1:auto_generated ;
+; Source assignments for uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|altsyncram:mem_rtl_0|altsyncram_sag1:auto_generated ;
 +---------------------------------+--------------------+------+------------------------------------------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                                                     ;
 +---------------------------------+--------------------+------+------------------------------------------------------------------------+
@@ -467,7 +470,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                                      ;
 ; WIDTH_BYTEENA                      ; 1                    ; Untyped                                                             ;
 ; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                                                             ;
-; WIDTH_A                            ; 8                    ; Untyped                                                             ;
+; WIDTH_A                            ; 24                   ; Untyped                                                             ;
 ; WIDTHAD_A                          ; 8                    ; Untyped                                                             ;
 ; NUMWORDS_A                         ; 256                  ; Untyped                                                             ;
 ; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                                             ;
@@ -476,7 +479,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                                             ;
 ; INDATA_ACLR_A                      ; NONE                 ; Untyped                                                             ;
 ; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                                             ;
-; WIDTH_B                            ; 8                    ; Untyped                                                             ;
+; WIDTH_B                            ; 24                   ; Untyped                                                             ;
 ; WIDTHAD_B                          ; 8                    ; Untyped                                                             ;
 ; NUMWORDS_B                         ; 256                  ; Untyped                                                             ;
 ; INDATA_REG_B                       ; CLOCK1               ; Untyped                                                             ;
@@ -511,7 +514,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                             ;
 ; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                                             ;
 ; DEVICE_FAMILY                      ; MAX 10               ; Untyped                                                             ;
-; CBXI_PARAMETER                     ; altsyncram_08g1      ; Untyped                                                             ;
+; CBXI_PARAMETER                     ; altsyncram_sag1      ; Untyped                                                             ;
 +------------------------------------+----------------------+---------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -524,10 +527,10 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Number of entity instances                ; 1                                                                              ;
 ; Entity Instance                           ; uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|altsyncram:mem_rtl_0 ;
 ;     -- OPERATION_MODE                     ; DUAL_PORT                                                                      ;
-;     -- WIDTH_A                            ; 8                                                                              ;
+;     -- WIDTH_A                            ; 24                                                                             ;
 ;     -- NUMWORDS_A                         ; 256                                                                            ;
 ;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                                   ;
-;     -- WIDTH_B                            ; 8                                                                              ;
+;     -- WIDTH_B                            ; 24                                                                             ;
 ;     -- NUMWORDS_B                         ; 256                                                                            ;
 ;     -- ADDRESS_REG_B                      ; CLOCK0                                                                         ;
 ;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                                   ;
@@ -547,13 +550,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "uart_instr_mem_loader:MEM_UART_1"                                                             ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port           ; Type   ; Severity ; Details                                                                             ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; rd_data[31..8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "uart_instr_mem_loader:MEM_UART_1"                                                              ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                             ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; rd_data[31..24] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -562,28 +565,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 117                         ;
-; cycloneiii_ff         ; 53                          ;
-;     CLR               ; 4                           ;
-;     ENA               ; 19                          ;
-;     ENA CLR           ; 7                           ;
-;     SCLR              ; 18                          ;
+; cycloneiii_ff         ; 85                          ;
+;     ENA               ; 52                          ;
+;     ENA SCLR          ; 1                           ;
+;     SCLR              ; 27                          ;
 ;     SLD               ; 1                           ;
 ;     plain             ; 4                           ;
 ; cycloneiii_io_obuf    ; 52                          ;
-; cycloneiii_lcell_comb ; 111                         ;
-;     arith             ; 11                          ;
-;         2 data inputs ; 10                          ;
+; cycloneiii_lcell_comb ; 128                         ;
+;     arith             ; 12                          ;
+;         2 data inputs ; 11                          ;
 ;         3 data inputs ; 1                           ;
-;     normal            ; 100                         ;
-;         0 data inputs ; 2                           ;
-;         1 data inputs ; 6                           ;
-;         2 data inputs ; 9                           ;
-;         3 data inputs ; 18                          ;
-;         4 data inputs ; 65                          ;
-; cycloneiii_ram_block  ; 8                           ;
+;     normal            ; 116                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 12                          ;
+;         3 data inputs ; 17                          ;
+;         4 data inputs ; 78                          ;
+; cycloneiii_ram_block  ; 24                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 1.63                        ;
+; Average LUT depth     ; 1.42                        ;
 +-----------------------+-----------------------------+
 
 
@@ -602,7 +604,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Sat Aug  9 13:08:14 2025
+    Info: Processing started: Sat Aug  9 16:48:55 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off instr_mem -c instr_mem
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 14 of the 14 processors detected
@@ -617,9 +619,9 @@ Warning (12125): Using design file hex7seg.sv, which is not specified as a desig
 Info (12128): Elaborating entity "hex7seg" for hierarchy "hex7seg:H0" File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 49
 Warning (12125): Using design file uart_instr_mem_loader.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: uart_instr_mem_loader File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/uart_instr_mem_loader.sv Line: 1
-Info (12128): Elaborating entity "uart_instr_mem_loader" for hierarchy "uart_instr_mem_loader:MEM_UART_1" File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 71
-Warning (10230): Verilog HDL assignment warning at uart_instr_mem_loader.sv(134): truncated value with size 32 to match size of target (2) File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/uart_instr_mem_loader.sv Line: 134
-Warning (10230): Verilog HDL assignment warning at uart_instr_mem_loader.sv(139): truncated value with size 32 to match size of target (8) File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/uart_instr_mem_loader.sv Line: 139
+Info (12128): Elaborating entity "uart_instr_mem_loader" for hierarchy "uart_instr_mem_loader:MEM_UART_1" File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 73
+Warning (10230): Verilog HDL assignment warning at uart_instr_mem_loader.sv(134): truncated value with size 32 to match size of target (8) File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/uart_instr_mem_loader.sv Line: 134
+Warning (10230): Verilog HDL assignment warning at uart_instr_mem_loader.sv(139): truncated value with size 32 to match size of target (2) File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/uart_instr_mem_loader.sv Line: 139
 Warning (12125): Using design file uart_wrapper.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: UART_wrapper File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/uart_wrapper.sv Line: 1
 Info (12128): Elaborating entity "UART_wrapper" for hierarchy "uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst" File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/uart_instr_mem_loader.sv Line: 57
@@ -641,10 +643,10 @@ Info (12128): Elaborating entity "instr_mem" for hierarchy "uart_instr_mem_loade
 Info (19000): Inferred 1 megafunctions from design logic
     Info (276029): Inferred altsyncram megafunction from the following design logic: "uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|mem_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
-        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTH_A set to 24
         Info (286033): Parameter WIDTHAD_A set to 8
         Info (286033): Parameter NUMWORDS_A set to 256
-        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTH_B set to 24
         Info (286033): Parameter WIDTHAD_B set to 8
         Info (286033): Parameter NUMWORDS_B set to 256
         Info (286033): Parameter ADDRESS_ACLR_A set to NONE
@@ -658,10 +660,10 @@ Info (19000): Inferred 1 megafunctions from design logic
 Info (12130): Elaborated megafunction instantiation "uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|altsyncram:mem_rtl_0"
 Info (12133): Instantiated megafunction "uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|altsyncram:mem_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
-    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTH_A" = "24"
     Info (12134): Parameter "WIDTHAD_A" = "8"
     Info (12134): Parameter "NUMWORDS_A" = "256"
-    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTH_B" = "24"
     Info (12134): Parameter "WIDTHAD_B" = "8"
     Info (12134): Parameter "NUMWORDS_B" = "256"
     Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
@@ -672,8 +674,8 @@ Info (12133): Instantiated megafunction "uart_instr_mem_loader:MEM_UART_1|instr_
     Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
     Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_08g1.tdf
-    Info (12023): Found entity 1: altsyncram_08g1 File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/db/altsyncram_08g1.tdf Line: 28
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_sag1.tdf
+    Info (12023): Found entity 1: altsyncram_sag1 File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/db/altsyncram_sag1.tdf Line: 28
 Warning (13034): The following nodes have both tri-state and non-tri-state drivers
     Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[2]" and its non-tri-state driver. File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 16
 Warning (13039): The following bidirectional pins have no drivers
@@ -731,40 +733,26 @@ Warning (13009): TRI or OPNDRN buffers permanently enabled
     Warning (13010): Node "GPIO[1]~synth" File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 16
     Warning (13010): Node "GPIO[2]~synth" File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 16
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "HEX3[0]" is stuck at VCC File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 8
-    Warning (13410): Pin "HEX3[1]" is stuck at VCC File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 8
-    Warning (13410): Pin "HEX3[2]" is stuck at VCC File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 8
-    Warning (13410): Pin "HEX3[3]" is stuck at VCC File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 8
-    Warning (13410): Pin "HEX3[4]" is stuck at VCC File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 8
-    Warning (13410): Pin "HEX3[5]" is stuck at VCC File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 8
-    Warning (13410): Pin "HEX3[6]" is stuck at VCC File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 8
-    Warning (13410): Pin "HEX2[0]" is stuck at VCC File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 9
-    Warning (13410): Pin "HEX2[1]" is stuck at VCC File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 9
-    Warning (13410): Pin "HEX2[2]" is stuck at VCC File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 9
-    Warning (13410): Pin "HEX2[3]" is stuck at VCC File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 9
-    Warning (13410): Pin "HEX2[4]" is stuck at VCC File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 9
-    Warning (13410): Pin "HEX2[5]" is stuck at VCC File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 9
-    Warning (13410): Pin "HEX2[6]" is stuck at VCC File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 9
     Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 12
     Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 12
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 50 registers lost all their fanouts during netlist optimizations.
+Info (17049): 18 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 3 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[8]" File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 2
     Warning (15610): No output dependent on input pin "SW[9]" File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 2
     Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/top.sv Line: 3
-Info (21057): Implemented 250 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 313 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 13 input pins
     Info (21059): Implemented 52 output pins
     Info (21060): Implemented 52 bidirectional pins
-    Info (21061): Implemented 125 logic cells
-    Info (21064): Implemented 8 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 96 warnings
-    Info: Peak virtual memory: 4858 megabytes
-    Info: Processing ended: Sat Aug  9 13:08:20 2025
+    Info (21061): Implemented 172 logic cells
+    Info (21064): Implemented 24 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 82 warnings
+    Info: Peak virtual memory: 4874 megabytes
+    Info: Processing ended: Sat Aug  9 16:49:01 2025
     Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:14
+    Info: Total CPU time (on all processors): 00:00:15
 
 

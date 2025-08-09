@@ -41,15 +41,17 @@ module top (
         rd_addr = SW[7:0];
         LEDR[7:0] = rd_data;
 
-        HEX2 = 7'h7F;
-        HEX3 = 7'h7F;
+        // HEX2 = 7'h7F;
+        // HEX3 = 7'h7F;
     end
 
     // 7-Seg Hex 
-    hex7seg H0 (rd_addr[3:0], HEX0);
-    hex7seg H1 (rd_addr[7:4], HEX1);
-    hex7seg H4 (rd_data[3:0], HEX4);
-    hex7seg H5 (rd_data[7:4], HEX5);
+    hex7seg H0 (rd_data[3:0], HEX0);
+    hex7seg H1 (rd_data[7:4], HEX1);
+    hex7seg H2 (rd_data[11:8], HEX2);
+    hex7seg H3 (rd_data[15:12], HEX3);
+    hex7seg H4 (rd_data[19:16], HEX4);
+    hex7seg H5 (rd_data[23:20], HEX5);
 
     uart_instr_mem_loader #(
         .INSTR_WIDTH(INSTR_WIDTH),
