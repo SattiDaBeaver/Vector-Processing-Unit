@@ -82,6 +82,10 @@ module uart_instr_mem_loader #(
     logic [INSTR_WIDTH-1:0] shift_reg;
     logic                   write_mode;
 
+    `ifdef UART_CMD_MODE
+    // ====================================================
+    // Command mode: enter/exit write mode with special bytes
+    // ====================================================
     always_ff @(posedge clk or posedge rst) begin
         if (rst) begin
             byte_count <= 0;
@@ -89,31 +93,56 @@ module uart_instr_mem_loader #(
             wr_en      <= 0;
             write_mode <= 0;
         end else begin
-            wr_en <= 0; // default no write
+            wr_en <= 0;
 
             if (rx_done) begin
-                // Command bytes for control
                 if (rx_byte == 8'hFF) begin
-                    write_mode <= 1;  // enter write mode
+                    write_mode <= 1;
                     wr_addr    <= 0;
                     byte_count <= 0;
                 end else if (rx_byte == 8'hFE) begin
-                    write_mode <= 0;  // exit write mode
+                    write_mode <= 0;
                 end else if (write_mode) begin
-                    // Shift and collect bytes into 32-bit word
-                    shift_reg <= {shift_reg[INSTR_WIDTH-9:0], rx_byte};
+                    shift_reg  <= {shift_reg[INSTR_WIDTH-9:0], rx_byte};
                     byte_count <= byte_count + 1;
 
                     if (byte_count == (INSTR_WIDTH/8 - 1)) begin
-                        // Got full word
-                        wr_data <= {shift_reg[INSTR_WIDTH-9:0], rx_byte};
-                        wr_en   <= 1;
-                        wr_addr <= wr_addr + 1;
+                        wr_data    <= {shift_reg[INSTR_WIDTH-9:0], rx_byte};
+                        wr_en      <= 1;
+                        wr_addr    <= wr_addr + 1;
                         byte_count <= 0;
                     end
                 end
             end
         end
     end
+
+`else
+    // ====================================================
+    // Simple continuous write mode
+    // ====================================================
+    always_ff @(posedge clk or posedge rst) begin
+        if (rst) begin
+            byte_count <= 0;
+            wr_addr    <= 0;
+            wr_en      <= 0;
+        end else begin
+            wr_en <= 0;
+
+            if (rx_done) begin
+                shift_reg  <= {shift_reg[INSTR_WIDTH-9:0], rx_byte};
+                byte_count <= byte_count + 1;
+
+                if (byte_count == (INSTR_WIDTH/8 - 1)) begin
+                    wr_data    <= {shift_reg[INSTR_WIDTH-9:0], rx_byte};
+                    wr_en      <= 1;
+                    wr_addr    <= wr_addr + 1;
+                    byte_count <= 0;
+                end
+            end
+        end
+    end
+`endif
+
 
 endmodule
