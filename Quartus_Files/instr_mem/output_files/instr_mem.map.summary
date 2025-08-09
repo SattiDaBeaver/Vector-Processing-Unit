@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Sat Aug  9 11:44:11 2025
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+Revision Name : instr_mem
+Top-level Entity Name : instr_mem
+Family : MAX 10
+Total logic elements : 0
+    Total combinational functions : 0
+    Dedicated logic registers : 0
+Total registers : 0
+Total pins : 82
+Total virtual pins : 0
+Total memory bits : 8,192
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
+UFM blocks : 0
+ADC blocks : 0
