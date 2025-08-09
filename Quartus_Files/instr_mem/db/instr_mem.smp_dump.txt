@@ -1,0 +1,13 @@
+
+State Machine - |top|uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst|UART_RX:UART_RX1|state
+Name state.DONE state.RECEIVE state.START state.IDLE 
+state.IDLE 0 0 0 0 
+state.START 0 0 1 1 
+state.RECEIVE 0 1 0 1 
+state.DONE 1 0 0 1 
+
+State Machine - |top|uart_instr_mem_loader:MEM_UART_1|UART_wrapper:uart_inst|UART_TX:UART_TX1|state
+Name state.IDLE state.DONE state.TRANSMIT 
+state.IDLE 0 0 0 
+state.TRANSMIT 1 0 1 
+state.DONE 1 1 0 

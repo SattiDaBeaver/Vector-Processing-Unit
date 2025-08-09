@@ -4,331 +4,199 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "rd_data[0]",
+					"name" : "HEX5[0]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[1]",
+					"name" : "HEX5[1]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[2]",
+					"name" : "HEX5[2]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[3]",
+					"name" : "HEX5[3]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[4]",
+					"name" : "HEX5[4]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[5]",
+					"name" : "HEX5[5]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[6]",
+					"name" : "HEX5[6]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[7]",
+					"name" : "HEX4[0]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[8]",
+					"name" : "HEX4[1]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[9]",
+					"name" : "HEX4[2]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[10]",
+					"name" : "HEX4[3]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[11]",
+					"name" : "HEX4[4]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[12]",
+					"name" : "HEX4[5]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[13]",
+					"name" : "HEX4[6]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[14]",
+					"name" : "HEX1[0]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[15]",
+					"name" : "HEX1[1]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[16]",
+					"name" : "HEX1[2]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[17]",
+					"name" : "HEX1[3]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[18]",
+					"name" : "HEX1[4]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[19]",
+					"name" : "HEX1[5]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[20]",
+					"name" : "HEX1[6]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[21]",
+					"name" : "HEX0[0]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[22]",
+					"name" : "HEX0[1]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[23]",
+					"name" : "HEX0[2]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[24]",
+					"name" : "HEX0[3]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[25]",
+					"name" : "HEX0[4]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[26]",
+					"name" : "HEX0[5]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[27]",
+					"name" : "HEX0[6]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[28]",
+					"name" : "LEDR[0]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[29]",
+					"name" : "LEDR[1]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[30]",
+					"name" : "LEDR[2]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_data[31]",
+					"name" : "LEDR[3]",
 					"strict" : false
 				},
 				{
-					"name" : "wr_en",
+					"name" : "LEDR[4]",
 					"strict" : false
 				},
 				{
-					"name" : "clk",
+					"name" : "LEDR[5]",
 					"strict" : false
 				},
 				{
-					"name" : "wr_data[0]",
+					"name" : "LEDR[6]",
 					"strict" : false
 				},
 				{
-					"name" : "wr_addr[0]",
+					"name" : "LEDR[7]",
 					"strict" : false
 				},
 				{
-					"name" : "wr_addr[1]",
+					"name" : "GPIO[0]",
 					"strict" : false
 				},
 				{
-					"name" : "wr_addr[2]",
+					"name" : "GPIO[1]",
 					"strict" : false
 				},
 				{
-					"name" : "wr_addr[3]",
+					"name" : "GPIO[2]",
 					"strict" : false
 				},
 				{
-					"name" : "wr_addr[4]",
+					"name" : "SW[4]",
 					"strict" : false
 				},
 				{
-					"name" : "wr_addr[5]",
+					"name" : "SW[5]",
 					"strict" : false
 				},
 				{
-					"name" : "wr_addr[6]",
+					"name" : "SW[6]",
 					"strict" : false
 				},
 				{
-					"name" : "wr_addr[7]",
+					"name" : "SW[7]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_addr[0]",
+					"name" : "SW[0]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_addr[1]",
+					"name" : "SW[1]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_addr[2]",
+					"name" : "SW[2]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_addr[3]",
+					"name" : "SW[3]",
 					"strict" : false
 				},
 				{
-					"name" : "rd_addr[4]",
+					"name" : "CLOCK_50",
 					"strict" : false
 				},
 				{
-					"name" : "rd_addr[5]",
-					"strict" : false
-				},
-				{
-					"name" : "rd_addr[6]",
-					"strict" : false
-				},
-				{
-					"name" : "rd_addr[7]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[1]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[2]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[3]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[4]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[5]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[6]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[7]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[8]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[9]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[10]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[11]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[12]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[13]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[14]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[15]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[16]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[17]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[18]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[19]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[20]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[21]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[22]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[23]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[24]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[25]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[26]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[27]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[28]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[29]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[30]",
-					"strict" : false
-				},
-				{
-					"name" : "wr_data[31]",
+					"name" : "KEY[0]",
 					"strict" : false
 				}
 			]

@@ -18,13 +18,13 @@ module top (
     parameter BAUD          = 921_600;
     parameter CLK_PER_BIT   = F_CLK / BAUD;
 
-    parameter INSTR_WIDTH   = 32,
-    parameter DEPTH         = 256,
+    parameter INSTR_WIDTH   = 32;
+    parameter DEPTH         = 256;
 
     // Instructrion Mem Loader Wires
     logic                       clk, rst, uart_rx, uart_tx;
-    logic   [$clog2(DEPTH)-1:0] rd_addr,
-    logic   [INSTR_WIDTH-1:0]   rd_data
+    logic   [$clog2(DEPTH)-1:0] rd_addr;
+    logic   [INSTR_WIDTH-1:0]   rd_data;
 
     // Wire Assignments
     always_comb begin
@@ -41,8 +41,8 @@ module top (
         rd_addr = SW[7:0];
         LEDR[7:0] = rd_data;
 
-        assign HEX2 = 7'h7F;
-        assign HEX3 = 7'h7F;
+        HEX2 = 7'h7F;
+        HEX3 = 7'h7F;
     end
 
     // 7-Seg Hex 
