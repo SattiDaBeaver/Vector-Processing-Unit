@@ -17,7 +17,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition"
 
-// DATE "08/09/2025 16:49:17"
+// DATE "08/10/2025 11:44:23"
 
 // 
 // Device: Altera 10M50DAF484C7G Package FBGA484
@@ -52,8 +52,8 @@ output 	[6:0] HEX2;
 output 	[6:0] HEX1;
 output 	[6:0] HEX0;
 output 	[9:0] LEDR;
-output 	[15:0] ARDUINO_IO;
-output 	[35:0] GPIO;
+inout 	[15:0] ARDUINO_IO;
+inout 	[35:0] GPIO;
 
 // Design Ports Information
 // SW[8]	=>  Location: PIN_B14,	 I/O Standard: 2.5 V,	 Current Strength: Default
@@ -5993,7 +5993,7 @@ fiftyfivenm_ram_block \MEM_UART_1|instr_mem_inst|mem_rtl_0|auto_generated|ram_bl
 // synopsys translate_off
 defparam \MEM_UART_1|instr_mem_inst|mem_rtl_0|auto_generated|ram_block1a0 .data_interleave_offset_in_bits = 1;
 defparam \MEM_UART_1|instr_mem_inst|mem_rtl_0|auto_generated|ram_block1a0 .data_interleave_width_in_bits = 1;
-defparam \MEM_UART_1|instr_mem_inst|mem_rtl_0|auto_generated|ram_block1a0 .logical_ram_name = "uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|altsyncram:mem_rtl_0|altsyncram_sag1:auto_generated|ALTSYNCRAM";
+defparam \MEM_UART_1|instr_mem_inst|mem_rtl_0|auto_generated|ram_block1a0 .logical_ram_name = "uart_instr_mem_loader:MEM_UART_1|instr_mem:instr_mem_inst|altsyncram:mem_rtl_0|altsyncram_p6i1:auto_generated|ALTSYNCRAM";
 defparam \MEM_UART_1|instr_mem_inst|mem_rtl_0|auto_generated|ram_block1a0 .mixed_port_feed_through_mode = "old";
 defparam \MEM_UART_1|instr_mem_inst|mem_rtl_0|auto_generated|ram_block1a0 .operation_mode = "dual_port";
 defparam \MEM_UART_1|instr_mem_inst|mem_rtl_0|auto_generated|ram_block1a0 .port_a_address_clear = "none";

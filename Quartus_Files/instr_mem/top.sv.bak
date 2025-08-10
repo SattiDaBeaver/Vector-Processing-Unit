@@ -38,7 +38,7 @@ module top (
         GPIO[2] = uart_tx;
 
         // Read Write Wires
-        rd_addr = SW[$clog2(DEPTH)-1:0];
+        rd_addr = SW[7:0];
         LEDR[7:0] = rd_data;
 
         // HEX2 = 7'h7F;

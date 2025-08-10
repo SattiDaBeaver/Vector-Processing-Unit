@@ -24,9 +24,9 @@ bool SerialPort::openPort(const string& portName, int baudRate) {
         }
     }
 
-#ifdef DEBUG
+    #ifdef DEBUG
     cout << "Attempting to open: " << actualPortName << endl;
-#endif
+    #endif
 
     // Open the serial port
     // Use CreateFileA for ANSI string, CreateFileW for wide strings
@@ -40,7 +40,7 @@ bool SerialPort::openPort(const string& portName, int baudRate) {
 
     if (hSerial == INVALID_HANDLE_VALUE) {
         DWORD error = GetLastError();
-#ifdef DEBUG
+    #ifdef DEBUG
         cerr << "Error opening port " << actualPortName << " (Error code: " << error << ")" << endl;
         
         // Common error explanations
@@ -55,7 +55,7 @@ bool SerialPort::openPort(const string& portName, int baudRate) {
                 cerr << "  -> Invalid port name format." << endl;
                 break;
         }
-#endif
+    #endif
         return false;
     }
 
@@ -64,9 +64,9 @@ bool SerialPort::openPort(const string& portName, int baudRate) {
     dcbSerialParams.DCBlength = sizeof(dcbSerialParams);
     
     if (!GetCommState(hSerial, &dcbSerialParams)) {
-#ifdef DEBUG
+    #ifdef DEBUG
         cerr << "Error getting current port configuration" << endl;
-#endif
+    #endif
         closePort();
         return false;
     }
@@ -81,9 +81,9 @@ bool SerialPort::openPort(const string& portName, int baudRate) {
 
     // Apply the configuration
     if (!SetCommState(hSerial, &dcbSerialParams)) {
-#ifdef DEBUG
+    #ifdef DEBUG
         cerr << "Error setting port configuration" << endl;
-#endif
+    #endif
         closePort();
         return false;
     }
@@ -97,9 +97,9 @@ bool SerialPort::openPort(const string& portName, int baudRate) {
     timeouts.WriteTotalTimeoutMultiplier = 10;  // Per-byte write timeout (ms)
     
     if (!SetCommTimeouts(hSerial, &timeouts)) {
-#ifdef DEBUG
+    #ifdef DEBUG
         cerr << "Error setting timeout values" << endl;
-#endif
+    #endif
         closePort();
         return false;
     }
@@ -107,18 +107,18 @@ bool SerialPort::openPort(const string& portName, int baudRate) {
     // Clear any existing data in the buffers
     PurgeComm(hSerial, PURGE_RXCLEAR | PURGE_TXCLEAR);
 
-#ifdef DEBUG
+    #ifdef DEBUG
     cout << "Successfully opened " << portName << " at " << baudRate << " baud (8N1)" << endl;
-#endif
+    #endif
     return true;
 }
 
 // Send data over serial port
 bool SerialPort::sendData(const string& data) {
     if (!isOpen()) {
-#ifdef DEBUG
+    #ifdef DEBUG
         cerr << "Port is not open" << endl;
-#endif
+    #endif
         return false;
     }
 
@@ -131,24 +131,65 @@ bool SerialPort::sendData(const string& data) {
 
     if (!success) {
         DWORD error = GetLastError();
-#ifdef DEBUG
+    #ifdef DEBUG
         cerr << "Error writing to port (Error code: " << error << ")" << endl;
-#endif
+    #endif
         return false;
     }
 
-#ifdef DEBUG
+    #ifdef DEBUG
     cout << "Sent " << bytesWritten << " bytes: \"" << data << "\"" << endl;
-#endif
+    #endif
     return true;
+}
+
+// Send raw bytes over serial port
+bool SerialPort::sendData(const uint8_t* data, size_t size) {
+    if (!isOpen()) {
+    #ifdef DEBUG
+        cerr << "Port is not open" << endl;
+    #endif
+        return false;
+    }
+
+    DWORD bytesWritten = 0;
+    bool success = WriteFile(hSerial,                    // Handle to file
+                            data,                        // Raw data to write
+                            (DWORD)size,                 // Number of bytes to write
+                            &bytesWritten,               // Number of bytes actually written
+                            NULL);                       // Overlapped I/O (not used)
+
+    if (!success) {
+        DWORD error = GetLastError();
+    #ifdef DEBUG
+        cerr << "Error writing to port (Error code: " << error << ")" << endl;
+    #endif
+        return false;
+    }
+
+    #ifdef DEBUG
+    cout << "Sent " << bytesWritten << " bytes: ";
+    for (size_t i = 0; i < bytesWritten; i++) {
+        cout << "0x" << hex << uppercase << setfill('0') << setw(2) << (int)data[i];
+        if (i < bytesWritten - 1) cout << " ";
+    }
+    cout << dec << endl;  // Reset to decimal format
+    #endif
+    
+    return true;
+}
+
+// Convenience function to send vector of bytes
+bool SerialPort::sendData(const vector<uint8_t>& data) {
+    return sendData(data.data(), data.size());
 }
 
 // Read data from serial port
 string SerialPort::readData(int maxBytes = 256) {
     if (!isOpen()) {
-#ifdef DEBUG
+    #ifdef DEBUG
         cerr << "Port is not open" << endl;
-#endif
+    #endif
         return "";
     }
 
@@ -170,14 +211,14 @@ string SerialPort::readData(int maxBytes = 256) {
     if (success && bytesRead > 0) {
         buffer[bytesRead] = '\0';  // Null-terminate the string
         result = string(buffer, bytesRead);
-#ifdef DEBUG
+    #ifdef DEBUG
         cout << "Received " << bytesRead << " bytes: \"" << result << "\"" << endl;
-#endif
+    #endif
     } else if (!success) {
         DWORD error = GetLastError();
-#ifdef DEBUG
+    #ifdef DEBUG
         cerr << "Error reading from port (Error code: " << error << ")" << endl;
-#endif
+    #endif
     }
     // If bytesRead == 0, it just means no data was available (timeout)
 
@@ -194,8 +235,8 @@ void SerialPort::closePort() {
     if (hSerial != INVALID_HANDLE_VALUE) {
         CloseHandle(hSerial);
         hSerial = INVALID_HANDLE_VALUE;
-#ifdef DEBUG
+    #ifdef DEBUG
         cout << "Serial port closed" << endl;
-#endif
+    #endif
     }
 }

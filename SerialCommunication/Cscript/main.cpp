@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <windows.h>
+#include <vector>
+#include <stdint.h>
 
 using namespace std;
 
@@ -14,13 +16,13 @@ int main(int argc, char** argv) {
     // Check Device Manager -> Ports (COM & LPT) to see available ports
     string portName;
     if (argc < 2) {
-        portName = "\\\\.\\COM18"; // Change this to match your device
+        portName = "\\\\.\\COM20"; // Change this to match your device
     }
     else {
         portName = argv[1];  
         cout << argv[1] << endl;
     }
-    int baudRate = 9600;            // Common baud rates: 9600, 19200, 38400, 57600, 115200
+    int baudRate = 921600;            // Common baud rates: 9600, 19200, 38400, 57600, 115200
 
     cout << "Windows Serial Communication Test" << endl;
     cout << "=================================" << endl;
@@ -37,44 +39,48 @@ int main(int argc, char** argv) {
 
     // Test 1: Send some basic data
     cout << "\n--- Test 1: Sending basic data ---" << endl;
-    serial.sendData("Hello World!\r\n");
-    serial.sendData("AT\r\n");  // Common AT command for modems/modules
+    for (uint16_t i = 0; i < 256; i++) {
+        uint8_t data = (uint8_t) i;
+        vector<uint8_t> bytes = {data, data, data, data};
+        serial.sendData(bytes);
+    }
+    // serial.sendData("AT\r\n");  // Common AT command for modems/modules
 
     // Wait for potential response
     Sleep(500);  // 500ms delay
 
     // Test 2: Try to read any incoming data
     cout << "\n--- Test 2: Reading incoming data ---" << endl;
-    string response = serial.readData(100);
+    string response = serial.readData(1024);
     cout << response << endl;
     if (response.empty()) {
         cout << "No data received (this is normal if nothing is connected)" << endl;
     }
      
-    cout << "\n--- Test 3: Interactive mode ---" << endl;
-    cout << "Type commands to send (or 'quit' to exit):" << endl;
+    // cout << "\n--- Test 3: Interactive mode ---" << endl;
+    // cout << "Type commands to send (or 'quit' to exit):" << endl;
     
-    string userInput;
-    while (true) {
-        cout << "Send> ";
-        getline(cin, userInput);
+    // string userInput;
+    // while (true) {
+    //     cout << "Send> ";
+    //     getline(cin, userInput);
         
-        if (userInput == "quit" || userInput == "exit") {
-            break;
-        }
+    //     if (userInput == "quit" || userInput == "exit") {
+    //         break;
+    //     }
         
-        // Send user input (add line ending if not present)
-        if (!userInput.empty()) {
-            if (userInput.back() != '\n') {
-                userInput += "\r\n";
-            }
-            serial.sendData(userInput);
+    //     // Send user input (add line ending if not present)
+    //     if (!userInput.empty()) {
+    //         if (userInput.back() != '\n') {
+    //             userInput += "\r\n";
+    //         }
+    //         serial.sendData(userInput);
             
-            // Wait a bit and try to read response
-            Sleep(200);
-            serial.readData(256);
-        }
-    }
+    //         // Wait a bit and try to read response
+    //         Sleep(200);
+    //         serial.readData(256);
+    //     }
+    // }
      
     cout << "\nTest completed. Port will be closed automatically." << endl;
     

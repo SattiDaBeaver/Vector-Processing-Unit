@@ -1,5 +1,5 @@
 EDA Netlist Writer report for instr_mem
-Sat Aug  9 16:49:17 2025
+Sun Aug 10 11:44:23 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -37,7 +37,7 @@ on the Quartus Prime software download page.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Sat Aug  9 16:49:17 2025 ;
+; EDA Netlist Writer Status ; Successful - Sun Aug 10 11:44:23 2025 ;
 ; Revision Name             ; instr_mem                             ;
 ; Top-level Entity Name     ; top                                   ;
 ; Family                    ; MAX 10                                ;
@@ -81,13 +81,13 @@ on the Quartus Prime software download page.
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Sat Aug  9 16:49:17 2025
+    Info: Processing started: Sun Aug 10 11:44:23 2025
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off instr_mem -c instr_mem
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file instr_mem.vo in folder "C:/Projects/Vector-Processing-Unit/Quartus_Files/instr_mem/simulation/questa/" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4687 megabytes
-    Info: Processing ended: Sat Aug  9 16:49:17 2025
+    Info: Processing ended: Sun Aug 10 11:44:23 2025
     Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:00
 
