@@ -4,13 +4,13 @@ module tiny_fsm_control #(
 
 );
     //======================================//
-    //              Parameters
+    //              Parameters              //
     //======================================//
     // Systolic Module Parameters
     parameter DATA_WIDTH    = 8;
     parameter MATRIX_SIZE   = 8;
     parameter ACC_WIDTH     = 32;
-    parameter ADDR_WIDTH = $clog2(MATRIX_SIZE);
+    parameter ADDR_WIDTH    = $clog2(MATRIX_SIZE);
     parameter ACC_ADDR_WIDTH = $clog2(MATRIX_SIZE*MATRIX_SIZE);
 
     // DPRAM Parameters
@@ -23,10 +23,10 @@ module tiny_fsm_control #(
     parameter INSTR_WIDTH   = 32;
     parameter INSTR_DEPTH   = 256;
 
+    //======================================//
+    //             Module Wires             //
+    //======================================//
 
-    //======================================//
-    //             Module Wires
-    //======================================//
     // Systolic Module Wires
     logic                               clk;
     logic                               rst;
@@ -70,7 +70,7 @@ module tiny_fsm_control #(
     logic [INSTR_WIDTH-1:0]             rd_data;
 
     //======================================//
-    //          FSM Control Logic
+    //          FSM Control Logic           //
     //======================================//
 
     typedef struct packed {
@@ -95,17 +95,16 @@ module tiny_fsm_control #(
 
     typedef enum logic [1:0] { 
         IDLE,
-        FETCH,
-        DECODE,
+        FETCH_EXECUTE,
         WAIT
     } fsm_state_t;
 
-    instruction_t   instruction;
+    instruction_t   curr_instr, next_instr;
     fsm_state_t     state;
 
 
     //======================================//
-    //        Module Instantiation
+    //        Module Instantiation          //
     //======================================//
 
     // Systolic Module Instantiation
