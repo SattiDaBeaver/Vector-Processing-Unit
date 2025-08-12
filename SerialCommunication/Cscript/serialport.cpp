@@ -39,8 +39,8 @@ bool SerialPort::openPort(const string& portName, int baudRate) {
                          NULL);                         // No template file
 
     if (hSerial == INVALID_HANDLE_VALUE) {
-        DWORD error = GetLastError();
     #ifdef DEBUG
+        DWORD error = GetLastError();
         cerr << "Error opening port " << actualPortName << " (Error code: " << error << ")" << endl;
         
         // Common error explanations
@@ -130,8 +130,8 @@ bool SerialPort::sendData(const string& data) {
                             NULL);                      // Overlapped I/O (not used)
 
     if (!success) {
-        DWORD error = GetLastError();
     #ifdef DEBUG
+        DWORD error = GetLastError();
         cerr << "Error writing to port (Error code: " << error << ")" << endl;
     #endif
         return false;
@@ -160,8 +160,8 @@ bool SerialPort::sendData(const uint8_t* data, size_t size) {
                             NULL);                       // Overlapped I/O (not used)
 
     if (!success) {
-        DWORD error = GetLastError();
     #ifdef DEBUG
+        DWORD error = GetLastError();
         cerr << "Error writing to port (Error code: " << error << ")" << endl;
     #endif
         return false;
@@ -215,8 +215,9 @@ string SerialPort::readData(int maxBytes = 256) {
         cout << "Received " << bytesRead << " bytes: \"" << result << "\"" << endl;
     #endif
     } else if (!success) {
-        DWORD error = GetLastError();
     #ifdef DEBUG
+        DWORD error = GetLastError();
+    
         cerr << "Error reading from port (Error code: " << error << ")" << endl;
     #endif
     }
