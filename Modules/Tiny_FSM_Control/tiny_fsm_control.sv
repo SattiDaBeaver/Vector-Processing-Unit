@@ -120,17 +120,128 @@ module tiny_fsm_control #(
 
     typedef enum logic [2:0] { 
         IDLE,
+        PRE_FETCH,
         FETCH_EXECUTE,
+        LOAD_COMMIT,
         WAIT
     } fsm_state_t;
 
-    instruction_t   curr_instr, next_instr;
-    fsm_state_t     state;
+    logic [PC_WIDTH-1:0]    pc;
+    logic [12:0]            wait_counter;
+    logic                   load_left_delay, load_top_delay;
+
+    instruction_t           curr_instr, next_instr;
+    fsm_state_t             state;
+
+    // Assign Wires 
+    always_comb begin
+        rd_addr = pc;   // Intruction Read Address = Program Counter
+    end
 
     // FSM Control Logic
     always_ff @(posedge clk) begin
         if (fsm_rst) begin
+            state       <= IDLE;  // Reset State
+            pc          <= 0;        // Reset Program Counter
+            curr_instr  <= 0;
+            next_instr  <= 0;
+        end
+        else begin
+            // Default Wire Values
+            // Multi-Cycle Load
+            load_left_delay <= 0;
+            load_top_delay  <= 0;
+            // Systolic Array
+            load_en_left    <= 0;
+            load_en_top     <= 0;
+            // Dual Port RAM
+            addr_a          <= 0;
+            addr_b          <= 0;
+
             
+
+            // Case Statement for FSM
+            case (state) 
+                IDLE: begin
+                    if (step) begin
+                        // State Wires
+                        state       <= PRE_FETCH;
+                        next_instr  <= instruction_t'(rd_data);
+                        pc          <= pc + 1;  // Increment PC
+                    end
+                end
+                
+                PRE_FETCH: begin
+                    if (step) begin
+                        // Fetch Next Instruction
+                        state       <= FETCH_EXECUTE;
+                        curr_instr  <= next_instr;
+                        next_instr  <= instruction_t'(rd_data);
+                        pc          <= pc + 1;
+                    end
+                end
+
+                FETCH_EXECUTE: begin
+                    // Default State
+                    state       <= FETCH_EXECUTE;
+                    if (step) begin
+                        // Default Values
+                        curr_instr  <= next_instr;
+                        next_instr  <= instruction_t'(rd_data);
+                        pc          <= pc + 1;
+
+                        //
+                        // If double instruction LOAD_LEFT and LOAD_TOP
+                        if (curr_instr.LOAD_LEFT && curr_instr.LOAD_TOP) begin
+                            addr_a          <= curr_instr.ADDR[DP_ADDR_WIDTH-1:0];
+                            addr_b          <= curr_instr.ADDR[DP_ADDR_WIDTH-1:0] + 'h40;
+                            state           <= LOAD_COMMIT;
+                            load_left_delay <= 1;
+                            load_top_delay  <= 1;
+                        end
+                        else begin
+                            if (curr_instr.LOAD_LEFT) begin
+                                if (curr_instr.FLAGS[0]) begin // Immediate Flag
+                                    data_in_left    <= curr_instr.ADDR[7:0];
+                                    load_en_left    <= 1;
+                                end else begin
+                                    addr_a          <= curr_instr.ADDR[DP_ADDR_WIDTH-1:0];
+                                    state           <= LOAD_COMMIT;
+                                    load_left_delay <= 1;
+                                end
+                            end
+                            if (curr_instr.LOAD_TOP) begin
+                                if (curr_instr.FLAGS[0]) begin // Immediate Flag
+                                    data_in_top     <= curr_instr.ADDR[7:0];
+                                    load_en_top     <= 1;
+                                end else begin
+                                    addr_b          <= curr_instr.ADDR[DP_ADDR_WIDTH-1:0];
+                                    state           <= LOAD_COMMIT;
+                                    load_top_delay  <= 1;
+                                end
+                            end
+                        end
+                    end
+                end
+
+                LOAD_COMMIT: begin
+                    state       <= FETCH_EXECUTE;
+                    if (load_left_delay) begin
+                        data_in_left    <= dout_a;
+                        load_en_left    <= 1;
+                    end
+                    if (load_top_delay) begin
+                        data_in_top     <= dout_b;
+                        load_en_top     <= 1;
+                    end
+                end
+
+                WAIT: begin
+
+                end
+
+            endcase
+
         end
     end
 

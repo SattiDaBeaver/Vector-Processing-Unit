@@ -119,7 +119,7 @@ module tiny_fsm_control #(
 
     // Simple 1-byte latch for LOAD_* (from DP RAM)
     logic [DATA_WIDTH-1:0]            load_byte_latch;
-    logic                              pending_load_left, pending_load_top;
+    logic                             pending_load_left, pending_load_top;
 
     // Debug outs
     assign pc_out        = pc;
@@ -181,7 +181,7 @@ module tiny_fsm_control #(
         if (curr_instr.SHIFT_DOWN)  shift_en_down  = 1'b1;
 
         if (curr_instr.LOAD_ACC) acc_en = 1'b1;
-
+ 
         // Note: WRITE_ACC_OUT is TODO (needs serialization to DP RAM)
     end
 
