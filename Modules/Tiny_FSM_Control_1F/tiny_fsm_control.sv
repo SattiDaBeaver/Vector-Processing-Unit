@@ -21,7 +21,7 @@ module tiny_fsm_control #(
     parameter INSTR_DEPTH       = 256,
 
     // FSM Parameters
-    parameter PC_WIDTH          = $clog2(INSTR_DEPTH),
+    parameter PC_WIDTH          = $clog2(INSTR_DEPTH)
 ) (
     //======================================//
     //          Module I/O Wires            //
@@ -36,9 +36,9 @@ module tiny_fsm_control #(
     input  logic                        run,
     input  logic                        halt,
 
-    // UART Logic Wires
-    input  logic                        uart_rx,
-    input  logic                        uart_tx,
+    // Instruction Memory Logic Wires
+    input  logic [INSTR_WIDTH-1:0]      rd_data,
+    output logic [PC_WIDTH-1:0]         rd_addr,
 
     // Debug Outputs
     output logic [PC_WIDTH-1:0]         pc_out,
@@ -59,8 +59,6 @@ module tiny_fsm_control #(
     logic                               shift_en_right;
     logic                               shift_en_down;
 
-    logic [ACC_ADDR_WIDTH-1:0]          addr_acc;
-
     logic                               buffer_rst_top;
     logic                               load_en_top;
     logic                               swap_buffers_top;
@@ -75,6 +73,8 @@ module tiny_fsm_control #(
 
     logic [DATA_WIDTH*MATRIX_SIZE-1:0]  data_out_flat_bottom;
     logic [DATA_WIDTH*MATRIX_SIZE-1:0]  data_out_flat_right;
+
+    logic [ACC_ADDR_WIDTH-1:0]          addr_acc;
     logic [ACC_WIDTH-1:0]               acc_out;
 
     // Dual Port RAM Wires
@@ -86,13 +86,6 @@ module tiny_fsm_control #(
     logic [DP_ADDR_WIDTH-1:0]           addr_b;
     logic [DATA_WIDTH-1:0]              din_b;
     logic [DATA_WIDTH-1:0]              dout_b;
-
-    // UART Instruction Memory Loader Wires
-    logic                               uart_master_rst;
-    // logic                               uart_rx;
-    // logic                               uart_tx;
-    logic [$clog2(INSTR_DEPTH)-1:0]     rd_addr;
-    logic [INSTR_WIDTH-1:0]             rd_data;
 
     //======================================//
     //          FSM Control Logic           //
@@ -200,8 +193,10 @@ module tiny_fsm_control #(
                         //
                         // If double instruction LOAD_LEFT and LOAD_TOP
                         if (curr_instr.LOAD_LEFT && curr_instr.LOAD_TOP) begin
-                            addr_a          <= curr_instr.ADDR[DP_ADDR_WIDTH-1:0];
-                            addr_b          <= curr_instr.ADDR[DP_ADDR_WIDTH-1:0] + 'h40;
+                            addr_a          <= curr_instr.ADDR[9:0];
+                            addr_b          <= curr_instr.ADDR[9:0] + 'h40;
+                            addr_left       <= curr_instr.ADDR[12:10];
+                            addr_top        <= curr_instr.ADDR[12:10];
                             state           <= LOAD_COMMIT;
                             load_left_delay <= 1;
                             load_top_delay  <= 1;
@@ -210,9 +205,11 @@ module tiny_fsm_control #(
                             if (curr_instr.LOAD_LEFT) begin
                                 if (curr_instr.FLAGS[0]) begin // Immediate Flag
                                     data_in_left    <= curr_instr.ADDR[7:0];
+                                    addr_left       <= curr_instr.ADDR[12:10];
                                     load_en_left    <= 1;
                                 end else begin
-                                    addr_a          <= curr_instr.ADDR[DP_ADDR_WIDTH-1:0];
+                                    addr_a          <= curr_instr.ADDR[9:0];
+                                    addr_left       <= curr_instr.ADDR[12:10];
                                     state           <= LOAD_COMMIT;
                                     load_left_delay <= 1;
                                 end
@@ -220,9 +217,11 @@ module tiny_fsm_control #(
                             if (curr_instr.LOAD_TOP) begin
                                 if (curr_instr.FLAGS[0]) begin // Immediate Flag
                                     data_in_top     <= curr_instr.ADDR[7:0];
+                                    addr_top        <= curr_instr.ADDR[12:10];
                                     load_en_top     <= 1;
                                 end else begin
-                                    addr_b          <= curr_instr.ADDR[DP_ADDR_WIDTH-1:0];
+                                    addr_b          <= curr_instr.ADDR[9:0];
+                                    addr_top        <= curr_instr.ADDR[12:10];
                                     state           <= LOAD_COMMIT;
                                     load_top_delay  <= 1;
                                 end
@@ -235,10 +234,12 @@ module tiny_fsm_control #(
                     state       <= FETCH_EXECUTE;
                     if (load_left_delay) begin
                         data_in_left    <= dout_a;
+                        addr_left       <= curr_instr.ADDR[12:10];
                         load_en_left    <= 1;
                     end
                     if (load_top_delay) begin
                         data_in_top     <= dout_b;
+                        addr_top        <= curr_instr.ADDR[12:10];
                         load_en_top     <= 1;
                     end
                 end
@@ -305,26 +306,6 @@ module tiny_fsm_control #(
         .addr_b(addr_b),
         .din_b(din_b),
         .dout_b(dout_b)
-    );
-
-    // UART Instruction Memory Loader Instantiation
-    uart_instr_mem_loader #(
-        .INSTR_WIDTH(INSTR_WIDTH),
-        .DEPTH(INSTR_DEPTH),
-        .CLK_PER_BIT(CLK_PER_BIT) 
-        ) UART_MEM (
-        .clk(clk),
-        .rst(uart_master_rst),
-
-        // UART RX pin from FTDI / USB-UART
-        .uart_rx(uart_rx),
-
-        // Optional: UART TX pin back to PC for debugging
-        .uart_tx(uart_tx),
-
-        // FSM read interface
-        .rd_addr(rd_addr),
-        .rd_data(rd_data)
     );
 
 endmodule : tiny_fsm_control
@@ -1031,6 +1012,117 @@ module UART_RX #(
         else begin
             parityError = 0;
         end
+    end
+    
+endmodule
+
+module UART_TX #(
+    parameter CLK_PER_BIT = 50,    // system clock / baud rate = 50M / 1M = 50
+    parameter dataWidth = 8,
+    parameter stopBits = 1,        // either 1 or 2 stop bits
+    parameter parityBits = 1,
+    parameter packetSize = dataWidth + stopBits + parityBits + 1 
+    // Total Packet Size = dataWidth + stopBits + 1 Start Bit + 1 Parity Bit
+) ( 
+    input  logic                                clk,
+    input  logic                                rst,
+    input  logic      [dataWidth - 1 : 0]       dataIn,
+    input  logic                                TXen,
+
+    output logic                                TXout,
+    output logic                                TXdone,
+    output logic                                busy
+);
+    
+    localparam clkBits = $clog2(CLK_PER_BIT);
+    localparam indexBits = $clog2(packetSize);
+
+    logic   [packetSize - 1 : 0]        packet;
+    logic                               parityBit;
+    logic   [indexBits - 1 : 0]         index;
+    logic   [clkBits - 1 : 0]           clkCount;
+
+
+
+    typedef enum logic [1:0] {
+        IDLE,
+        TRANSMIT,
+        DONE
+    } 
+    state_t;
+
+    state_t state;
+
+    always_comb begin
+        parityBit = ^dataIn;    // 0 for even number of 1's, 1 for odd number of 1's
+    end
+
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            TXout <= 1'b1;
+            state <= IDLE;
+            busy <= 1'b0;
+            index <= 1'b0;
+            clkCount <= 0;
+            TXdone <= 0;
+        end
+        else begin
+            case (state)
+                IDLE: begin
+                    TXout <= 1'b1;
+                    index <= 1'b0;
+                    clkCount <= 0;
+                    TXdone <= 0;
+
+                    if (TXen) begin
+                        if (parityBits > 0) begin
+                            packet <= {{stopBits{1'b1}}, parityBit, dataIn, 1'b0};
+                        end 
+                        else begin
+                            packet <= {{stopBits{1'b1}}, dataIn, 1'b0};
+                        end
+                        //                ^                               ^
+                        //                |                               |
+                        //              Stop                            Start
+                        busy <= 1'b1;
+                        state <= TRANSMIT;
+                    end
+                    else begin
+                        state <= IDLE;
+                    end
+                end
+
+                TRANSMIT: begin
+                    TXout <= packet[index];
+
+                    if (clkCount < CLK_PER_BIT - 1) begin
+                        clkCount <= clkCount + 1;
+                        state <= TRANSMIT;
+                    end
+
+                    else begin
+                        clkCount <= 0;
+                        if (index == packetSize - 1) begin
+                            state <= DONE;
+                        end
+                        else begin
+                            index <= index + 1;
+                            state <= TRANSMIT;
+                        end
+                    end
+                end
+
+                DONE: begin
+                    state <= IDLE;
+                    busy <= 1'b0;
+                    TXdone <= 1'b1;
+                end
+
+                default: begin
+                    state <= IDLE;
+                end
+            endcase
+        end 
     end
     
 endmodule

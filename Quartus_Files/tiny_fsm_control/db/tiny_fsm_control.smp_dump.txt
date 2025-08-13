@@ -1,0 +1,8 @@
+
+State Machine - |tiny_fsm_control|state
+Name state.LOAD_COMMIT state.FETCH_EXECUTE state.PRE_FETCH state.IDLE state.WAIT 
+state.IDLE 0 0 0 0 0 
+state.PRE_FETCH 0 0 1 1 0 
+state.FETCH_EXECUTE 0 1 0 1 0 
+state.LOAD_COMMIT 1 0 0 1 0 
+state.WAIT 0 0 0 1 1 

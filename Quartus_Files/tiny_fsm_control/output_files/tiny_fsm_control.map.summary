@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Wed Aug 13 17:08:19 2025
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+Revision Name : tiny_fsm_control
+Top-level Entity Name : tiny_fsm_control
+Family : MAX 10
+Total logic elements : 83
+    Total combinational functions : 83
+    Dedicated logic registers : 76
+Total registers : 76
+Total pins : 120
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
+UFM blocks : 0
+ADC blocks : 0

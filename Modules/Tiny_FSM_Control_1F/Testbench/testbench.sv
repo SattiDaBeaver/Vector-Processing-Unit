@@ -49,8 +49,8 @@ module tb_tiny_fsm_control;
         .step(step),
         .run(run),
         .halt(halt),
-        .uart_rx(uart_rx),
-        .uart_tx(uart_tx),
+        .rd_addr(rd_addr),
+        .rd_data(rd_data),
         .pc_out(pc_out),
         .curr_instr_out(curr_instr_out),
         .next_instr_out(next_instr_out),
@@ -68,8 +68,8 @@ module tb_tiny_fsm_control;
         // You can replace these with your actual 32-bit instruction values
         instr_mem[0] = 32'h8000_0001; // Example instruction
         instr_mem[1] = 32'h4000_0002;
-        instr_mem[2] = 32'h2000_0003;
-        instr_mem[3] = 32'h1000_0004;
+        instr_mem[2] = 32'hC000_0003;
+        instr_mem[3] = 32'h8000_FF30;
 
         // Fill rest with NOPs
         for (int i=4; i<INSTR_DEPTH; i++)
@@ -77,13 +77,16 @@ module tb_tiny_fsm_control;
     end
 
     // Feed rd_data based on pc_out
-    assign rd_addr = pc_out;
     assign rd_data = instr_mem[rd_addr];
 
     // =========================================
     // Test Sequence
     // =========================================
     initial begin
+        // --- Dump waveforms ---
+        $dumpfile("tiny_fsm_control_tb.vcd");
+        $dumpvars(0, tb_tiny_fsm_control);
+
         fsm_rst = 1;
         step = 0;
         run  = 0;
