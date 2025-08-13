@@ -135,14 +135,21 @@ module tiny_fsm_control #(
 
     // Assign Wires 
     always_comb begin
-        rd_addr = pc;   // Intruction Read Address = Program Counter
+        // Output Wires
+        pc_out          = pc;
+        next_instr_out  = next_instr;
+        curr_instr_out  = curr_instr;
+        state_out       = state;
+
+        // Internal Wiring
+        rd_addr         = pc;   // Intruction Read Address = Program Counter
     end
 
     // FSM Control Logic
     always_ff @(posedge clk) begin
         if (fsm_rst) begin
             state       <= IDLE;  // Reset State
-            pc          <= 0;        // Reset Program Counter
+            pc          <= 0;     // Reset Program Counter
             curr_instr  <= 0;
             next_instr  <= 0;
         end

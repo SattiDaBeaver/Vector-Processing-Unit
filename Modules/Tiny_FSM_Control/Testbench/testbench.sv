@@ -1,0 +1,114 @@
+module tb_tiny_fsm_control;
+
+    // =========================================
+    // Parameters
+    // =========================================
+    parameter DATA_WIDTH     = 8;
+    parameter MATRIX_SIZE    = 8;
+    parameter ACC_WIDTH      = 32;
+    parameter DP_ADDR_WIDTH  = 10;
+    parameter INSTR_WIDTH    = 32;
+    parameter INSTR_DEPTH    = 256;
+    parameter CLK_PERIOD     = 20; // 50 MHz
+
+    // =========================================
+    // Signals
+    // =========================================
+    logic clk;
+    logic fsm_rst;
+    logic step, run, halt;
+    logic uart_rx, uart_tx;
+
+    logic [$clog2(INSTR_DEPTH)-1:0] rd_addr;
+    logic [INSTR_WIDTH-1:0] rd_data;
+
+    logic [7:0] pc_out;
+    logic [INSTR_WIDTH-1:0] curr_instr_out;
+    logic [INSTR_WIDTH-1:0] next_instr_out;
+    logic [2:0] state_out;
+
+    // =========================================
+    // Clock Generation
+    // =========================================
+    initial clk = 0;
+    always #(CLK_PERIOD/2) clk = ~clk;
+
+    // =========================================
+    // FSM Instantiation
+    // =========================================
+    tiny_fsm_control #(
+        .DATA_WIDTH(DATA_WIDTH),
+        .MATRIX_SIZE(MATRIX_SIZE),
+        .ACC_WIDTH(ACC_WIDTH),
+        .DP_ADDR_WIDTH(DP_ADDR_WIDTH),
+        .INSTR_WIDTH(INSTR_WIDTH),
+        .INSTR_DEPTH(INSTR_DEPTH)
+    ) DUT (
+        .clk(clk),
+        .fsm_rst(fsm_rst),
+        .step(step),
+        .run(run),
+        .halt(halt),
+        .uart_rx(uart_rx),
+        .uart_tx(uart_tx),
+        .pc_out(pc_out),
+        .curr_instr_out(curr_instr_out),
+        .next_instr_out(next_instr_out),
+        .state_out(state_out)
+    );
+
+    // =========================================
+    // Instruction Memory Model (Simple ROM)
+    // =========================================
+    logic [INSTR_WIDTH-1:0] instr_mem [0:INSTR_DEPTH-1];
+
+    initial begin
+        // Example: Fill memory with instructions
+        // Format: {LOAD_LEFT, LOAD_TOP, SWAP_LEFT, SWAP_TOP, SHIFT_RIGHT, ... FLAGS, ADDR}
+        // You can replace these with your actual 32-bit instruction values
+        instr_mem[0] = 32'h8000_0001; // Example instruction
+        instr_mem[1] = 32'h4000_0002;
+        instr_mem[2] = 32'h2000_0003;
+        instr_mem[3] = 32'h1000_0004;
+
+        // Fill rest with NOPs
+        for (int i=4; i<INSTR_DEPTH; i++)
+            instr_mem[i] = 32'h0010_0000; // NOP
+    end
+
+    // Feed rd_data based on pc_out
+    assign rd_addr = pc_out;
+    assign rd_data = instr_mem[rd_addr];
+
+    // =========================================
+    // Test Sequence
+    // =========================================
+    initial begin
+        fsm_rst = 1;
+        step = 0;
+        run  = 0;
+        halt = 0;
+        uart_rx = 0;
+
+        #100;
+        fsm_rst = 0;
+
+        // Single-step example
+        for (int i=0; i<10; i++) begin
+            step = 1;
+            #CLK_PERIOD;
+            step = 0;
+            #CLK_PERIOD;
+            $display("Cycle %0d: PC=%0d, CURR=%h, NEXT=%h, STATE=%0d", 
+                      i, pc_out, curr_instr_out, next_instr_out, state_out);
+        end
+
+        // Run continuously
+        run = 1;
+        #500; // run for some cycles
+        run = 0;
+
+        $finish;
+    end
+
+endmodule

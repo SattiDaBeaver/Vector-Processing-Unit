@@ -117,7 +117,7 @@ module uart_instr_mem_loader #(
         end
     end
 
-`else
+    `else
     // ====================================================
     // Simple continuous write mode
     // ====================================================
@@ -146,7 +146,6 @@ module uart_instr_mem_loader #(
             end
         end
     end
-`endif
-
-
+    `endif
+    
 endmodule
