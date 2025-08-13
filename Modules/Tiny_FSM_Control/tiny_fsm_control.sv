@@ -1,35 +1,59 @@
 module tiny_fsm_control #(
-    
-) (
-
-);
     //======================================//
     //              Parameters              //
     //======================================//
+
     // Systolic Module Parameters
-    parameter DATA_WIDTH    = 8;
-    parameter MATRIX_SIZE   = 8;
-    parameter ACC_WIDTH     = 32;
-    parameter ADDR_WIDTH    = $clog2(MATRIX_SIZE);
-    parameter ACC_ADDR_WIDTH = $clog2(MATRIX_SIZE*MATRIX_SIZE);
+    parameter DATA_WIDTH        = 8,
+    parameter MATRIX_SIZE       = 8,
+    parameter ACC_WIDTH         = 32,
+    parameter ADDR_WIDTH        = $clog2(MATRIX_SIZE),
+    parameter ACC_ADDR_WIDTH    = $clog2(MATRIX_SIZE*MATRIX_SIZE),
 
     // DPRAM Parameters
-    parameter DP_ADDR_WIDTH = 10;
+    parameter DP_ADDR_WIDTH     = 10,
 
     // UART Instruction Memory Loader Parameters
-    parameter F_CLK         = 50_000_000;
-    parameter BAUD          = 921_600;
-    parameter CLK_PER_BIT   = F_CLK / BAUD;
-    parameter INSTR_WIDTH   = 32;
-    parameter INSTR_DEPTH   = 256;
+    parameter F_CLK             = 50_000_000,
+    parameter BAUD              = 921_600,
+    parameter CLK_PER_BIT       = F_CLK / BAUD,
+    parameter INSTR_WIDTH       = 32,
+    parameter INSTR_DEPTH       = 256,
+
+    // FSM Parameters
+    parameter PC_WIDTH          = $clog2(INSTR_DEPTH),
+) (
+    //======================================//
+    //          Module I/O Wires            //
+    //======================================//
+
+    // Clock and Reset
+    input  logic                        clk,
+    input  logic                        fsm_rst,
+
+    // FSM External Control Wires
+    input  logic                        step,
+    input  logic                        run,
+    input  logic                        halt,
+
+    // UART Logic Wires
+    input  logic                        uart_rx,
+    input  logic                        uart_tx,
+
+    // Debug Outputs
+    output logic [PC_WIDTH-1:0]         pc_out,
+    output logic [INSTR_WIDTH-1:0]      curr_instr_out,
+    output logic [INSTR_WIDTH-1:0]      next_instr_out,
+    output logic [2:0]                  state_out
+);
+    
 
     //======================================//
     //             Module Wires             //
     //======================================//
 
     // Systolic Module Wires
-    logic                               clk;
-    logic                               rst;
+    logic                               systolic_master_rst;
     logic                               acc_rst;
     logic                               acc_en;
     logic                               shift_en_right;
@@ -64,8 +88,9 @@ module tiny_fsm_control #(
     logic [DATA_WIDTH-1:0]              dout_b;
 
     // UART Instruction Memory Loader Wires
-    logic                               uart_rx;
-    logic                               uart_tx;
+    logic                               uart_master_rst;
+    // logic                               uart_rx;
+    // logic                               uart_tx;
     logic [$clog2(INSTR_DEPTH)-1:0]     rd_addr;
     logic [INSTR_WIDTH-1:0]             rd_data;
 
@@ -93,7 +118,7 @@ module tiny_fsm_control #(
         logic [12:0]    ADDR;           // bits 12 down to 0 (13 bits)
     } instruction_t;
 
-    typedef enum logic [1:0] { 
+    typedef enum logic [2:0] { 
         IDLE,
         FETCH_EXECUTE,
         WAIT
@@ -102,6 +127,12 @@ module tiny_fsm_control #(
     instruction_t   curr_instr, next_instr;
     fsm_state_t     state;
 
+    // FSM Control Logic
+    always_ff @(posedge clk) begin
+        if (fsm_rst) begin
+            
+        end
+    end
 
     //======================================//
     //        Module Instantiation          //
@@ -114,7 +145,7 @@ module tiny_fsm_control #(
         .ACC_WIDTH(ACC_WIDTH)
         ) SYS_ARRAY (
         .clk(clk),
-        .rst(rst),
+        .rst(systolic_master_rst),
         .acc_rst(acc_rst),
         .acc_en(acc_en),
         .shift_en_right(shift_en_right),
@@ -165,7 +196,7 @@ module tiny_fsm_control #(
         .CLK_PER_BIT(CLK_PER_BIT) 
         ) UART_MEM (
         .clk(clk),
-        .rst(rst),
+        .rst(uart_master_rst),
 
         // UART RX pin from FTDI / USB-UART
         .uart_rx(uart_rx),
