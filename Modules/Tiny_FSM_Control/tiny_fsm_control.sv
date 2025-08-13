@@ -190,7 +190,7 @@ module tiny_fsm_control #(
                         next_instr  <= instruction_t'(rd_data);
                         pc          <= pc + 1;
 
-                        //
+                        // Load Instructions
                         // If double instruction LOAD_LEFT and LOAD_TOP
                         if (curr_instr.LOAD_LEFT && curr_instr.LOAD_TOP) begin
                             addr_a          <= curr_instr.ADDR[9:0];
@@ -227,6 +227,8 @@ module tiny_fsm_control #(
                                 end
                             end
                         end
+
+                        // Swap Instructions
                     end
                 end
 
