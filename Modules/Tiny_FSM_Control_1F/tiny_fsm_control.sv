@@ -107,7 +107,12 @@ module tiny_fsm_control #(
 
         logic [1:0]     RESERVED;       // bits 19 down to 18 (2 bits)
 
-        logic [4:0]     FLAGS;          // bits 17 down to 13 (5 bits)
+        logic           CLR_ACC;        // bit 17
+        logic           CLR_SYSTOLIC;   // bit 16
+        logic           CLR_LEFT_BUF;      // bit 15
+        logic           CLR_TOP_BUF;      // bit 14
+        logic           IMM_FLAG;       // bit 13
+
         logic [12:0]    ADDR;           // bits 12 down to 0 (13 bits)
     } instruction_t;
 
@@ -164,6 +169,11 @@ module tiny_fsm_control #(
             shift_en_down       <= 0;
             // Accumulator Load
             acc_en              <= 0;
+            // Reset Signals
+            acc_rst             <= 0;
+            buffer_rst_left     <= 0;
+            buffer_rst_top      <= 0;
+            systolic_master_rst <= 0;
 
             // Dual Port RAM
             addr_a              <= 0;
@@ -214,7 +224,7 @@ module tiny_fsm_control #(
                         end
                         else begin
                             if (curr_instr.LOAD_LEFT) begin
-                                if (curr_instr.FLAGS[0]) begin // Immediate Flag
+                                if (curr_instr.IMM_FLAG) begin // Immediate Flag
                                     data_in_left    <= curr_instr.ADDR[7:0];
                                     addr_left       <= curr_instr.ADDR[12:10];
                                     load_en_left    <= 1;
@@ -226,7 +236,7 @@ module tiny_fsm_control #(
                                 end
                             end
                             if (curr_instr.LOAD_TOP) begin
-                                if (curr_instr.FLAGS[0]) begin // Immediate Flag
+                                if (curr_instr.IMM_FLAG) begin // Immediate Flag
                                     data_in_top     <= curr_instr.ADDR[7:0];
                                     addr_top        <= curr_instr.ADDR[12:10];
                                     load_en_top     <= 1;
@@ -257,7 +267,21 @@ module tiny_fsm_control #(
 
                         // Accumulator Load Instruction
                         if (curr_instr.LOAD_ACC) begin
-                            acc_en  <= 1;
+                            acc_en      <= 1;
+                        end
+
+                        // Clear Flags
+                        if (curr_instr.CLR_ACC) begin
+                            acc_rst             <= 1;
+                        end
+                        if (curr_instr.CLR_SYSTOLIC) begin
+                            systolic_master_rst <= 1;
+                        end
+                        if (curr_instr.CLR_LEFT_BUF) begin
+                            buffer_rst_left     <= 1;
+                        end
+                        if (curr_instr.CLR_TOP_BUF) begin
+                            buffer_rst_top      <= 1;
                         end
                     end
                 end
