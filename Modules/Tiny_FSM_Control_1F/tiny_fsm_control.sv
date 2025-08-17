@@ -149,14 +149,25 @@ module tiny_fsm_control #(
         else begin
             // Default Wire Values
             // Multi-Cycle Load
-            load_left_delay <= 0;
-            load_top_delay  <= 0;
+            load_left_delay     <= 0;
+            load_top_delay      <= 0;
+
             // Systolic Array
-            load_en_left    <= 0;
-            load_en_top     <= 0;
+            // Load
+            load_en_left        <= 0;
+            load_en_top         <= 0;
+            // Swap
+            swap_buffers_left   <= 0;
+            swap_buffers_top    <= 0;
+            // Shift
+            shift_en_right      <= 0;
+            shift_en_down       <= 0;
+            // Accumulator Load
+            acc_en              <= 0;
+
             // Dual Port RAM
-            addr_a          <= 0;
-            addr_b          <= 0;
+            addr_a              <= 0;
+            addr_b              <= 0;
 
             
 
@@ -190,7 +201,7 @@ module tiny_fsm_control #(
                         next_instr  <= instruction_t'(rd_data);
                         pc          <= pc + 1;
 
-                        //
+                        // Load Instructions
                         // If double instruction LOAD_LEFT and LOAD_TOP
                         if (curr_instr.LOAD_LEFT && curr_instr.LOAD_TOP) begin
                             addr_a          <= curr_instr.ADDR[9:0];
@@ -226,6 +237,27 @@ module tiny_fsm_control #(
                                     load_top_delay  <= 1;
                                 end
                             end
+                        end
+
+                        // Swap Instructions
+                        if (curr_instr.SWAP_LEFT) begin
+                            swap_buffers_left   <= 1;
+                        end
+                        if (curr_instr.SWAP_TOP) begin
+                            swap_buffers_top    <= 1;
+                        end
+
+                        // Shift Instructions
+                        if (curr_instr.SHIFT_RIGHT) begin
+                            shift_en_right  <= 1;
+                        end
+                        if (curr_instr.SHIFT_DOWN) begin
+                            shift_en_down   <= 1;
+                        end
+
+                        // Accumulator Load Instruction
+                        if (curr_instr.LOAD_ACC) begin
+                            acc_en  <= 1;
                         end
                     end
                 end

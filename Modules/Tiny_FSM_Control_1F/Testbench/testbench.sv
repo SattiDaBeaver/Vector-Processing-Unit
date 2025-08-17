@@ -66,13 +66,29 @@ module tb_tiny_fsm_control;
         // Example: Fill memory with instructions
         // Format: {LOAD_LEFT, LOAD_TOP, SWAP_LEFT, SWAP_TOP, SHIFT_RIGHT, ... FLAGS, ADDR}
         // You can replace these with your actual 32-bit instruction values
-        instr_mem[0] = 32'h8000_0001; // Example instruction
+        // Load Left/Top
+        instr_mem[0] = 32'h8000_0001; 
         instr_mem[1] = 32'h4000_0002;
         instr_mem[2] = 32'hC000_0003;
         instr_mem[3] = 32'h8000_FF30;
 
+        // Swap, shift, and load acc
+        // Swap
+        instr_mem[4] = 32'h2000_0001; 
+        instr_mem[5] = 32'h1000_0002;
+        instr_mem[6] = 32'h3000_0003;
+        instr_mem[7] = 32'h3000_0003;
+
+        // Shift
+        instr_mem[8] = 32'h0800_FF30;
+        instr_mem[9] = 32'h0400_0001;
+        instr_mem[10] = 32'h0C00_0001;
+        
+        // Acc Load
+        instr_mem[11] = 32'h0200_0001;
+
         // Fill rest with NOPs
-        for (int i=4; i<INSTR_DEPTH; i++)
+        for (int i=12; i<INSTR_DEPTH; i++)
             instr_mem[i] = 32'h0010_0000; // NOP
     end
 
@@ -99,8 +115,6 @@ module tb_tiny_fsm_control;
         // Single-step example
         for (int i=0; i<10; i++) begin
             step = 1;
-            #CLK_PERIOD;
-            step = 0;
             #CLK_PERIOD;
             $display("Cycle %0d: PC=%0d, CURR=%h, NEXT=%h, STATE=%0d", 
                       i, pc_out, curr_instr_out, next_instr_out, state_out);

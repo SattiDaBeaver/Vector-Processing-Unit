@@ -149,14 +149,25 @@ module tiny_fsm_control #(
         else begin
             // Default Wire Values
             // Multi-Cycle Load
-            load_left_delay <= 0;
-            load_top_delay  <= 0;
+            load_left_delay     <= 0;
+            load_top_delay      <= 0;
+
             // Systolic Array
-            load_en_left    <= 0;
-            load_en_top     <= 0;
+            // Load
+            load_en_left        <= 0;
+            load_en_top         <= 0;
+            // Swap
+            swap_buffers_left   <= 0;
+            swap_buffers_top    <= 0;
+            // Shift
+            shift_en_right      <= 0;
+            shift_en_down       <= 0;
+            // Accumulator Load
+            acc_en              <= 0;
+
             // Dual Port RAM
-            addr_a          <= 0;
-            addr_b          <= 0;
+            addr_a              <= 0;
+            addr_b              <= 0;
 
             
 
@@ -229,6 +240,25 @@ module tiny_fsm_control #(
                         end
 
                         // Swap Instructions
+                        if (curr_instr.SWAP_LEFT) begin
+                            swap_buffers_left   <= 1;
+                        end
+                        if (curr_instr.SWAP_TOP) begin
+                            swap_buffers_top    <= 1;
+                        end
+
+                        // Shift Instructions
+                        if (curr_instr.SHIFT_RIGHT) begin
+                            shift_en_right  <= 1;
+                        end
+                        if (curr_instr.SHIFT_DOWN) begin
+                            shift_en_down   <= 1;
+                        end
+
+                        // Accumulator Load Instruction
+                        if (curr_instr.LOAD_ACC) begin
+                            acc_en  <= 1;
+                        end
                     end
                 end
 
