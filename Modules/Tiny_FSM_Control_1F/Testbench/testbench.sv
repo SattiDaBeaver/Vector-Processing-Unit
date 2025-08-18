@@ -72,31 +72,34 @@ module tb_tiny_fsm_control;
         instr_mem[2] = 32'hC000_0003;
         instr_mem[3] = 32'h8000_2F30;
 
+        // Reset
+        instr_mem[4] = 32'h0002_0001;  // Clear Acc
+        instr_mem[5] = 32'h0001_0001;  // Clear Systolic Array
+        instr_mem[6] = 32'h0000_8001;  // Clear Left Buffer
+        instr_mem[7] = 32'h0000_4001;  // Clear Top Buffer
+
         // Swap, shift, and load acc
         // Swap
-        instr_mem[4] = 32'h2000_0001; 
-        instr_mem[5] = 32'h1000_0002;
-        instr_mem[6] = 32'h3000_0003;
-        instr_mem[7] = 32'h3000_0003;
+        instr_mem[8] = 32'h2000_0001; 
+        instr_mem[9] = 32'h1000_0002;
+        instr_mem[10] = 32'h3000_0003;
+        instr_mem[11] = 32'h3000_0003;
 
         // Shift
-        instr_mem[8] = 32'h0800_2F30;
-        instr_mem[9] = 32'h0400_0001;
-        instr_mem[10] = 32'h0C00_0001;
+        instr_mem[12] = 32'h0800_2F30;
+        instr_mem[13] = 32'h0400_0001;
+        instr_mem[14] = 32'h0C00_0001;
 
-        // Reset
-        instr_mem[11] = 32'h4000_0002;
-        instr_mem[12] = 32'hC000_0003;
-        instr_mem[13] = 32'h8000_2F30;
-        
-        // Acc Load
-        instr_mem[14] = 32'h0002_0001;  // Clear Acc
-        instr_mem[15] = 32'h0001_0001;  // Clear Systolic Array
-        instr_mem[16] = 32'h0000_8001;  // Clear Left Buffer
-        instr_mem[17] = 32'h0000_4001;  // Clear Top Buffer
+        // Accumulator Load
+        instr_mem[15] = 32'h4200_0002;
+        instr_mem[16] = 32'hC200_0003;
+        instr_mem[17] = 32'h8200_2F30;
+
+        // Memory Accumulator Output
+        instr_mem[18] = 32'h0100_0100;  // Get Accumulator Output
 
         // Fill rest with NOPs
-        for (int i=18; i<INSTR_DEPTH; i++)
+        for (int i=19; i<INSTR_DEPTH; i++)
             instr_mem[i] = 32'h0010_0000; // NOP
     end
 
