@@ -49,8 +49,12 @@ module tb_tiny_fsm_control;
         .step(step),
         .run(run),
         .halt(halt),
+
         .rd_addr(rd_addr),
         .rd_data(rd_data),
+
+        .mem_ext_en(1'b0),
+
         .pc_out(pc_out),
         .curr_instr_out(curr_instr_out),
         .next_instr_out(next_instr_out),
@@ -63,6 +67,10 @@ module tb_tiny_fsm_control;
     logic [INSTR_WIDTH-1:0] instr_mem [0:INSTR_DEPTH-1];
 
     initial begin
+
+        for (int i = 0; i < 1024; i++) begin
+            DUT.DPRAM.mem[i] = i & 8'hFF;
+        end
         // Example: Fill memory with instructions
         // Format: {LOAD_LEFT, LOAD_TOP, SWAP_LEFT, SWAP_TOP, SHIFT_RIGHT, ... FLAGS, ADDR}
         // You can replace these with your actual 32-bit instruction values
@@ -96,7 +104,7 @@ module tb_tiny_fsm_control;
         instr_mem[17] = 32'h8200_2F30;
 
         // Memory Accumulator Output
-        instr_mem[18] = 32'h0100_0100;  // Get Accumulator Output
+        instr_mem[18] = 32'h0100_C100;  // Get Accumulator Output
 
         // Fill rest with NOPs
         for (int i=19; i<INSTR_DEPTH; i++)

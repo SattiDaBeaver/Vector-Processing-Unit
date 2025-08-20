@@ -41,6 +41,12 @@ module tiny_fsm_control #(
     output logic [PC_WIDTH-1:0]         rd_addr,
 
     // Internal Memory Write Wires
+    input  logic                        mem_ext_en,
+    input  logic                        mem_wr_en,
+    input  logic [DP_ADDR_WIDTH-1:0]    mem_ext_addr,
+    input  logic [DATA_WIDTH-1:0]       mem_ext_din,
+    output logic [DATA_WIDTH-1:0]       mem_ext_dout,
+
 
     // Debug Outputs
     output logic [PC_WIDTH-1:0]         pc_out,
@@ -80,14 +86,43 @@ module tiny_fsm_control #(
     logic [ACC_WIDTH-1:0]               acc_out;
 
     // Dual Port RAM Wires
+    // Wires fed to the DPRAM Port A
+    logic                               we_a_ram;
+    logic [DP_ADDR_WIDTH-1:0]           addr_a_ram;
+    logic [DATA_WIDTH-1:0]              din_a_ram;
+    logic [DATA_WIDTH-1:0]              dout_a_ram;
+
+    // Wires in control of FSM
     logic                               we_a;
     logic [DP_ADDR_WIDTH-1:0]           addr_a;
     logic [DATA_WIDTH-1:0]              din_a;
     logic [DATA_WIDTH-1:0]              dout_a;
+    
     logic                               we_b;
     logic [DP_ADDR_WIDTH-1:0]           addr_b;
     logic [DATA_WIDTH-1:0]              din_b;
     logic [DATA_WIDTH-1:0]              dout_b;
+
+    //======================================//
+    //    External Memory Control Logic     //
+    //======================================//
+
+    always_comb begin
+        if (mem_ext_en) begin // External source has control
+            we_a_ram    = mem_wr_en;
+            addr_a_ram  = mem_ext_addr;
+            din_a_ram   = mem_ext_din;
+        end
+        else begin  // Internal FSM has control
+            we_a_ram    = we_a;
+            addr_a_ram  = addr_a;
+            din_a_ram   = din_a;
+        end
+        mem_ext_dout = dout_a_ram;
+        dout_a = dout_a_ram;
+    end
+
+
 
     //======================================//
     //          FSM Control Logic           //
@@ -132,7 +167,7 @@ module tiny_fsm_control #(
     logic [12:0]                wait_counter;
     logic                       load_left_delay, load_top_delay;
     logic [ACC_WIDTH-1:0]       acc_out_reg;
-    logic [ACC_ADDR_WIDTH-1:0]  acc_base_addr;
+    // logic [ACC_ADDR_WIDTH-1:0]  acc_base_addr;
     logic [DP_ADDR_WIDTH-1:0]   acc_mem_addr;
     logic [2:0]                 acc_byte_index;
 
@@ -150,15 +185,19 @@ module tiny_fsm_control #(
 
         // Internal Wiring
         rd_addr         = pc;   // Intruction Read Address = Program Counter
+
+        // Accumulator Address
+        addr_acc = curr_instr[17:12];
     end
 
     // FSM Control Logic
     always_ff @(posedge clk) begin
         if (fsm_rst) begin
-            state       <= IDLE;  // Reset State
-            pc          <= 0;     // Reset Program Counter
-            curr_instr  <= 0;
-            next_instr  <= 0;
+            state               <= IDLE;  // Reset State
+            systolic_master_rst <= 1;
+            pc                  <= 0;     // Reset Program Counter
+            curr_instr          <= 0;
+            next_instr          <= 0;
         end
         else begin
             // Default Wire Values
@@ -167,6 +206,8 @@ module tiny_fsm_control #(
             load_top_delay      <= 0;
 
             // Systolic Array
+            // Reset
+            systolic_master_rst <= 0;
             // Load
             load_en_left        <= 0;
             load_en_top         <= 0;
@@ -183,6 +224,7 @@ module tiny_fsm_control #(
             buffer_rst_left     <= 0;
             buffer_rst_top      <= 0;
             systolic_master_rst <= 0;
+            // Accumulator Signals
 
             // Dual Port RAM
             addr_a              <= 0;
@@ -226,7 +268,6 @@ module tiny_fsm_control #(
                         if (curr_instr.WRITE_ACC_OUT) begin
                             acc_out_reg     <= acc_out;
                             acc_mem_addr    <= curr_instr[9:0];
-                            acc_base_addr   <= curr_instr[17:12];
                             acc_byte_index  <= 0;
                             state           <= WRITE_ACC;
                         end
@@ -323,9 +364,9 @@ module tiny_fsm_control #(
                 end
 
                 WRITE_ACC: begin
-                    addr_b  <= acc_mem_addr + acc_byte_index;
-                    din_b   <= acc_out_reg[8*acc_byte_index +: 8];
-                    we_b    <= 1;
+                    addr_b      <= acc_mem_addr + acc_byte_index;
+                    din_b       <= acc_out_reg[8*acc_byte_index +: 8];
+                    we_b        <= 1;
                     if (acc_byte_index == 3) begin
                         state           <= FETCH_EXECUTE;
                     end
@@ -387,10 +428,10 @@ module tiny_fsm_control #(
         .clk(clk),
 
         // Port A
-        .we_a(we_a),
-        .addr_a(addr_a),
-        .din_a(din_a),
-        .dout_a(dout_a),
+        .we_a(we_a_ram),
+        .addr_a(addr_a_ram),
+        .din_a(din_a_ram),
+        .dout_a(dout_a_ram),
 
         // Port B
         .we_b(we_b),
