@@ -36,6 +36,38 @@
 					"strict" : false
 				},
 				{
+					"name" : "mem_ext_dout[0]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_dout[1]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_dout[2]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_dout[3]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_dout[4]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_dout[5]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_dout[6]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_dout[7]",
+					"strict" : false
+				},
+				{
 					"name" : "pc_out[0]",
 					"strict" : false
 				},
@@ -332,6 +364,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "state_out[2]",
+					"strict" : false
+				},
+				{
 					"name" : "clk",
 					"strict" : false
 				},
@@ -341,6 +377,86 @@
 				},
 				{
 					"name" : "step",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_en",
+					"strict" : false
+				},
+				{
+					"name" : "mem_wr_en",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_din[0]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_addr[0]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_addr[1]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_addr[2]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_addr[3]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_addr[4]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_addr[5]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_addr[6]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_addr[7]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_addr[8]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_addr[9]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_din[1]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_din[2]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_din[3]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_din[4]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_din[5]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_din[6]",
+					"strict" : false
+				},
+				{
+					"name" : "mem_ext_din[7]",
 					"strict" : false
 				},
 				{

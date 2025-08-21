@@ -40,6 +40,14 @@ module tiny_fsm_control #(
     input  logic [INSTR_WIDTH-1:0]      rd_data,
     output logic [PC_WIDTH-1:0]         rd_addr,
 
+    // Internal Memory Write Wires
+    input  logic                        mem_ext_en,
+    input  logic                        mem_wr_en,
+    input  logic [DP_ADDR_WIDTH-1:0]    mem_ext_addr,
+    input  logic [DATA_WIDTH-1:0]       mem_ext_din,
+    output logic [DATA_WIDTH-1:0]       mem_ext_dout,
+
+
     // Debug Outputs
     output logic [PC_WIDTH-1:0]         pc_out,
     output logic [INSTR_WIDTH-1:0]      curr_instr_out,
@@ -78,14 +86,43 @@ module tiny_fsm_control #(
     logic [ACC_WIDTH-1:0]               acc_out;
 
     // Dual Port RAM Wires
+    // Wires fed to the DPRAM Port A
+    logic                               we_a_ram;
+    logic [DP_ADDR_WIDTH-1:0]           addr_a_ram;
+    logic [DATA_WIDTH-1:0]              din_a_ram;
+    logic [DATA_WIDTH-1:0]              dout_a_ram;
+
+    // Wires in control of FSM
     logic                               we_a;
     logic [DP_ADDR_WIDTH-1:0]           addr_a;
     logic [DATA_WIDTH-1:0]              din_a;
     logic [DATA_WIDTH-1:0]              dout_a;
+    
     logic                               we_b;
     logic [DP_ADDR_WIDTH-1:0]           addr_b;
     logic [DATA_WIDTH-1:0]              din_b;
     logic [DATA_WIDTH-1:0]              dout_b;
+
+    //======================================//
+    //    External Memory Control Logic     //
+    //======================================//
+
+    always_comb begin
+        if (mem_ext_en) begin // External source has control
+            we_a_ram    = mem_wr_en;
+            addr_a_ram  = mem_ext_addr;
+            din_a_ram   = mem_ext_din;
+        end
+        else begin  // Internal FSM has control
+            we_a_ram    = we_a;
+            addr_a_ram  = addr_a;
+            din_a_ram   = din_a;
+        end
+        mem_ext_dout = dout_a_ram;
+        dout_a = dout_a_ram;
+    end
+
+
 
     //======================================//
     //          FSM Control Logic           //
@@ -107,7 +144,12 @@ module tiny_fsm_control #(
 
         logic [1:0]     RESERVED;       // bits 19 down to 18 (2 bits)
 
-        logic [4:0]     FLAGS;          // bits 17 down to 13 (5 bits)
+        logic           CLR_ACC;        // bit 17
+        logic           CLR_SYSTOLIC;   // bit 16
+        logic           CLR_LEFT_BUF;   // bit 15
+        logic           CLR_TOP_BUF;    // bit 14
+        logic           IMM_FLAG;       // bit 13
+
         logic [12:0]    ADDR;           // bits 12 down to 0 (13 bits)
     } instruction_t;
 
@@ -115,13 +157,20 @@ module tiny_fsm_control #(
         IDLE,
         PRE_FETCH,
         FETCH_EXECUTE,
+        // Extra States for Special Instructions
+        WRITE_ACC,
         LOAD_COMMIT,
         WAIT
     } fsm_state_t;
 
-    logic [PC_WIDTH-1:0]    pc;
-    logic [12:0]            wait_counter;
-    logic                   load_left_delay, load_top_delay;
+    logic [PC_WIDTH-1:0]        pc;
+    logic [12:0]                wait_counter;
+    logic                       load_left_delay, load_top_delay;
+    logic [ACC_WIDTH-1:0]       acc_out_reg;
+    // logic [ACC_ADDR_WIDTH-1:0]  acc_base_addr;
+    logic [DP_ADDR_WIDTH-1:0]   acc_mem_addr;
+    logic [2:0]                 acc_byte_index;
+
 
     instruction_t           curr_instr, next_instr;
     fsm_state_t             state;
@@ -136,27 +185,52 @@ module tiny_fsm_control #(
 
         // Internal Wiring
         rd_addr         = pc;   // Intruction Read Address = Program Counter
+
+        // Accumulator Address
+        addr_acc = curr_instr[17:12];
     end
 
     // FSM Control Logic
     always_ff @(posedge clk) begin
         if (fsm_rst) begin
-            state       <= IDLE;  // Reset State
-            pc          <= 0;     // Reset Program Counter
-            curr_instr  <= 0;
-            next_instr  <= 0;
+            state               <= IDLE;  // Reset State
+            systolic_master_rst <= 1;
+            pc                  <= 0;     // Reset Program Counter
+            curr_instr          <= 0;
+            next_instr          <= 0;
         end
         else begin
             // Default Wire Values
             // Multi-Cycle Load
-            load_left_delay <= 0;
-            load_top_delay  <= 0;
+            load_left_delay     <= 0;
+            load_top_delay      <= 0;
+
             // Systolic Array
-            load_en_left    <= 0;
-            load_en_top     <= 0;
+            // Reset
+            systolic_master_rst <= 0;
+            // Load
+            load_en_left        <= 0;
+            load_en_top         <= 0;
+            // Swap
+            swap_buffers_left   <= 0;
+            swap_buffers_top    <= 0;
+            // Shift
+            shift_en_right      <= 0;
+            shift_en_down       <= 0;
+            // Accumulator Load
+            acc_en              <= 0;
+            // Reset Signals
+            acc_rst             <= 0;
+            buffer_rst_left     <= 0;
+            buffer_rst_top      <= 0;
+            systolic_master_rst <= 0;
+            // Accumulator Signals
+
             // Dual Port RAM
-            addr_a          <= 0;
-            addr_b          <= 0;
+            addr_a              <= 0;
+            addr_b              <= 0;
+            we_b                <= 0;
+            din_b               <= 0;
 
             
 
@@ -190,41 +264,86 @@ module tiny_fsm_control #(
                         next_instr  <= instruction_t'(rd_data);
                         pc          <= pc + 1;
 
-                        //
-                        // If double instruction LOAD_LEFT and LOAD_TOP
-                        if (curr_instr.LOAD_LEFT && curr_instr.LOAD_TOP) begin
-                            addr_a          <= curr_instr.ADDR[9:0];
-                            addr_b          <= curr_instr.ADDR[9:0] + 'h40;
-                            addr_left       <= curr_instr.ADDR[12:10];
-                            addr_top        <= curr_instr.ADDR[12:10];
-                            state           <= LOAD_COMMIT;
-                            load_left_delay <= 1;
-                            load_top_delay  <= 1;
+                        // Write Accumulator Out Instructions
+                        if (curr_instr.WRITE_ACC_OUT) begin
+                            acc_out_reg     <= acc_out;
+                            acc_mem_addr    <= curr_instr[9:0];
+                            acc_byte_index  <= 0;
+                            state           <= WRITE_ACC;
                         end
+
                         else begin
-                            if (curr_instr.LOAD_LEFT) begin
-                                if (curr_instr.FLAGS[0]) begin // Immediate Flag
-                                    data_in_left    <= curr_instr.ADDR[7:0];
-                                    addr_left       <= curr_instr.ADDR[12:10];
-                                    load_en_left    <= 1;
-                                end else begin
-                                    addr_a          <= curr_instr.ADDR[9:0];
-                                    addr_left       <= curr_instr.ADDR[12:10];
-                                    state           <= LOAD_COMMIT;
-                                    load_left_delay <= 1;
+                            // Load Instructions
+                            // If double instruction LOAD_LEFT and LOAD_TOP
+                            if (curr_instr.LOAD_LEFT && curr_instr.LOAD_TOP) begin
+                                addr_a          <= curr_instr.ADDR[9:0];
+                                addr_b          <= curr_instr.ADDR[9:0] + 'h40;
+                                addr_left       <= curr_instr.ADDR[12:10];
+                                addr_top        <= curr_instr.ADDR[12:10];
+                                state           <= LOAD_COMMIT;
+                                load_left_delay <= 1;
+                                load_top_delay  <= 1;
+                            end
+                            else begin
+                                if (curr_instr.LOAD_LEFT) begin
+                                    if (curr_instr.IMM_FLAG) begin // Immediate Flag
+                                        data_in_left    <= curr_instr.ADDR[7:0];
+                                        addr_left       <= curr_instr.ADDR[12:10];
+                                        load_en_left    <= 1;
+                                    end else begin
+                                        addr_a          <= curr_instr.ADDR[9:0];
+                                        addr_left       <= curr_instr.ADDR[12:10];
+                                        state           <= LOAD_COMMIT;
+                                        load_left_delay <= 1;
+                                    end
+                                end
+                                if (curr_instr.LOAD_TOP) begin
+                                    if (curr_instr.IMM_FLAG) begin // Immediate Flag
+                                        data_in_top     <= curr_instr.ADDR[7:0];
+                                        addr_top        <= curr_instr.ADDR[12:10];
+                                        load_en_top     <= 1;
+                                    end else begin
+                                        addr_b          <= curr_instr.ADDR[9:0];
+                                        addr_top        <= curr_instr.ADDR[12:10];
+                                        state           <= LOAD_COMMIT;
+                                        load_top_delay  <= 1;
+                                    end
                                 end
                             end
-                            if (curr_instr.LOAD_TOP) begin
-                                if (curr_instr.FLAGS[0]) begin // Immediate Flag
-                                    data_in_top     <= curr_instr.ADDR[7:0];
-                                    addr_top        <= curr_instr.ADDR[12:10];
-                                    load_en_top     <= 1;
-                                end else begin
-                                    addr_b          <= curr_instr.ADDR[9:0];
-                                    addr_top        <= curr_instr.ADDR[12:10];
-                                    state           <= LOAD_COMMIT;
-                                    load_top_delay  <= 1;
-                                end
+
+                            // Swap Instructions
+                            if (curr_instr.SWAP_LEFT) begin
+                                swap_buffers_left   <= 1;
+                            end
+                            if (curr_instr.SWAP_TOP) begin
+                                swap_buffers_top    <= 1;
+                            end
+
+                            // Shift Instructions
+                            if (curr_instr.SHIFT_RIGHT) begin
+                                shift_en_right  <= 1;
+                            end
+                            if (curr_instr.SHIFT_DOWN) begin
+                                shift_en_down   <= 1;
+                            end
+
+                            // Accumulator Load Instruction
+                            if (curr_instr.LOAD_ACC) begin
+                                acc_en      <= 1;
+                            end
+
+                            // Clear Flags
+                            if (curr_instr.CLR_ACC) begin
+                                acc_rst             <= 1;
+                            end
+                            if (curr_instr.CLR_SYSTOLIC) begin
+                                systolic_master_rst <= 1;
+                            end
+                            if (curr_instr.CLR_LEFT_BUF) begin
+                                buffer_rst_left     <= 1;
+                            end
+                            if (curr_instr.CLR_TOP_BUF) begin
+                                buffer_rst_top      <= 1;
                             end
                         end
                     end
@@ -241,6 +360,19 @@ module tiny_fsm_control #(
                         data_in_top     <= dout_b;
                         addr_top        <= curr_instr.ADDR[12:10];
                         load_en_top     <= 1;
+                    end
+                end
+
+                WRITE_ACC: begin
+                    addr_b      <= acc_mem_addr + acc_byte_index;
+                    din_b       <= acc_out_reg[8*acc_byte_index +: 8];
+                    we_b        <= 1;
+                    if (acc_byte_index == 3) begin
+                        state           <= FETCH_EXECUTE;
+                    end
+                    else begin
+                        acc_byte_index  <= acc_byte_index + 1;
+                        state           <= WRITE_ACC;
                     end
                 end
 
@@ -296,10 +428,10 @@ module tiny_fsm_control #(
         .clk(clk),
 
         // Port A
-        .we_a(we_a),
-        .addr_a(addr_a),
-        .din_a(din_a),
-        .dout_a(dout_a),
+        .we_a(we_a_ram),
+        .addr_a(addr_a_ram),
+        .din_a(din_a_ram),
+        .dout_a(dout_a_ram),
 
         // Port B
         .we_b(we_b),

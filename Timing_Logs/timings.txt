@@ -12,3 +12,11 @@ Systolic Module (8x8 with double buffer and accumulator addressing):
     Multipliers             = 64 / 288 (22%)
     Fmax (slow 1200mV 85C)  = 109.08 MHz
     Fmax (slow 1200mV 0C)   = 119.67 MHz
+
+Tiny FSM Control (Systolic Module + DPRAM + FSM Logic)
+    Logic Cells             = 4870 / 49760 (10%)
+    Registers               = 3268
+    Total memory bits	    = 8,192 / 1,677,312 ( < 1 % )
+    Multipliers             = 64 / 288 (22%)
+    Fmax (slow 1200mV 85C)  = 105.74 MHz
+    Fmax (slow 1200mV 0C)   = 115.82 MHz

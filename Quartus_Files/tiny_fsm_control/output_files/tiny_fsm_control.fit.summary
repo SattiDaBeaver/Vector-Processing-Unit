@@ -1,18 +1,18 @@
-Fitter Status : Successful - Wed Aug 13 17:08:38 2025
+Fitter Status : Successful - Wed Aug 20 17:08:43 2025
 Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 Revision Name : tiny_fsm_control
 Top-level Entity Name : tiny_fsm_control
 Family : MAX 10
 Device : 10M50DAF484C7G
 Timing Models : Final
-Total logic elements : 84 / 49,760 ( < 1 % )
-    Total combinational functions : 84 / 49,760 ( < 1 % )
-    Dedicated logic registers : 76 / 49,760 ( < 1 % )
-Total registers : 76
-Total pins : 120 / 360 ( 33 % )
+Total logic elements : 4,870 / 49,760 ( 10 % )
+    Total combinational functions : 4,694 / 49,760 ( 9 % )
+    Dedicated logic registers : 3,268 / 49,760 ( 7 % )
+Total registers : 3268
+Total pins : 148 / 360 ( 41 % )
 Total virtual pins : 0
-Total memory bits : 0 / 1,677,312 ( 0 % )
-Embedded Multiplier 9-bit elements : 0 / 288 ( 0 % )
+Total memory bits : 8,192 / 1,677,312 ( < 1 % )
+Embedded Multiplier 9-bit elements : 64 / 288 ( 22 % )
 Total PLLs : 0 / 4 ( 0 % )
 UFM blocks : 0 / 1 ( 0 % )
 ADC blocks : 0 / 2 ( 0 % )
