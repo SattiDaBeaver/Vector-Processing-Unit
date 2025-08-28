@@ -1,0 +1,63 @@
+module tiny_fsm_control #(
+    // Parameters can be overridden by parent module
+    parameter DATA_WIDTH     = 8,
+    parameter MATRIX_SIZE    = 8,
+    parameter ACC_WIDTH      = 32,
+    parameter ADDR_WIDTH     = $clog2(MATRIX_SIZE),
+    parameter ACC_ADDR_WIDTH = $clog2(MATRIX_SIZE*MATRIX_SIZE),
+    parameter DP_ADDR_WIDTH  = 10,
+    parameter F_CLK          = 50_000_000,
+    parameter BAUD           = 921_600,
+    parameter CLK_PER_BIT    = F_CLK / BAUD,
+    parameter INSTR_WIDTH    = 32,
+    parameter INSTR_DEPTH    = 256
+) (
+    //======================================//
+    //           Clock & Reset
+    //======================================//
+    input  logic                        clk,
+    input  logic                        rst_n,  // Active low reset
+
+    //======================================//
+    //         External FSM Interface
+    //======================================//
+    // Control from external FSM
+    input  logic                        ext_start,          // Start operation
+    input  logic [7:0]                  ext_operation,      // Operation type
+    input  logic [15:0]                 ext_config,         // Configuration data
+    output logic                        ext_done,           // Operation complete
+    output logic                        ext_busy,           // FSM busy
+    output logic                        ext_error,          // Error flag
+    output logic [7:0]                  ext_status,         // Status info
+
+    //======================================//
+    //        External Memory Interface
+    //======================================//
+    // External data memory (for matrix data)
+    output logic                        ext_mem_req,        // Memory request
+    output logic                        ext_mem_we,         // Write enable
+    output logic [DP_ADDR_WIDTH-1:0]    ext_mem_addr,       // Address
+    output logic [DATA_WIDTH-1:0]       ext_mem_wdata,      // Write data
+    input  logic [DATA_WIDTH-1:0]       ext_mem_rdata,      // Read data
+    input  logic                        ext_mem_ready,      // Data ready
+    input  logic                        ext_mem_valid,      // Data valid
+
+    // External instruction memory interface
+    output logic [$clog2(INSTR_DEPTH)-1:0] ext_instr_addr, // Instruction address
+    input  logic [INSTR_WIDTH-1:0]      ext_instr_data,     // Instruction data
+    input  logic                        ext_instr_valid,    // Instruction valid
+
+    //======================================//
+    //           UART Interface
+    //======================================//
+    // For initial testing/debugging
+    input  logic                        uart_rx,
+    output logic                        uart_tx,
+
+    //======================================//
+    //          Debug Interface
+    //======================================//
+    output logic [31:0]                 debug_fsm_state,    // Current FSM state
+    output logic [15:0]                 debug_cycle_count,  // Cycle counter
+    output logic [ACC_WIDTH-1:0]        debug_acc_out       // Accumulator output
+);

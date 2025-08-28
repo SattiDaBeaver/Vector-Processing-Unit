@@ -31,7 +31,7 @@ module uart_instr_mem_loader #(
     logic       tx_busy;
 
     // ==========================================
-    // Instantiate UART wrapper
+    // Instantiate your UART wrapper
     // ==========================================
     UART_wrapper #(
         .CLK_PER_BIT(CLK_PER_BIT),
