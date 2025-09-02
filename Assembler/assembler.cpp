@@ -1,15 +1,14 @@
 #include "assembler.hpp"
 
 // Instruction Class
-
-Instruction::Instruction(string m, int c) {
+Instruction::Instruction(string m, int c, int l) {
     mnemonic = m;
     cycle = c;
+    line_number = l;
 }
 
 
 // Assembler Class
-
 Assembler::Assembler () {
 
 }
@@ -58,10 +57,14 @@ bool Assembler::ParseLine (const string& line) {
         operands.push_back(token);
     }
 
-    Instruction instr(mnemonic, currentCycle);
+    Instruction instr(mnemonic, currentCycle, currentLine);
     instr.operands = operands;
     instructions.push_back(instr);
 
+    return true;
+}
+
+bool Assembler::AssembleInstruction (const Instruction& instruction){
     return true;
 }
 
@@ -93,10 +96,12 @@ bool Assembler::Assemble(const string& input_file, const string& output_file) {
         }
     }
 
-    // Optional: print parsed instructions for testing
+    // Debugging
     for (auto &instr : instructions) {
         cout << "Cycle " << instr.cycle << ": " << instr.mnemonic;
-        for (auto &op : instr.operands) cout << " " << op;
+        for (auto &op : instr.operands) {
+            cout << " " << op;
+        }
         cout << "\n";
     }
 
