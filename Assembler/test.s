@@ -1,5 +1,5 @@
 $               
-LDLi 0x3, 0x42
+LDL 0x1, 0x42
 SHD
 LDA
 $               

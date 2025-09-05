@@ -7,6 +7,9 @@
 #include <cstdint>
 #include <unordered_map>
 
+#define ERR_OOB 0x80000000;
+#define ERR_INV 0x40000000;
+
 using namespace std;
 
 class Instruction {
@@ -55,6 +58,7 @@ private:
         {"LDLi", BIT_LOAD_LEFT},
         {"LDT", BIT_LOAD_TOP},
         {"LDTi", BIT_LOAD_TOP},
+        {"LDLT", BIT_LOAD_LEFT | BIT_LOAD_TOP},
         {"SWL", BIT_SWAP_LEFT},
         {"SWT", BIT_SWAP_TOP},
         {"SHR", BIT_SHIFT_RIGHT},
@@ -73,7 +77,8 @@ private:
 
     // Methods
     bool ParseLine(const string& line);
-    bool AssembleInstruction(const Instruction& instruction);
+    uint32_t AssembleInstruction(const Instruction& instruction);
+    uint32_t GetValueFromString(const string& str_num);
 
 public:
     Assembler();

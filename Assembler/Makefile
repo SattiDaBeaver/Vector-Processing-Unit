@@ -25,6 +25,9 @@ endif
 CXXFLAGS := -Wall -std=c++17
 DEBUGFLAGS := -DDEBUG -g
 
+ASMFILE := test.s
+OUTFILE := output.txt
+
 all: main
 
 debug: CXXFLAGS += $(DEBUGFLAGS)
@@ -37,7 +40,7 @@ debug-run: debug
 
 run: main
 	@echo "Running Main"
-	./main
+	./main $(ASMFILE) $(OUTFILE)
 
 main: main.o assembler.o
 	@echo "Linking all files"
@@ -48,7 +51,7 @@ main.o: main.cpp
 	$(CXX) $(CXXFLAGS) -c main.cpp
 
 assembler.o: assembler.cpp
-	@echo "Compiling the serial port file"
+	@echo "Compiling the assembler file"
 	$(CXX) $(CXXFLAGS) -c assembler.cpp
 
 clean:
@@ -62,7 +65,6 @@ update-arch:
 	@echo "Updating architecture info..."
 	@powershell -NoProfile -Command "(Get-CimInstance Win32_Processor).Architecture" > .arch
 
-
 # Show available targets
 help:
 	@echo "Available targets:"
@@ -75,4 +77,4 @@ help:
 	@echo   "update-arch - Update cached architecture information"
 	@echo   "help       - Show this help message"
 
-.PHONY: all clean run debug debug-run help info update-arch
+.PHONY: all clean run debug debug-run help info update-arch 
