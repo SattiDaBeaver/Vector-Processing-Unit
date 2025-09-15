@@ -6,6 +6,7 @@
 #include <sstream>
 #include <cstdint>
 #include <unordered_map>
+#include <unordered_set>
 
 #define ERR_OOB 0x80000000;
 #define ERR_INV 0x40000000;

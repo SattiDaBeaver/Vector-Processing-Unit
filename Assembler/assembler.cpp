@@ -90,12 +90,16 @@ uint32_t Assembler::AssembleInstruction (const Instruction& instruction){
         return 0u;  // return no instruction (invalid)
     }
 
-    // Set the opcode bits
+    // Set the opcode bits - all bits except the immediates and stuff
     uint32_t instr_word = 0u;
     instr_word |= iterator->second;
 
     bool is_imm = false;
 
+    // WAO instruction
+    if (instruction.mnemonic == "WAO") {
+        
+    }
     // LDL, LDT and WAIT instructions
     if (instruction.mnemonic == "LDL" || instruction.mnemonic == "LDT" ||
         instruction.mnemonic == "LDLi" || instruction.mnemonic == "LDTi" ||
@@ -124,22 +128,34 @@ uint32_t Assembler::AssembleInstruction (const Instruction& instruction){
         uint32_t mem_addr = GetValueFromString(instruction.operands[1]);
 
         // Out of Bounds Check
+        // Check systolic address
         if (sys_addr > 8) {
             cout << "Error: Systolic array address out of bounds (" << sys_addr << 
             " > 8) on line " << instruction.line_number << "\n";
-
             return 0u; // return error
         }
+        // Check Immediate Value
         if (is_imm) {
-            if ((int32_t) mem_addr > 127) {
-
-            } // Change here, add error checking, OOB checks
+            if (((int32_t) mem_addr) > 127 || ((int32_t) mem_addr) < -128 ) { // Immediate Value
+                cout << "Error: Immediate value out of bounds (" << ((int32_t) mem_addr) << 
+                " > 127 or < -128) on line " << instruction.line_number << "\n";
+                return 0u;
+            } 
+        }
+        // Check Address
+        else {
+            if (mem_addr > 4095) { // Address
+                cout << "Error: Address out of bounds (" << mem_addr << 
+                " > 4095 on line " << instruction.line_number << "\n";
+                return 0u;
+            } 
         }
 
-        instr_word |= (sys_addr << 10) | (mem_addr);
+        // Change here, add error checking, OOB checks
+
+        // Create Instruction Word
+        instr_word |= ((sys_addr & 0xF) << 10) | (mem_addr & 0xFFF);
     }
-
-
     
     return instr_word;
 }
