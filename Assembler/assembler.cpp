@@ -95,10 +95,11 @@ uint32_t Assembler::AssembleInstruction (const Instruction& instruction){
     instr_word |= iterator->second;
 
     bool is_imm = false;
+    
 
     // WAO instruction
     if (instruction.mnemonic == "WAO") {
-        
+
     }
     // LDL, LDT and WAIT instructions
     if (instruction.mnemonic == "LDL" || instruction.mnemonic == "LDT" ||
